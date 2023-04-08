@@ -8,6 +8,8 @@ const studentRouter = require("./Routes/student_routes");
 //stock manager routes
 const itemRouter = require("./Routes/item_routes");
 
+//other routes with name
+
 //common routes
 const AppError = require("./Utils/AppError");
 
