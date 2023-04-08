@@ -5,10 +5,13 @@ const router = express.Router();
 
 //This api-resource route for update and delete specific student
 
-router.route("/").get(itemontroller.myAllItems).post(itemontroller.createItem);
+router
+  .route("/item")
+  .get(itemontroller.myAllItems)
+  .post(itemontroller.createItem);
 
 router
-  .route("/:id")
+  .route("/item/:id")
   .patch(itemontroller.updateMyItem)
   .delete(itemontroller.deleteItem)
   .get(itemontroller.specificItems);
