@@ -5,6 +5,12 @@ const app = express();
 const noticeRouter = require("./Routes/notice_routes");
 const studentRouter = require("./Routes/student_routes");
 
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    credentials: true,
+  })
+);
 //stock manager routes
 const itemRouter = require("./Routes/item_routes");
 
