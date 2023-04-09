@@ -353,7 +353,7 @@ export default function CreateStocks() {
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  w<th scope="col">#</th>
                   <th scope="col">First</th>
                   <th scope="col">Last</th>
                   <th scope="col">Handle</th>
@@ -365,6 +365,7 @@ export default function CreateStocks() {
                   <td>Mark</td>
                   <td>Otto</td>
                   <td>@mdo</td>
+                  <td>@ee</td>
                 </tr>
                 <tr>
                   <th scope="row">2</th>
