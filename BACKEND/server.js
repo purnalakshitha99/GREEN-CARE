@@ -4,6 +4,12 @@ const cors = require("cors");
 
 const app = require("./app");
 
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    credentials: true,
+  })
+);
 //linked .env file
 dotenv.config({ path: "./config.env" });
 
