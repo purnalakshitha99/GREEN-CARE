@@ -365,6 +365,7 @@ export default function CreateStocks() {
                   <td>Mark</td>
                   <td>Otto</td>
                   <td>@mdo</td>
+                  <td>@ee</td>
                 </tr>
                 <tr>
                   <th scope="row">2</th>
