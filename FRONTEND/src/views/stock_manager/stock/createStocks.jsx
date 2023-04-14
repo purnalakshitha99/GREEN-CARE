@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import SoloAlert from "soloalert";
-import Side_nav from "../../../layouts/side_nav.jsx";
+
 import axios from "axios";
 
 export default function CreateStocks() {
@@ -105,7 +105,6 @@ export default function CreateStocks() {
   return (
     <div class="container-fluid">
       <div class="row flex-nowrap">
-        <Side_nav />
         <div class="col py-5">
           <button
             type="button"
