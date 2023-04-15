@@ -14,7 +14,8 @@ app.use(
 //stock manager routes
 const itemRouter = require("./Routes/item_routes");
 
-//other routes with name
+// farmer routes
+const farmerRouter = require("./Routes/farmer_routes");
 
 //common routes
 const AppError = require("./Utils/AppError");
@@ -25,6 +26,7 @@ app.use(express.json({ limit: "10kb" }));
 // app.use(`${base}/notices`, noticeRouter);
 // app.use(`${base}/student`, studentRouter);
 app.use(`${base}/stock-manager`, itemRouter);
+app.use(`${base}/farmer`, farmerRouter);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`can't find ${req.originalUrl} on this server!`, 404));
