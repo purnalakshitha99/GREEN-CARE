@@ -17,7 +17,7 @@ const Sidebar = ({ children }) => {
       icon: <FaUserAlt />,
     },
     {
-      path: "/retrieve",
+      path: "/suppliers",
       name: "Supplier",
       icon: <FaRegChartBar />,
     },
