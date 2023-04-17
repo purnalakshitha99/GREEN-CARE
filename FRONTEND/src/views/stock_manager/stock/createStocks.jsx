@@ -47,7 +47,7 @@ export default function CreateStocks() {
         category,
         quantity,
       };
-      console.log(newDetails1);
+      // console.log(newDetails1);
       if (
         !name ||
         !description ||
@@ -175,9 +175,11 @@ export default function CreateStocks() {
                         >
                           <option value="fertilizer">Select Category</option>
                           <option value="fertilizer">fertilizer</option>
-                          <option value="saab">Farm animal foods</option>
-                          <option value="opel">plant & seeds</option>
-                          <option value="audi">Pesticides</option>
+                          <option value="FarmAnimalFoods">
+                            Farm animal foods
+                          </option>
+                          <option value="plantAndSeeds">plant & seeds</option>
+                          <option value="Pesticides">Pesticides</option>
                         </select>
                       </div>
                     </div>
