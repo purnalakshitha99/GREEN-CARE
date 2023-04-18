@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import SoloAlert from "soloalert";
-import Side_nav from "../../../layouts/side_nav.jsx";
+
 import axios from "axios";
 
 export default function CreateStocks() {
@@ -47,7 +47,7 @@ export default function CreateStocks() {
         category,
         quantity,
       };
-      console.log(newDetails1);
+      // console.log(newDetails1);
       if (
         !name ||
         !description ||
@@ -105,7 +105,6 @@ export default function CreateStocks() {
   return (
     <div class="container-fluid">
       <div class="row flex-nowrap">
-        <Side_nav />
         <div class="col py-5">
           <button
             type="button"
@@ -176,9 +175,11 @@ export default function CreateStocks() {
                         >
                           <option value="fertilizer">Select Category</option>
                           <option value="fertilizer">fertilizer</option>
-                          <option value="saab">Farm animal foods</option>
-                          <option value="opel">plant & seeds</option>
-                          <option value="audi">Pesticides</option>
+                          <option value="FarmAnimalFoods">
+                            Farm animal foods
+                          </option>
+                          <option value="plantAndSeeds">plant & seeds</option>
+                          <option value="Pesticides">Pesticides</option>
                         </select>
                       </div>
                     </div>

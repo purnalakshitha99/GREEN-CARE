@@ -1,16 +1,23 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import StockHome from "../views/stock_manager/stock/stockHome";
 import CreateStocks from "../views/stock_manager/stock/createStocks";
-import RetrieveStocks from "../views/stock_manager/stock/retrieveStock";
-import Side_nav from "../layouts/side_nav";
+import RetrieveStock from "../views/stock_manager/stock/retrieveStock";
+import "../layouts/sideBar.css";
+import Sidebar from "../layouts/sideBar.jsx";
+import DashBoard from "../views/stock_manager/stock/dashBoard";
 
 export default function stock_manager_routes() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/create" exact element={<CreateStocks />}></Route>
-        <Route path="/retrieve" exact element={<RetrieveStocks />}></Route>
-      </Routes>
-    </Router>
+    <BrowserRouter>
+      <Sidebar>
+        <Routes>
+          <Route path="/" element={<DashBoard />} />
+          <Route path="/dashboard" exact element={<DashBoard />}></Route>
+          <Route path="/create" exact element={<CreateStocks />}></Route>
+          <Route path="/retrieve" exact element={<RetrieveStock />}></Route>
+        </Routes>
+      </Sidebar>
+    </BrowserRouter>
   );
 }
