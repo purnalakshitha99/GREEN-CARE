@@ -20,6 +20,13 @@ app.use(
   })
 );
 
+
+//consultant routes
+const appointmentRouter = require("./Routes/appointment_routes")
+
+const { default: newsRouter } = require("./Routes/news_routes"); // news routes (consultants')
+
+
 // routes
 const base = "/api/v1";
 app.use(express.json({ limit: "10kb" }));
@@ -35,6 +42,12 @@ app.use((req, res, next) => {
 });
 
 
+
+//consultant's appoinments
+app.use(`${base}/appointment`, appointmentRouter);
+
+//consulant's news
+app.use(`${base}/news`, newsRouter);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`can't find ${req.originalUrl} on this server!`, 404));
