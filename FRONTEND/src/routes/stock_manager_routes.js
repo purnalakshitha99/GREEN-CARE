@@ -11,7 +11,7 @@ import Suppliers from "../views/stock_manager/suppliers/suppliers";
 export default function stock_manager_routes() {
   return (
     <BrowserRouter>
-      <Sidebar>
+    
         <Routes>
           <Route path="/" element={<DashBoard />} />
           <Route path="/dashboard" exact element={<DashBoard />}></Route>
@@ -19,7 +19,7 @@ export default function stock_manager_routes() {
           <Route path="/retrieve" exact element={<RetrieveStock />}></Route>
           <Route path="/suppliers" exact element={<Suppliers />}></Route>
         </Routes>
-      </Sidebar>
+ 
     </BrowserRouter>
   );
 }

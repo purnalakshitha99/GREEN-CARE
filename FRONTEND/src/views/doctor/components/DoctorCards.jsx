@@ -1,16 +1,6 @@
 import React, { useState } from "react";
 import "./DoctorCards.css";
-import { MDBIcon } from "mdbreact";
-import {
-  MDBContainer,
-  MDBRow,
-  MDBCard,
-  MDBCol,
-  MDBBadge,
-  MDBCardBody,
-  MDBBtn,
-  MDBCardFooter,
-} from "mdb-react-ui-kit";
+
 import TotalRequestsModal from "./TotalRequestsModal";
 import PendingRequestsModal from "./PendingRequestsModal";
 import CompletedRequestsModal from "./CompletedRequestsModal";
@@ -32,111 +22,43 @@ function DoctorCards() {
   const hideCompletedRequestsModal = () => setCompletedRequestsModalShown(false);
 
   return (
-    <MDBContainer>
-      <MDBRow className="gy-4">
-        <MDBCol md="4">
-          <MDBCard className="h-100">
-            <MDBCardBody>
-              <div className="d-flex justify-content-between align-items-center">
-                <MDBBadge color="primary" className="rounded-pill px-3 py-2">
-                  Total Requests
-                </MDBBadge>
-                <MDBIcon
-                  icon="list-alt"
-                  size="2x"
-                  className="text-primary"
-                />
-              </div>
-              <div className="text-center mt-3">
-                <span className="fs-1">{totalRequests.length}</span>
-              </div>
-            </MDBCardBody>
-            <MDBCardFooter className="bg-white border-0">
-              <MDBBtn
-                color="primary"
-                className="w-100"
-                onClick={showTotalRequestsModal}
-              >
-                View Details
-              </MDBBtn>
-            </MDBCardFooter>
-          </MDBCard>
-        </MDBCol>
-        <MDBCol md="4">
-          <MDBCard className="h-100">
-            <MDBCardBody>
-              <div className="d-flex justify-content-between align-items-center">
-                <MDBBadge color="warning" className="rounded-pill px-3 py-2">
-                  Pending Requests
-                </MDBBadge>
-                <MDBIcon
-                  icon="hourglass-half"
-                  size="2x"
-                  className="text-warning"
-                />
-              </div>
-              <div className="text-center mt-3">
-                <span className="fs-1">{pendingRequests.length}</span>
-              </div>
-            </MDBCardBody>
-            <MDBCardFooter className="bg-white border-0">
-              <MDBBtn
-                color="warning"
-                className="w-100"
-                onClick={showPendingRequestsModal}
-              >
-                View Details
-              </MDBBtn>
-            </MDBCardFooter>
-          </MDBCard>
-        </MDBCol>
-        <MDBCol md="4">
-          <MDBCard className="h-100">
-            <MDBCardBody>
-              <div className="d-flex justify-content-between align-items-center">
-                <MDBBadge color="success" className="rounded-pill px-3 py-2">
-                  Completed Requests
-                </MDBBadge>
-                <MDBIcon
-                  icon="check-circle"
-                  size="2x"
-                  className="text-success"
-                />
-              </div>
-              <div className="text-center mt-3">
-                <span className="fs-1">{completedRequests.length}</span>
-              </div>
-            </MDBCardBody>
-            <MDBCardFooter className="bg-white border-0">
-              <MDBBtn
-                color="success"
-                className="w-100"
-                onClick={showCompletedRequestsModal}
-              >
-                View Details
-              </MDBBtn>
-            </MDBCardFooter>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
-      <TotalRequestsModal
-        isOpen={totalRequestsModalShown}
-        onRequestClose={hideTotalRequestsModal}
-        totalRequests={totalRequests}
-      />
-
-      <PendingRequestsModal
-        isOpen={pendingRequestsModalShown}
-        onRequestClose={hidePendingRequestsModal}
-        pendingRequests={pendingRequests}
-      />
-
-      <CompletedRequestsModal
-        isOpen={completedRequestsModalShown}
-        onRequestClose={hideCompletedRequestsModal}
-        completedRequests={completedRequests}
-      />
-    </MDBContainer>
+    <section class="statistics mt-4">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
+          <i class="uil-envelope-shield fs-2 text-center bg-primary rounded-circle"></i>
+          <div class="ms-3">
+            <div class="d-flex align-items-center">
+              <h3 class="mb-0">1,245</h3> <span class="d-block ms-2">Emails</span>
+            </div>
+            <p class="fs-normal mb-0">Lorem ipsum dolor sit amet</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
+          <i class="uil-file fs-2 text-center bg-danger rounded-circle"></i>
+          <div class="ms-3">
+            <div class="d-flex align-items-center">
+              <h3 class="mb-0">34</h3> <span class="d-block ms-2">Projects</span>
+            </div>
+            <p class="fs-normal mb-0">Lorem ipsum dolor sit amet</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="box d-flex rounded-2 align-items-center p-3">
+          <i class="uil-users-alt fs-2 text-center bg-success rounded-circle"></i>
+          <div class="ms-3">
+            <div class="d-flex align-items-center">
+              <h3 class="mb-0">5,245</h3> <span class="d-block ms-2">Users</span>
+            </div>
+            <p class="fs-normal mb-0">Lorem ipsum dolor sit amet</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   );
 }
 
