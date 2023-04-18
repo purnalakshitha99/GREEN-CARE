@@ -17,7 +17,7 @@ const appointmentSchema = new mongoose.Schema({
     type: Boolean,
   },
   farmer_name: {
-    type: Date,
+    type: String,
   },
   
   // user: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, //foriegn column

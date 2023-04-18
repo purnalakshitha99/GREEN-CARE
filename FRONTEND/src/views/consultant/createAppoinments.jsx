@@ -41,19 +41,19 @@ export default function CreateAppoinment() {
       const newDetails1 = {
         topic,
         description,
-        // reply,
-        // date,
-        // approvel,
-        // farmer_name,
+        reply,
+        date,
+        approvel,
+        farmer_name,
       };
       console.log(newDetails1);
       if (
         !topic ||
-        !description 
-        // !reply ||
-        // !date ||
-        // !approvel ||
-        // !farmer_name 
+        !description ||
+        !reply ||
+        !date ||
+        // !approvel || 
+        !farmer_name 
         
       ) {
         SoloAlert.alert({
@@ -68,10 +68,10 @@ export default function CreateAppoinment() {
         const newDetails = {
           topic,
           description,
-          // reply,
-          // date,
-          // approvel,
-          // farmer_name,
+          reply,
+          date,
+          approvel,
+          farmer_name,
         };
         console.log(newDetails);
         const data = await (
@@ -137,185 +137,50 @@ export default function CreateAppoinment() {
                 <div class="modal-body">
                   {" "}
                   <form>
-                    <div class="row mb-3">
-                      <label
-                        for="appointmentTopic"
-                        class="col-sm-2 col-form-label"
-                      >
-                        Topic
-                      </label>
-                      <div class="col-sm-6" style={{ height: 20 }}>
-                        <input
-                          type="text"
-                          class="form-control"
-                          style={{ height: 32 }}
-                          id="appointmentTopic"
-                          required
-                          onChange={(e) => {
-                            setTopic(e.target.value);
-                          }}
-                        />
-                      </div>
-                    </div>
-                    {/* <div class="row mb-3">
-                      <label
-                        for="inputCategory"
-                        class="col-sm-2 col-form-label"
-                      >
-                        Select Category
-                      </label>
-                      <div class="col-sm-6">
-                        <select
-                          className="form-select form-select-sm mb-3"
-                          required
-                          onChange={(e) => {
-                            setCategory(e.target.value);
-                          }}
-                        >
-                          <option value="fertilizer">Select Category</option>
-                          <option value="fertilizer">fertilizer</option>
-                          <option value="saab">Farm animal foods</option>
-                          <option value="opel">plant & seeds</option>
-                          <option value="audi">Pesticides</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="inputEXP" class="col-sm-2 col-form-label">
-                        EXP
-                      </label>
-
-                      <div class="col-sm-10">
-                        <input
-                          type="date"
-                          id="exp"
-                          name="exp"
-                          style={{ borderradius: 0.25 }}
-                          required
-                          onChange={(e) => {
-                            setEXP(e.target.value);
-                          }}
-                        />
-                      </div>
-                    </div> */}
-
-                    {/* <div class="row mb-3">
-                      <label for="AppointmentDate" class="col-sm-2 col-form-label">
-                        MFD
-                      </label>
-
-                      <div class="col-sm-10">
-                        <input
-                          type="date"
-                          id="date"
-                          name="date"
-                          required
-                          onChange={(e) => {
-                            setDate(e.target.value);
-                          }}
-                        />
-                      </div>
-                    </div> */}
-
-                    <div class="row mb-3">
-                      <label
-                        for="description"
-                        class="col-sm-2 col-form-label"
-                      >
-                        Description
-                      </label>
-                      <div class="col-sm-2">
-                      <input
-                          type="text"
-                          class="form-control"
-                          style={{ height: 60 }}
-                          id="appointmentDescription"
-                          required
-                          onChange={(e) => {
-                            setDescription(e.target.value);
-                          }}
-                        />
-                      </div>
-                    </div>
-
-                    {/* <div class="row mb-3">
-                      <label
-                        for="inputDescription"
-                        class="col-sm-2 col-form-label"
-                      >
-                        Description
-                      </label>
-                      <div class="col-sm-6">
-                        <div class="form-floating">
-                          <textarea
-                            class="form-control"
-                            placeholder="Leave a comment here"
-                            id="floatingTextarea2"
-                            required
-                            onChange={(e) => {
-                              setDescription(e.target.value);
-                            }}
-                          ></textarea>
-                          <label for="floatingTextarea2">Description</label>
+                  <div class="row mb-3">
+                          <label for="appointmentTopic" class="col-sm-2 col-form-label">Topic</label>
+                          <div class="col-sm-6">
+                            <input type="text" class="form-control" id="appointmentTopic" required onChange={(e) => {setTopic(e.target.value)}} />
+                          </div>
                         </div>
-                      </div>
-                    </div>
 
-                    <div class="row mb-3">
-                      <label
-                        for="inputItemName"
-                        class="col-sm-2 col-form-label"
-                      >
-                        Input Image
-                      </label>
-                      <div class="col-sm-2">
-                        <input
-                          type="file"
-                          id="img"
-                          name="img"
-                          accept="image/*"
-                        />
-                      </div>
-                    </div>
+                        <div class="row mb-3">
+                          <label for="appointmentDescription" class="col-sm-2 col-form-label">Description</label>
+                          <div class="col-sm-6">
+                            <input type="text" class="form-control" id="appointmentDescription" style={{height: 60}} required onChange={(e) => {setDescription(e.target.value)}} />
+                          </div>
+                        </div>
 
-                    <div class="row mb-3">
-                      <label
-                        for="inputSupplier"
-                        class="col-sm-2 col-form-label"
-                      >
-                        Select Supplier
-                      </label>
-                      <div class="col-sm-6">
-                        <select className="form-select form-select-sm mb-3">
-                          <option value="fertilizer">Select Supplier</option>
-                          <option value="fertilizer">fertilizer</option>
-                          <option value="saab">Farm animal foods</option>
-                          <option value="opel">plant & seeds</option>
-                          <option value="audi">Pesticides</option>
-                        </select>
-                      </div>
-                    </div>
+                        
+                          {/* <div class="row mb-3">
+                            <label for="appointmentReply" class="col-sm-2 col-form-label">Reply</label>
+                            <div class="col-sm-6">
+                              <input type="text" class="form-control" id="appointmentReply" required onChange={(e) => {setReply(e.target.value)}} />
+                            </div>
+                          </div> */}
 
-                    <div class="row mb-3">
-                      <label
-                        for="inputItemName"
-                        class="col-sm-2 col-form-label"
-                      >
-                        Price
-                      </label>
-                      <div class="col-sm-3">
-                        <input
-                          type="number"
-                          class="form-control"
-                          id="inputEmail3"
-                          required
-                          onChange={(e) => {
-                            setPrice(e.target.value);
-                          }}
-                        />
-                      </div>
-                    </div> */}
+                          <div class="row mb-3">
+                            <label for="appointmentDate" class="col-sm-2 col-form-label">Date</label>
+                            <div class="col-sm-6">
+                              <input type="date" class="form-control" id="appointmentDate" required onChange={(e) => {setDate(e.target.value)}} />
+                            </div>
+                          </div>
+
+                          {/* <div class="row mb-3">
+                            <label for="appointmentApprovel" class="col-sm-2 col-form-label">Approval</label>
+                            <div class="col-sm-6">
+                              <input type="checkbox" class="form-check-input" id="appointmentApprovel" onChange={(e) => {setApprovel(e.target.checked)}} />
+                            </div>
+                          </div> */}
+
+                          <div class="row mb-3">
+                            <label for="farmerName" class="col-sm-2 col-form-label">Farmer Name</label>
+                            <div class="col-sm-6">
+                              <input type="text" class="form-control" id="farmerName" required onChange={(e) => {setFname(e.target.value)}} />
+                            </div>
+                          </div>
+                        
+                    
                     <div class="modal-footer">
                       <button
                         type="button"
@@ -344,7 +209,7 @@ export default function CreateAppoinment() {
               </div>
             </div>
           </div>
-          <div
+          {/* <div
             class="shadow-lg p-1 mb-2 bg-body rounded"
             style={{ width: "70%", alignItems: "center" }}
           >
@@ -379,7 +244,7 @@ export default function CreateAppoinment() {
                 </tr>
               </tbody>
             </table>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
