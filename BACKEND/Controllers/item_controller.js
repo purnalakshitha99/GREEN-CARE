@@ -15,11 +15,7 @@ exports.createItem = catchAsync(async (req, res, next) => {
 //get all items
 exports.myAllItems = catchAsync(async (req, res, next) => {
   let all_items = await Item.find();
-
-  res.status(201).json({
-    status: "success",
-    all_items,
-  });
+  res.json(all_items);
 });
 
 //get specific items
