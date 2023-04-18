@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import SoloAlert from "soloalert";
-import Side_nav from "../../../layouts/side_nav.jsx";
+
 import axios from "axios";
+import RetrieveStock from "./retrieveStock";
 
 export default function CreateStocks() {
   const [isLoading, setLoading] = useState(false);
@@ -47,7 +48,7 @@ export default function CreateStocks() {
         category,
         quantity,
       };
-      console.log(newDetails1);
+      // console.log(newDetails1);
       if (
         !name ||
         !description ||
@@ -105,7 +106,6 @@ export default function CreateStocks() {
   return (
     <div class="container-fluid">
       <div class="row flex-nowrap">
-        <Side_nav />
         <div class="col py-5">
           <button
             type="button"
@@ -176,9 +176,11 @@ export default function CreateStocks() {
                         >
                           <option value="fertilizer">Select Category</option>
                           <option value="fertilizer">fertilizer</option>
-                          <option value="saab">Farm animal foods</option>
-                          <option value="opel">plant & seeds</option>
-                          <option value="audi">Pesticides</option>
+                          <option value="FarmAnimalFoods">
+                            Farm animal foods
+                          </option>
+                          <option value="plantAndSeeds">plant & seeds</option>
+                          <option value="Pesticides">Pesticides</option>
                         </select>
                       </div>
                     </div>
@@ -347,40 +349,10 @@ export default function CreateStocks() {
             </div>
           </div>
           <div
-            class="shadow-lg p-1 mb-2 bg-body rounded"
-            style={{ width: "70%", alignItems: "center" }}
+            class="shadow-lg p-1 mb-3 bg-body rounded"
+            style={{ width: "120%", alignItems: "center" }}
           >
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>@ee</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-            </table>
+            <RetrieveStock />
           </div>
         </div>
       </div>
