@@ -5,6 +5,7 @@ import axios from "axios";
 // import validation from "validator";
 import jspdf from "jspdf";
 import "jspdf-autotable";
+import Sidebar from "../../../layouts/sideBar";
 
 export default function RetrieveStock() {
   const [loaderStatus, setLoaderStatus] = useState(false);
@@ -19,13 +20,14 @@ export default function RetrieveStock() {
   useEffect(() => {
     async function getDetails() {
       try {
-        const result = await (
-          await axios.get("http://localhost:3007/api/v1/stock-manager/item/")
-        ).data.data;
+        const result = await axios.get(
+          "http://localhost:3007/api/v1/stock-manager/item/"
+        );
+
         // console.log(result);
-        setAllItems(result);
-        console.log(result);
-        setLoaderStatus(true);
+        setAllItems(result.data);
+        console.log(result.data);
+        // setLoaderStatus(false);
         setTableStatus(false);
       } catch (err) {
         console.log(err.message);
@@ -33,7 +35,7 @@ export default function RetrieveStock() {
     }
 
     getDetails();
-  });
+  }, []);
 
   // //This useEffect method is used to perform a searching function
   // useEffect(() => {
@@ -64,6 +66,7 @@ export default function RetrieveStock() {
       .reverse()
       .map((ticket) => {
         const ticketData = [
+          ticket.itemId,
           ticket.name,
           ticket.description,
           ticket.price,
@@ -71,7 +74,6 @@ export default function RetrieveStock() {
           ticket.mfd,
           ticket.category,
           ticket.quantity,
-          ticket.itemId,
         ];
         tableRows.push(ticketData);
       });
@@ -89,16 +91,7 @@ export default function RetrieveStock() {
 
   return (
     <div class="content">
-      <div class="d-flex justify-content-center">
-        <div
-          class="spinner-border"
-          role="status"
-          style={{ width: "10rem", height: "10rem", marginTop: "100px" }}
-          hidden={loaderStatus}
-        >
-          <span class="visually-hidden">Loading...</span>
-        </div>
-      </div>
+      <div class="d-flex justify-content-center"></div>
 
       <div hidden={tebleStatus}>
         {/* This part used to get all users data into table */}
@@ -130,8 +123,8 @@ export default function RetrieveStock() {
         </nav>
         <hr />
 
-        <div className="bodyContent">
-          <table className="table table-dark table-hover">
+        <div>
+          <table className="table table-hover " style={{ width: "100%" }}>
             <thead>
               <tr>
                 <th scope="col">Item ID</th>
@@ -145,32 +138,29 @@ export default function RetrieveStock() {
                 <th></th>
               </tr>
             </thead>
-            <tbody>
-              {filtered
-                .slice(0)
-                .reverse()
-                .map((Items) => {
-                  return (
-                    <tr>
-                      <td>{Items.itemId}</td>
-                      <td>{Items.name}</td>
-                      <td> {Items.description} </td>
-                      <td>{Items.price}</td>
-                      <td> {Items.exp} </td>
-                      <td>{Items.mfd}</td>
-                      <td>{Items.category}</td>
-                      <td>{Items.quantity}</td>
+            {AllItems.map((item, count = 0) => (
+              <tbody>
+                <tr>
+                  <td>{count + 1}</td>
+                  <td>{item.name}</td>
+                  <td> {item.description} </td>
+                  <td>{item.price}</td>
+                  <td> {item.exp} </td>
+                  <td>{item.mfd}</td>
+                  <td>{item.category}</td>
+                  <td>{item.quantity}</td>
 
-                      <td>
-                        <Link to={"/retrieve" + Items._id} className="Edit">
-                          {" "}
-                          <i className="far fa-edit"></i>{" "}
-                        </Link>
-                      </td>
-                    </tr>
-                  );
-                })}
-            </tbody>
+                  <td>
+                    <Link to={`/get/${item._id}`} className="btn btn-primary">
+                      Update
+                    </Link>{" "}
+                    <button type="button" className="btn btn-danger">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            ))}
           </table>
         </div>
       </div>
