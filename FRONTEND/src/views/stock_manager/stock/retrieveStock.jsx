@@ -26,7 +26,7 @@ export default function RetrieveStock() {
 
         // console.log(result);
         setAllItems(result.data);
-
+        console.log(result.data);
         // setLoaderStatus(false);
         setTableStatus(false);
       } catch (err) {
