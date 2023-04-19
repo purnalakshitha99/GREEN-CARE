@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import AppHeader from "../header";
 import "./animalForm.css";
+import axios from 'axios';
+
 
 const AnimalForm = () => {
   const [formData, setFormData] = useState({
@@ -26,11 +28,17 @@ const AnimalForm = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const formErrors = validateForm();
     if (Object.keys(formErrors).length === 0) {
       console.log(formData);
+      try {
+        const res = await axios.post("http://localhost:3007/api/v1/animal-form/animalFormSubmit", formData);
+        console.log(res.data); // handle response from the server
+      } catch (err) {
+        console.error(err); // handle error from the server
+      }
       setFormData({
         firstName: "",
         lastName: "",

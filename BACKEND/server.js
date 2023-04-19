@@ -1,6 +1,7 @@
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const multer = require('multer');
 
 const app = require("./app");
 

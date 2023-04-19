@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --exec  babel-node -- server.js"
   },
-  "author": "purna lakshitha",
+  "author": "purna lakshitha, Sandani Amasha",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.21.0",
@@ -21,6 +21,7 @@
     "express-validator": "^7.0.0",
     "mongoose": "^7.0.1",
     "mongoose-unique-validator": "^4.0.0",
+    "multer": "^1.4.5-lts.1",
     "pino": "^8.11.0",
     "pino-pretty": "^9.4.0"
   }

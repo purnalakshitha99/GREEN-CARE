@@ -12,6 +12,8 @@ const farmerRouter = require("./Routes/farmer_routes");
 //common routes
 const AppError = require("./Utils/AppError");
 const HttpError = require("./Utils/http-error");
+//vetForm routes
+const animalFormRouter = require("./Routes/animal_form_routes");
 
 app.use(
   cors({
@@ -33,6 +35,7 @@ app.use(express.json({ limit: "10kb" }));
 
 app.use(`${base}/stock-manager`, itemRouter);
 app.use(`${base}/farmer`, farmerRouter);
+app.use(`${base}/animal-form`,animalFormRouter);
 
 
 // Unsupported routes handler
