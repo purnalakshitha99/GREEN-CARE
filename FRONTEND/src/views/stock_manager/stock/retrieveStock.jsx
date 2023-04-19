@@ -26,7 +26,7 @@ export default function RetrieveStock() {
 
         // console.log(result);
         setAllItems(result.data);
-        console.log(result.data);
+
         // setLoaderStatus(false);
         setTableStatus(false);
       } catch (err) {
@@ -151,7 +151,7 @@ export default function RetrieveStock() {
                   <td>{item.quantity}</td>
 
                   <td>
-                    <Link to={`/get/${item._id}`} className="btn btn-primary">
+                    <Link to={`/item/${item._id}`} className="btn btn-primary">
                       Update
                     </Link>{" "}
                     <button type="button" className="btn btn-danger">

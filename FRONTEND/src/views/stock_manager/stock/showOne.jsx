@@ -13,8 +13,8 @@ export default function ShowItems() {
       axios
         .get(`http://localhost:3007/api/v1/stock-manager/item/${id}`)
         .then((res) => {
-          setAllItems(res.data);
-          console.log(res.data);
+          setAllItems(res.data.data.items);
+          console.log(res.data.data.items);
         })
         .catch((err) => alert(err.message));
     };
