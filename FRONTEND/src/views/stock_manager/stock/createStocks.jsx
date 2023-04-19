@@ -294,9 +294,9 @@ export default function CreateStocks() {
                         <select className="form-select form-select-sm mb-3">
                           <option value="fertilizer">Select Supplier</option>
                           <option value="fertilizer">fertilizer</option>
-                          <option value="saab">Farm animal foods</option>
-                          <option value="opel">plant & seeds</option>
-                          <option value="audi">Pesticides</option>
+                          <option value="farmAnimal">Farm animal foods</option>
+                          <option value="plant">plant & seeds</option>
+                          <option value="pesticides">Pesticides</option>
                         </select>
                       </div>
                     </div>

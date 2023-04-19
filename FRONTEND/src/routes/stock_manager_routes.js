@@ -7,6 +7,7 @@ import "../layouts/sideBar.css";
 import Sidebar from "../layouts/sideBar.jsx";
 import DashBoard from "../views/stock_manager/stock/dashBoard";
 import Suppliers from "../views/stock_manager/suppliers/suppliers";
+import ShowOne from "../views/stock_manager/stock/showOne";
 
 export default function stock_manager_routes() {
   return (
@@ -18,6 +19,7 @@ export default function stock_manager_routes() {
           <Route path="/create" exact element={<CreateStocks />}></Route>
           <Route path="/retrieve" exact element={<RetrieveStock />}></Route>
           <Route path="/suppliers" exact element={<Suppliers />}></Route>
+          <Route path="/item/:id" exact element={<ShowOne />}></Route>
         </Routes>
       </Sidebar>
     </BrowserRouter>
