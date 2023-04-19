@@ -220,9 +220,8 @@ export default function ShowItems() {
           onClick={(e) => {
             handleFormSubmit(e);
           }}
-          //   disabled={isLoading}
         >
-          {/* <i class="fa fa-file-export"></i> {isLoading ? "Sending.." : "Submit"} */}
+          save changes
         </button>
       </div>
     </form>

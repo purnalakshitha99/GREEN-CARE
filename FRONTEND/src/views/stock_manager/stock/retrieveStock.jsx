@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-// import SoloAlert from "soloalert";
+import SoloAlert from "soloalert";
 // import validation from "validator";
 import jspdf from "jspdf";
 import "jspdf-autotable";
 import Sidebar from "../../../layouts/sideBar";
 
 export default function RetrieveStock() {
+  const { id } = useParams();
   const [loaderStatus, setLoaderStatus] = useState(false);
   const [tebleStatus, setTableStatus] = useState(true);
 
   const [search, setsearch] = useState("");
-  const [filtered, setfiltered] = useState([]);
+  // const [filtered, setfiltered] = useState([]);
 
   const [AllItems, setAllItems] = useState([]);
 
@@ -36,6 +37,60 @@ export default function RetrieveStock() {
 
     getDetails();
   }, []);
+
+  //This function is used to delete specific user
+  function deleteItem(id) {
+    // id.preventDefault();
+
+    SoloAlert.confirm({
+      title: "Confirm Delete",
+      body: "Are you sure",
+      theme: "dark",
+      useTransparency: true,
+      onOk: async function () {
+        try {
+          const result = await (
+            await axios.delete(
+              `http://localhost:3007/api/v1/stock-manager/item/${id}`
+            )
+          ).status;
+          console.log(result);
+
+          if (result === 200) {
+            SoloAlert.alert({
+              title: "Welcome!",
+              body: "Deletion is successful",
+              icon: "success",
+              theme: "dark",
+              useTransparency: true,
+              onOk: function () {
+                window.location = "/create";
+              },
+            });
+          }
+        } catch (err) {
+          SoloAlert.alert({
+            title: "Oops!",
+            body: "Something went wrong",
+            icon: "error",
+            theme: "dark",
+            useTransparency: true,
+            onOk: function () {},
+          });
+        }
+      },
+      onCancel: function () {
+        SoloAlert.alert({
+          title: "Oops!",
+          body: "You canceled delete request",
+          icon: "warning",
+          theme: "dark",
+          useTransparency: true,
+          onOk: function () {},
+        });
+      },
+    });
+  }
 
   // //This useEffect method is used to perform a searching function
   // useEffect(() => {
@@ -154,7 +209,13 @@ export default function RetrieveStock() {
                     <Link to={`/item/${item._id}`} className="btn btn-primary">
                       Update
                     </Link>{" "}
-                    <button type="button" className="btn btn-danger">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        deleteItem(item._id);
+                      }}
+                      className="btn btn-danger"
+                    >
                       Delete
                     </button>
                   </td>
