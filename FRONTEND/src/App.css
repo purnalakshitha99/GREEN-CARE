@@ -24,13 +24,15 @@ html {
     font-weight: 400;
   }
   
-  img {
+  /* img {
     padding: 15px 20px;
-
+    border: 0px solid #ddd;
     max-width: 100%;
     height: auto;
     vertical-align: top;
   }
+  */
+  
   
   h1,
   h2,
@@ -140,25 +142,30 @@ html {
   }
   
   
-  .main-home-btn{
-    background: #15A891;
-    border-color: #076e5f;
+  .learn-more-btn{
+    /* background: #15A891;
+    border-color: #076e5f; */
     padding: 13px 35px;
-    font-size: 14px;
+    font-size: 22px;
+    font-family: 'Anton', sans-serif;
+
+    color: #5bbaab;
     line-height: 18px;
     font-weight: 600;
     text-transform: lowercase;
     transition: background 0.3s linear, color 0.3s linear;
     -webkit-transition: background 0.3s linear, color 0.3s linear;
   }
-  .main-home-btn:focus,
-  .main-home-btn:hover {
+  .learn-more-btn:focus,
+  .learn-more-btn:hover {
     background: #f9f7f7;
     border-color: #5bbaab;
     color: #100f0f;
+    padding-top: 5px;
+    padding-bottom: 5;
   }
   
-  .main-home-btn .fas {
+  .learn-more-btn .fas {
     margin: 0 0 0 6px;
     font-size: 15px;
   }
@@ -286,7 +293,7 @@ html {
   
   .hero-block .carousel-item img {
     max-width: 100%;
-    height: 650px;
+    height: 65px;
   }
   
   .hero-block .carousel-caption {

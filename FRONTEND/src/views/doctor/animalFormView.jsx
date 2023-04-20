@@ -127,7 +127,7 @@ const AnimalForm = () => {
       <AppHeader />
 
       <div className="form-container">
-        <h2>Submit your Request</h2>
+        <h2><b>Submit your Request</b></h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="firstName">First Name</label>

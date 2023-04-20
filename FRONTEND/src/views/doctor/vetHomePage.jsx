@@ -40,16 +40,18 @@ export default function vetHomePage() {
       <Carousel>
         {heroData.map((hero) => {
           return (
+            
             <Carousel.Item key={hero.id}>
               <img
-                className="d-block w-100"
+                className="d-block w-700 h-100"
+                
                 src={hero.image}
                 alt={"slide " + hero.id}
               />
               <Carousel.Caption>
                 <h2>{hero.title}</h2>
                 <p>{hero.description}</p>
-                <a className="vet-home-btn" href={hero.link}>
+                <a className="learn-more-btn" href={hero.link}>
                   Learn More <i className="vet-right"></i>
                 </a>
               </Carousel.Caption>
