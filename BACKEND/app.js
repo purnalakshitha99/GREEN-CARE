@@ -9,6 +9,8 @@ const studentRouter = require('./Routes/student_routes');
 const itemRouter = require('./Routes/item_routes');
 // farmer routes
 const farmerRouter = require('./Routes/farmer_routes');
+//field visitor route
+const fieldvisitor = require('./Routes/fieldvisitor_routes');
 //common routes
 
 
@@ -42,6 +44,7 @@ app.use(`${base}/stock-manager`, itemRouter);
 app.use(`${base}/farmer`, farmerRouter);
 //consultant's appoinments
 app.use(`${base}/appointment`, appointmentRouter);
+app.use(`${base}/fieldvisitor`, fieldvisitor );
 
 
 
