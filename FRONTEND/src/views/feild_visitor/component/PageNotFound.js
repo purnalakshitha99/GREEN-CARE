@@ -1,13 +1,14 @@
-import React from 'react'
+import React from "react";
 
 function PageNotFound() {
   return (
-    <div className='w-full'>
+    <div className="justify-center flex">
       <img
-      className=''
-      src="https://cdn.dribbble.com/users/1794722/screenshots/10492899/media/8586750abce7764179e9637e9331100c.jpg?compress=1&resize=400x300" />
+        className="w-[500px] "
+        src="https://cdn.dribbble.com/users/1794722/screenshots/10492899/media/8586750abce7764179e9637e9331100c.jpg?compress=1&resize=400x300"
+      />
     </div>
-  )
+  );
 }
 
-export default PageNotFound
+export default PageNotFound;

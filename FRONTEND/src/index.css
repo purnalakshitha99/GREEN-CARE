@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* input,
+textarea {
+  @apply border-2 border-gray-300 rounded-xl px-2 p-2 w-[500px] flex flex-col  ;
+  @apply mb-2 ;
+} */
+.frmname:focus,
+textarea:focus {
+  @apply border-blue-900;
+}
+h1 {
+  @apply text-blue-900 mb-2 text-xl;
+}
+label {
+  @apply text-blue-900 mt-3 mb-3;
+}
+.btn-primary {
+  @apply bg-blue-900 text-white px-4 py-1 rounded-md mt-5;
+}
+.btn-primary2 {
+  @apply bg-red-500 text-white px-4 py-1 rounded-md mt-5;
+}
+table {
+  @apply w-[800px] bg-gray-400/50 rounded-sm shadow-md;
+}
+table thead tr td,
+table thead tr th {
+  @apply text-sm text-gray-600 uppercase border-b border-black/50 px-4 py-2;
+}
+table tr td {
+  @apply px-4 py-1 border border-black/50;
+}
+table a {
+  @apply px-4 rounded-sm inline-flex mx-1 items-center gap-1 text-sm py-1;
+}

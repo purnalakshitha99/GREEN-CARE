@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import NavBar from "../NavBar";
+import NavBar from "../../../layouts/navbar";
 
 const InsertFarmerInformation = ({ onClick, formData }) => {
   //
@@ -43,17 +43,17 @@ const InsertFarmerInformation = ({ onClick, formData }) => {
 
   return (
     <>
-      {/* <NavBar /> */}
-      <div className=" mt-20">
+      <NavBar />
+      <div className=" ">
         {/* isuru */}
 
-        <div className="  justify-center flex ">
+        <div className="  justify-center flex  p-4">
           <form>
-            <h2>Farmer Information</h2>
+            <h1 className="ml-[150px]">Farmer Information</h1>
             <label>Full Name</label>
 
             <input
-              className="frmname border-2 border-gray-300 rounded-xl px-2 p-2 w-[200px] flex flex-row mb-2 shadow-md"
+              className="frmname border-2 border-gray-300 rounded-xl px-2 p-2 w-[500px] flex flex-row mb-2 shadow-md"
               type="text"
               placeholder="Full name"
               onChange={(e) => {
@@ -116,10 +116,17 @@ const InsertFarmerInformation = ({ onClick, formData }) => {
             />
             <button
               type="submit"
-              className="btn-primary shadow-md"
+              className="btn-primary shadow-md ml-[150px]"
               onClick={farmerinformation}
             >
               Submit
+            </button>
+            <button
+              type="submit"
+              className="btn-primary2 shadow-md ml-10"
+              onClick={farmerinformation}
+            >
+              cancel
             </button>
           </form>
         </div>

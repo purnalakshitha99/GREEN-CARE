@@ -5,13 +5,13 @@ import axios from "axios";
 const InformationTable = (props) => {
   const [farmers, setFarmers] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/farmer").then((res) => {
+    axios.get("http://localhost:3007/api/v1/fieldvisitor/cusFarmer").then((res) => {
       setFarmers(res.data.data);
     });
   });
   const deleteData = (e) => {
     try {
-        axios.delete(`http://localhost:5000/farmer/${e.target.value}`).then((res) => {
+        axios.delete(`http://localhost:3007/api/v1/fieldvisitor/cusFarmer/${e.target.value}`).then((res) => {
             console.log(res);
         });
     }catch (err) {
