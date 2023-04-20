@@ -1,8 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./DoctorCards.css";
 
 
 function DoctorCards() {
+
+  const [totalRequests, setTotalRequests] = useState(0);
+  const [pendingRequests, setPendingRequests] = useState(0);
+  const [completedRequests, setCompletedRequests] = useState(0);
+
+  useEffect(() => {
+    const fetchRequestsCount = async () => {
+      try {
+        const total = await axios.get("http://localhost:3007/api/v1/animal-form/request-count/total");
+        setTotalRequests(total.data.count);
+      } catch (error) {
+        console.error(error);
+      }
+      try {
+        const pending = await axios.get("http://localhost:3007/api/v1/animal-form/request-count/Pending");
+        setPendingRequests(pending.data.count);
+      } catch (error) {
+        console.error(error);
+      }
+      try {
+        const completed = await axios.get("http://localhost:3007/api/v1/animal-form/request-count/Completed");
+        setCompletedRequests(completed.data.count);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchRequestsCount();
+  }, []);
  
 
   return (
@@ -13,7 +43,7 @@ function DoctorCards() {
           <i class="uil-envelope-shield fs-2 text-center bg-primary rounded-circle"></i>
           <div class="ms-3">
             <div class="d-flex align-items-center">
-              <h3 class="mb-0">25</h3> <span class="d-block ms-2">Total Requests</span>
+              <h3 class="mb-0">{totalRequests}</h3> <span class="d-block ms-2">Total Requests</span>
             </div>
             <p class="fs-normal mb-0">Lorem ipsum dolor sit amet</p>
           </div>
@@ -24,7 +54,7 @@ function DoctorCards() {
           <i class="uil-file fs-2 text-center bg-danger rounded-circle"></i>
           <div class="ms-3">
             <div class="d-flex align-items-center">
-              <h3 class="mb-0">10</h3> <span class="d-block ms-2">Pending Requests</span>
+              <h3 class="mb-0">{pendingRequests}</h3> <span class="d-block ms-2">Pending Requests</span>
             </div>
             <p class="fs-normal mb-0">Lorem ipsum dolor sit amet</p>
           </div>
@@ -35,7 +65,7 @@ function DoctorCards() {
           <i class="uil-users-alt fs-2 text-center bg-success rounded-circle"></i>
           <div class="ms-3">
             <div class="d-flex align-items-center">
-              <h3 class="mb-0">15</h3> <span class="d-block ms-2">Total Requests</span>
+              <h3 class="mb-0">{completedRequests}</h3> <span class="d-block ms-2">Completed Requests</span>
             </div>
             <p class="fs-normal mb-0">Lorem ipsum dolor sit amet</p>
           </div>

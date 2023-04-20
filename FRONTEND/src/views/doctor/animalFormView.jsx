@@ -15,6 +15,7 @@ const AnimalForm = () => {
     animalSpecies: "",
     attachment: "",
     message: "",
+    status: "Pending",
   });
 
   const [errors, setErrors] = useState({});

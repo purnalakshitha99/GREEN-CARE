@@ -13,6 +13,7 @@ exports.formSubmit = async (req, res) => {
         animalSpecies: req.body.animalSpecies,
         attachment: req.file ? req.file.filename : '',
         message: req.body.message,
+        status:req.body.status
       });
   
       await animal.save();
@@ -26,3 +27,45 @@ exports.formSubmit = async (req, res) => {
       });
     }
   }
+
+
+  exports.getRequests = async (req, res) => {
+    const category = req.params.category;
+    let Forms
+    try {
+
+      if(category === 'total'){
+        Forms = await AnimalForm.find();
+      }else{
+        Forms = await AnimalForm.find({ status: category });
+      }
+      
+      res.json({ success: true, data: Forms});
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({
+        success: false,
+        error: 'Server error',
+      });
+    }
+  }
+
+  exports.getRequestCount = async (req, res) => {
+    const category = req.params.category;
+    let count;
+    try {
+      if (category === 'total') {
+        count = await AnimalForm.countDocuments();
+      } else {
+        count = await AnimalForm.countDocuments({ status: category });
+      }
+      res.json({ success: true, count });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({
+        success: false,
+        error: 'Server error',
+      });
+    }
+  };
+  

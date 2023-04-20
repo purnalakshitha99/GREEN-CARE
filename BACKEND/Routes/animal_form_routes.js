@@ -5,6 +5,8 @@ const { upload } = require("../Models/vet_form_model");
 const router = express.Router();
 
 router.post("/animalFormSubmit",animal_form_controller.formSubmit);
+router.get("/:category", animal_form_controller.getRequests);
+router.get("/request-count/:category", animal_form_controller.getRequestCount);
 
 
 module.exports = router;

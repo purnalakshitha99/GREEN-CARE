@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import "./DashboardTabs.css";
-import TotalRequestsTable from "./TotalRequestTable";
+import RequestsTable from "./RequestTable";
 
 const DashboardTabs = () => {
   const [selectedTab, setSelectedTab] = useState("total");
-
-  const handleTabChange = (event) => {
-    setSelectedTab(event.target.value);
-  };
 
   return (
     <div className="containerbox" align = 'center'>
@@ -19,7 +15,7 @@ const DashboardTabs = () => {
           value="total"
           defaultChecked
           checked={selectedTab === "total"}
-          onChange={handleTabChange}
+          onClick={()=>{setSelectedTab("total")}}
         />
         <label className="tab" htmlFor="radio-1">
           Total
@@ -28,9 +24,9 @@ const DashboardTabs = () => {
           type="radio"
           id="radio-2"
           name="tab-group"
-          value="pending"
-          checked={selectedTab === "pending"}
-          onChange={handleTabChange}
+          value="Pending"
+          checked={selectedTab === "Pending"}
+          onClick={()=>{setSelectedTab("Pending")}}
         />
         <label className="tab" htmlFor="radio-2">
           Pending
@@ -39,9 +35,9 @@ const DashboardTabs = () => {
           type="radio"
           id="radio-3"
           name="tab-group"
-          value="completed"
-          checked={selectedTab === "completed"}
-          onChange={handleTabChange}
+          value="Completed"
+          checked={selectedTab === "Completed"}
+          onClick={()=>{setSelectedTab("Completed")}}
         />
         <label className="tab" htmlFor="radio-3">
           Completed
@@ -49,7 +45,7 @@ const DashboardTabs = () => {
         <span className="glider"></span>
       </div>
       <div className="tab-content">
-        {selectedTab === "total" && <TotalRequestsTable />}
+        {<RequestsTable category={selectedTab}/>}
       </div>
     </div>
   );

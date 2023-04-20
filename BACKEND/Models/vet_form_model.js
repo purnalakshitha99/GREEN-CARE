@@ -22,6 +22,7 @@ const animalFormSchema  = new mongoose.Schema({
     animalSpecies: { type: String, required: true },
     attachment: { type: String },
     message: { type: String },
+    status: { type: String, required: true},
 });
 
 const AnimalForm = mongoose.model("animalForms", animalFormSchema);
