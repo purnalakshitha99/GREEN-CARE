@@ -1,6 +1,9 @@
 const HttpError = require("../Utils/http-error");
 const { validationResult } = require("express-validator");
-const User = require("../Models/farmer_model");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+const User = require("../Models/user_register_model");
 
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
@@ -25,13 +28,20 @@ const signup = async (req, res, next) => {
     );
   }
 
+  let hashedPassword;
+  try {
+    hashedPassword = await bcrypt.hash(password, 12);
+  } catch (err) {
+    return next(new HttpError("Could not create user, please try again.", 500));
+  }
+
   const createdUser = new User({
     name,
     email,
     address,
     phone,
-    bio: "farmer",
-    password,
+    category: "farmer",
+    password: hashedPassword,
   });
 
   try {
@@ -40,29 +50,21 @@ const signup = async (req, res, next) => {
     const error = new HttpError("Creating user failed, please try again.", 500);
     return next(error);
   }
-  res.status(201).json({ user: createdUser.toObject({ getters: true }) });
-};
 
-const login = async (req, res, next) => {
-  const { email, password } = req.body;
-
-  let identifiedUser;
+  let token;
   try {
-    identifiedUser = await User.findOne({ email: email });
+    token = jwt.sign(
+      { userId: createdUser.id, email: createdUser.email },
+      "issaraha_dhore_yathura_thiyenne_isuru_laga",
+      { expiresIn: "1h" }
+    );
   } catch (err) {
     return next(new HttpError("Signing up failed, please try again.", 500));
   }
 
-  if (!identifiedUser || identifiedUser.password !== password) {
-    return next(
-      new HttpError(
-        "Invalid Credentials, try again with correct credentials.",
-        401
-      )
-    ); //401 => unauthenticated
-  }
-
-  res.json({ message: "Logged in" });
+  res
+    .status(201)
+    .json({ userId: createdUser.id, email: createdUser.email, token: token });
 };
 
 const getUserById = async (req, res, next) => {
@@ -139,8 +141,7 @@ const deleteUser = async (req, res, next) => {
   res.status(200).json({ message: "Deleted user." });
 };
 
-exports.getUserById = getUserById;
 exports.signup = signup;
-exports.login = login;
+exports.getUserById = getUserById;
 exports.updateUser = updateUser;
 exports.deleteUser = deleteUser;
