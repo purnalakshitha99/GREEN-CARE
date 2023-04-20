@@ -159,201 +159,206 @@ export default function ShowItems2() {
     });
   }
   return (
-    <div class="content">
-      <div class="d-flex justify-content-center">
-        <div
-          class="spinner-border"
-          role="status"
-          style={{ width: "10rem", height: "10rem" }}
-          hidden={loaderStatus}
-        >
-          <span class="visually-hidden">Loading...</span>
+    <div
+      class="shadow-lg p-1 mb-3 bg-body rounded"
+      style={{ width: "120%", alignItems: "center" }}
+    >
+      <div class="content">
+        <div class="d-flex justify-content-center">
+          {/* <div
+            class="spinner-border"
+            role="status"
+            style={{ width: "10rem", height: "10rem" }}
+            hidden={loaderStatus}
+          >
+            <span class="visually-hidden">Loading...</span>
+          </div> */}
         </div>
-      </div>
 
-      <div hidden={tebleStatus}>
-        <h3>ADD-SERVICE-DETAILS</h3>
-        <hr />
-        <form class="row g-3 needs-validation" id="inputForm2" novalidate>
-          <div class="col-md-6 position-relative">
-            <label for="validationTooltip01" class="form-label">
-              {" "}
-              name
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="validationTooltip01"
-              required
-              defaultValue={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-              disabled={textState}
-            />
-          </div>
-          <div class="col-md-5 position-relative">
-            <label for="validationTooltip02" class="form-label">
-              description
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="validationTooltip02"
-              required
-              defaultValue={description}
-              onChange={(e) => {
-                setDescription(e.target.value);
-              }}
-              disabled={textState}
-            />
-          </div>
-          <br />
-          <div class="col-md-6 position-relative">
-            <label for="validationTooltip03" class="form-label">
-              price
-            </label>
-            <input
-              type="number"
-              class="form-control"
-              id="validationTooltip03"
-              required
-              onChange={(e) => {
-                setPrice(e.target.value);
-              }}
-              defaultValue={price}
-              disabled={textState}
-            />
-          </div>
-          <div class="col-md-6 position-relative">
-            <label for="validationTooltip03" class="form-label">
-              exp
-            </label>
-            <input
-              type="number"
-              class="form-control"
-              id="validationTooltip03"
-              required
-              onChange={(e) => {
-                setExp(e.target.value);
-              }}
-              defaultValue={exp}
-              disabled={textState}
-            />
-          </div>
-
-          <div class="col-md-6 position-relative">
-            <label for="validationTooltip03" class="form-label">
-              mfd
-            </label>
-            <input
-              type="number"
-              class="form-control"
-              id="validationTooltip03"
-              required
-              onChange={(e) => {
-                setMfd(e.target.value);
-              }}
-              defaultValue={mfd}
-              disabled={textState}
-            />
-          </div>
-          <div class="col-md-5 position-relative">
-            <label for="validationTooltip04" class="form-label">
-              Category
-            </label>
-            <select
-              class="form-select"
-              id="validationTooltip04"
-              required
-              disabled={textState}
-              onChange={(e) => {
-                setCategory(e.target.value);
-              }}
-            >
-              <option selected disabled>
-                {category}
-              </option>
-              <option>fertilizer</option>
-              <option>Farm animal foods</option>
-              <option>plant & seeds</option>
-              <option>Pesticides</option>
-            </select>
-          </div>
-
-          <div class="col-md-6 position-relative">
-            <label for="validationTooltip03" class="form-label">
-              quantity
-            </label>
-            <input
-              type="number"
-              class="form-control"
-              id="validationTooltip03"
-              required
-              onChange={(e) => {
-                setQuantity(e.target.value);
-              }}
-              defaultValue={quantity}
-              disabled={textState}
-            />
-          </div>
-
-          <div
-            class="col-12"
-            id="btngrp"
-            hidden={btngrpState1}
-            style={{ marginTop: "5%" }}
-          >
-            <button class="btn btn-secondary">
-              <i
-                class="fa fa-ban"
-                onClick={(e) => {
-                  cancel(e);
+        <div hidden={tebleStatus}>
+          <h3>ADD-SERVICE-DETAILS</h3>
+          <hr />
+          <form class="row g-3 needs-validation" id="inputForm2" novalidate>
+            <div class="col-md-6 position-relative">
+              <label for="validationTooltip01" class="form-label">
+                {" "}
+                name
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationTooltip01"
+                required
+                defaultValue={name}
+                onChange={(e) => {
+                  setName(e.target.value);
                 }}
-              ></i>{" "}
-              CANCEL
-            </button>
-            &nbsp;&nbsp;&nbsp;
-            <button
-              type="submit"
-              class="btn btn-primary"
-              onClick={(e) => {
-                updateData(e);
-              }}
-              disabled={isLoading}
+                disabled={textState}
+              />
+            </div>
+            <div class="col-md-5 position-relative">
+              <label for="validationTooltip02" class="form-label">
+                description
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationTooltip02"
+                required
+                defaultValue={description}
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
+                disabled={textState}
+              />
+            </div>
+            <br />
+            <div class="col-md-6 position-relative">
+              <label for="validationTooltip03" class="form-label">
+                price
+              </label>
+              <input
+                type="number"
+                class="form-control"
+                id="validationTooltip03"
+                required
+                onChange={(e) => {
+                  setPrice(e.target.value);
+                }}
+                defaultValue={price}
+                disabled={textState}
+              />
+            </div>
+            <div class="col-md-6 position-relative">
+              <label for="validationTooltip03" class="form-label">
+                exp
+              </label>
+              <input
+                type="number"
+                class="form-control"
+                id="validationTooltip03"
+                required
+                onChange={(e) => {
+                  setExp(e.target.value);
+                }}
+                defaultValue={exp}
+                disabled={textState}
+              />
+            </div>
+
+            <div class="col-md-6 position-relative">
+              <label for="validationTooltip03" class="form-label">
+                mfd
+              </label>
+              <input
+                type="number"
+                class="form-control"
+                id="validationTooltip03"
+                required
+                onChange={(e) => {
+                  setMfd(e.target.value);
+                }}
+                defaultValue={mfd}
+                disabled={textState}
+              />
+            </div>
+            <div class="col-md-5 position-relative">
+              <label for="validationTooltip04" class="form-label">
+                Category
+              </label>
+              <select
+                class="form-select"
+                id="validationTooltip04"
+                required
+                disabled={textState}
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                }}
+              >
+                <option selected disabled>
+                  {category}
+                </option>
+                <option>fertilizer</option>
+                <option>Farm animal foods</option>
+                <option>plant & seeds</option>
+                <option>Pesticides</option>
+              </select>
+            </div>
+
+            <div class="col-md-6 position-relative">
+              <label for="validationTooltip03" class="form-label">
+                quantity
+              </label>
+              <input
+                type="number"
+                class="form-control"
+                id="validationTooltip03"
+                required
+                onChange={(e) => {
+                  setQuantity(e.target.value);
+                }}
+                defaultValue={quantity}
+                disabled={textState}
+              />
+            </div>
+
+            <div
+              class="col-12"
+              id="btngrp"
+              hidden={btngrpState1}
+              style={{ marginTop: "5%" }}
             >
-              <i class="fa fa-file-export"></i>{" "}
-              {isLoading ? "Updating..." : "UPDATE"}
-            </button>
-          </div>
-          <div
-            class="col-12"
-            id="btngrp"
-            hidden={btngrpState2}
-            style={{ marginTop: "5%" }}
-          >
-            <button
-              type="submit"
-              class="btn btn-primary"
-              onClick={(e) => {
-                edit(e);
-              }}
+              <button class="btn btn-secondary">
+                <i
+                  class="fa fa-ban"
+                  onClick={(e) => {
+                    cancel(e);
+                  }}
+                ></i>{" "}
+                CANCEL
+              </button>
+              &nbsp;&nbsp;&nbsp;
+              <button
+                type="submit"
+                class="btn btn-primary"
+                onClick={(e) => {
+                  updateData(e);
+                }}
+                disabled={isLoading}
+              >
+                <i class="fa fa-file-export"></i>{" "}
+                {isLoading ? "Updating..." : "UPDATE"}
+              </button>
+            </div>
+            <div
+              class="col-12"
+              id="btngrp"
+              hidden={btngrpState2}
+              style={{ marginTop: "5%" }}
             >
-              {" "}
-              <i className="far fa-edit"></i> EDIT
-            </button>
-            &nbsp;&nbsp;&nbsp;
-            <button
-              type="submit"
-              class="btn btn-danger"
-              onClick={(e) => {
-                deleteUser(e);
-              }}
-            >
-              <i class="fa fa-trash"></i> DELETE
-            </button>
-          </div>
-        </form>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                onClick={(e) => {
+                  edit(e);
+                }}
+              >
+                {" "}
+                <i className="far fa-edit"></i> EDIT
+              </button>
+              &nbsp;&nbsp;&nbsp;
+              <button
+                type="submit"
+                class="btn btn-danger"
+                onClick={(e) => {
+                  deleteUser(e);
+                }}
+              >
+                <i class="fa fa-trash"></i> DELETE
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

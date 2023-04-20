@@ -292,11 +292,13 @@ export default function CreateStocks() {
                       </label>
                       <div class="col-sm-6">
                         <select className="form-select form-select-sm mb-3">
-                          <option value="fertilizer">Select Supplier</option>
-                          <option value="fertilizer">fertilizer</option>
-                          <option value="farmAnimal">Farm animal foods</option>
-                          <option value="plant">plant & seeds</option>
-                          <option value="pesticides">Pesticides</option>
+                          <option value="fertilizer">Lak Super</option>
+                          <option value="fertilizer">Green Crops pvt.</option>
+                          <option value="farmAnimal">
+                            Super-Center-Malabe
+                          </option>
+                          <option value="plant">City Store-Kaduwela</option>
+                          <option value="pesticides">Ajantha Super</option>
                         </select>
                       </div>
                     </div>

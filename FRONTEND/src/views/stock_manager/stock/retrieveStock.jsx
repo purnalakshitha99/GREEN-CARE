@@ -105,7 +105,8 @@ export default function RetrieveStock() {
   function generatePDF(tickets) {
     const doc = new jspdf();
     const tableColumn = [
-      "Item ID",
+      "Number",
+      // "Item ID",
       "Name",
       "Description",
       "Price",
@@ -122,7 +123,7 @@ export default function RetrieveStock() {
       .map((ticket, index) => {
         const ticketData = [
           index + 1,
-          ticket.itemId,
+          // ticket.itemId,
           ticket.name,
           ticket.description,
           ticket.price,
@@ -210,6 +211,8 @@ export default function RetrieveStock() {
                     <Link to={`/item/${item._id}`} className="btn btn-primary">
                       Update
                     </Link>{" "}
+                  </td>
+                  <td>
                     <button
                       type="button"
                       onClick={() => {
