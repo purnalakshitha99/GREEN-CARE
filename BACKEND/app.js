@@ -7,6 +7,9 @@ const noticeRouter = require("./Routes/notice_routes");
 const studentRouter = require("./Routes/student_routes");
 //stock manager routes
 const itemRouter = require("./Routes/item_routes");
+//supplier routes
+const supplierRouter = require("./Routes/supplier_routes");
+
 // farmer routes
 const farmerRouter = require("./Routes/farmer_routes");
 //common routes
@@ -20,28 +23,26 @@ app.use(
   })
 );
 
-
 //consultant routes
-const appointmentRouter = require("./Routes/appointment_routes")
+const appointmentRouter = require("./Routes/appointment_routes");
 
 const { default: newsRouter } = require("./Routes/news_routes"); // news routes (consultants')
-
 
 // routes
 const base = "/api/v1";
 app.use(express.json({ limit: "10kb" }));
-
+//stock manager
 app.use(`${base}/stock-manager`, itemRouter);
+//supplier
+app.use(`${base}/supplier`, supplierRouter);
+//farmer
 app.use(`${base}/farmer`, farmerRouter);
-
 
 // Unsupported routes handler
 app.use((req, res, next) => {
   const error = new HttpError("Could not find this route", 404);
   throw error;
 });
-
-
 
 //consultant's appoinments
 app.use(`${base}/appointment`, appointmentRouter);
@@ -52,8 +53,6 @@ app.use(`${base}/news`, newsRouter);
 app.all("*", (req, res, next) => {
   next(new AppError(`can't find ${req.originalUrl} on this server!`, 404));
 });
-
-
 
 app.use((error, req, res, next) => {
   // this is considered as special middleware function / error handling middleware

@@ -16,6 +16,7 @@ export default function stock_manager_routes() {
       <Sidebar>
         <Routes>
           <Route path="/" element={<DashBoard />} />
+
           <Route path="/dashboard" exact element={<DashBoard />}></Route>
           <Route path="/create" exact element={<CreateStocks />}></Route>
           <Route path="/retrieve" exact element={<RetrieveStock />}></Route>
