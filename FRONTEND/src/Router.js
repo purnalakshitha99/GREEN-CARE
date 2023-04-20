@@ -8,7 +8,7 @@ export default function Router() {
   return (
     <div>
       <Stock_manager_routes />
-      <Consultant_routes/>
+      <Consultant_routes/> 
       
       
     </div>

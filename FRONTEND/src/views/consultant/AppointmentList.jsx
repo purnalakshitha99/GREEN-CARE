@@ -1,26 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
+import SoloAlert from "soloalert";
+// import Side_nav from "../../layouts/side_nav.jsx";
+import axios from "axios";
 
+const AppointmentsBox = () => {
+  const [appointments, setAppointments] = useState([]);
 
-function Appointments() {
-    return(<div>
-      <h1>Appointments</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Topic</th>
-            <th>Description</th>
-            <th>Reply</th>
-            <th>Date</th>
-            <th>Approvel</th>
-            <th>Farmer Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-          
-        </tbody>
-      </table>
+  useEffect(() => {
+    const fetchAppointments = async () => {
+      try {
+        const response = await axios.get('http://localhost:3007/api/v1/appointment/appointment/');
+        setAppointments(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAppointments();
+  }, []);
+
+  return (
+    <div>
+      {appointments.map((appointment) => (
+        <div key={appointment._id}>
+          <p>Topic: {appointment.topic}</p>
+          <p>Description: {appointment.description}</p>
+          <p>Reply: {appointment.reply}</p>
+          <p>Date: {new Date(appointment.date).toLocaleDateString()}</p>
+          <p>Approval: {appointment.approvel ? 'Approved' : 'Not approved'}</p>
+          <p>Farmer Name: {appointment.farmer_name}</p>
+        </div>
+      ))}
     </div>
-    )
-}
-export default Appointments;
+  );
+};
+export default AppointmentsBox;
