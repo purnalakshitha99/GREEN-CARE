@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import AppHeader from "../header";
 import "./animalForm.css";
-import axios from 'axios';
-
+import axios from "axios";
 
 const AnimalForm = () => {
   const [formData, setFormData] = useState({
@@ -34,7 +33,10 @@ const AnimalForm = () => {
     if (Object.keys(formErrors).length === 0) {
       console.log(formData);
       try {
-        const res = await axios.post("http://localhost:3007/api/v1/animal-form/animalFormSubmit", formData);
+        const res = await axios.post(
+          "http://localhost:3007/api/v1/animal-form/animalFormSubmit",
+          formData
+        );
         console.log(res.data); // handle response from the server
       } catch (err) {
         console.error(err); // handle error from the server
@@ -121,9 +123,8 @@ const AnimalForm = () => {
 
   return (
     <section id="learnMore" className="hero-block">
-      <header id="header">
-        <AppHeader />
-      </header>
+      <AppHeader />
+
       <div className="form-container">
         <h2>Submit your Request</h2>
         <form onSubmit={handleSubmit}>

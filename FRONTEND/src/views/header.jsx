@@ -7,6 +7,7 @@ import '../App.css';
 
 export default function AppHeader(){
     return(
+      <header id="main-header">
         <Navbar bg="light" expand="lg">
         <Container>
         <div>
@@ -25,5 +26,6 @@ export default function AppHeader(){
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      </header>
     )
 }

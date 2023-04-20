@@ -25,6 +25,8 @@ html {
   }
   
   img {
+    padding: 15px 20px;
+
     max-width: 100%;
     height: auto;
     vertical-align: top;
@@ -102,9 +104,11 @@ html {
     position: relative;
   }
   
+  
   .container-fluid {
     margin: 0 auto;
     max-width: 1200px;
+    height: 20px;
   }
   
   .content-block ul {
@@ -114,6 +118,7 @@ html {
   .content-block ul li {
     position: relative;
     padding: 0 0 0 20px;
+    height: 20px;
   }
   
   .content-block ul li:before {
@@ -134,51 +139,44 @@ html {
     color: #f64b4b;
   }
   
-  .btn.btn-primary {
+  
+  .main-home-btn{
     background: #15A891;
     border-color: #076e5f;
     padding: 13px 35px;
     font-size: 14px;
     line-height: 18px;
     font-weight: 600;
-    text-transform: uppercase;
+    text-transform: lowercase;
     transition: background 0.3s linear, color 0.3s linear;
     -webkit-transition: background 0.3s linear, color 0.3s linear;
   }
-  
-  .btn.btn-primary:focus,
-  .btn.btn-primary:hover {
+  .main-home-btn:focus,
+  .main-home-btn:hover {
     background: #f9f7f7;
     border-color: #5bbaab;
     color: #100f0f;
   }
   
-  .btn.btn-primary .fas {
+  .main-home-btn .fas {
     margin: 0 0 0 6px;
     font-size: 15px;
   }
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  #main-header {
+    padding: 5px 3px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 9999;
+    background: #ffffff;
+    box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s linear;
+  }
   
   #header {
-    padding: 15px 0;
+    padding: 35px 10px;
     position: fixed;
     left: 0;
     right: 0;
@@ -189,13 +187,15 @@ html {
     transition: all 0.5s linear;
   }
   
-  #header .navbar {
+  #main-header .navbar {
     padding: 0;
     justify-content: space-between;
+    height: 80px;
     background: none !important;
+    
   }
   
-  #header .navbar-brand {
+  #main-header .navbar-brand {
     color: #f64b4b;
     text-transform: uppercase;
     font-weight: 600;
@@ -205,38 +205,38 @@ html {
     line-height: 1.6;
   }
   
-  #header .navbar-collapse {
+  #main-header .navbar-collapse {
     flex-grow: 0;
   }
   
-  #header .navbar-collapse .navbar-nav {
+  #main-header .navbar-collapse .navbar-nav {
     font-size: 14px;
     line-height: 20px;
   }
   
-  #header .navbar-collapse a:last-child {
+  #main-header .navbar-collapse a:last-child {
     padding-right: 0;
   }
   
-  #header .navbar-collapse a {
+  #main-header .navbar-collapse a {
     color: #4d4d4d;
     position: relative;
   }
   
-  #header .navbar-collapse a:hover,
-  #header .navbar-collapse a.active {
+  #main-header .navbar-collapse a:hover,
+  #main-header .navbar-collapse a.active {
     background: none;
     color: #f64b4b;
   }
   
-  #header .navbar-collapse a:hover:before,
-  #header .navbar-collapse a.active:before {
+  #main-header .navbar-collapse a:hover:before,
+  #main-header .navbar-collapse a.active:before {
     right: 7px;
     left: 8px;
     opacity: 1;
   }
   
-  #header .navbar-collapse a:before {
+  #main-header .navbar-collapse a:before {
     content: '';
     background: #f64b4b;
     height: 1px;
@@ -271,6 +271,7 @@ html {
   
   .hero-block {
     margin: 65px 0 0;
+    padding: 60px;
   }
   
   .hero-block .carousel-item:before {

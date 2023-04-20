@@ -36,9 +36,7 @@ var heroData = [
 export default function vetHomePage() {
   return (
     <section id="home" className="hero-block">
-      <header id="header">
         <AppHeader />
-      </header>
       <Carousel>
         {heroData.map((hero) => {
           return (
@@ -51,8 +49,8 @@ export default function vetHomePage() {
               <Carousel.Caption>
                 <h2>{hero.title}</h2>
                 <p>{hero.description}</p>
-                <a className="btn btn-primary" href={hero.link}>
-                  Learn More <i className="fas fa-chevron-right"></i>
+                <a className="vet-home-btn" href={hero.link}>
+                  Learn More <i className="vet-right"></i>
                 </a>
               </Carousel.Caption>
             </Carousel.Item>
