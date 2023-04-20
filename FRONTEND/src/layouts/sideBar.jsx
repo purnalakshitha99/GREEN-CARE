@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaTh, FaBars, FaUserAlt, FaRegChartBar } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import Logo1 from "../images/logo1.png";
 
 const Sidebar = ({ children }) => {
   // const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +27,7 @@ const Sidebar = ({ children }) => {
     <div className="container">
       <div className="sidebar">
         <div className="top_section">
-          <h1 className="logo">Logo</h1>
+          <img src={Logo1} style={{ width: "100%" }} alt="react logo" />
           {/* <div style={{ marginLeft: isOpen ? "50px" : "0px" }} className="bars">
             <FaBars onClick={toggle} />
           </div> */}
