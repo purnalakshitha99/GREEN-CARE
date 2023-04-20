@@ -10,7 +10,7 @@ const itemRouter = require('./Routes/item_routes');
 // farmer routes
 const farmerRouter = require('./Routes/farmer_routes');
 //common routes
-
+const salaryRouter = require('./Routes/salary_routes')
 
 const appointmentRouter = require("./Routes/appointment_routes")
 
@@ -42,6 +42,8 @@ app.use(`${base}/stock-manager`, itemRouter);
 app.use(`${base}/farmer`, farmerRouter);
 //consultant's appoinments
 app.use(`${base}/appointment`, appointmentRouter);
+app.use(`${base}/salary`, salaryRouter);
+
 
 
 
