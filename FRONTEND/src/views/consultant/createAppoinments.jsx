@@ -50,7 +50,7 @@ export default function CreateAppoinment() {
         const newDetails = {
           topic,
           description,
-          reply: "NOne",
+          reply: "None",
           date,
           approvel: false,
           farmer_name,

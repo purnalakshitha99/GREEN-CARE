@@ -4,16 +4,16 @@ import axios from "axios";
 const News = () => {
   const [news, setNews] = useState([]);
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axios.get("http://localhost:3007/api/v1/news");
-        console.log(result.data);
-        setNews(result.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
+   
+        const result = axios.get("http://localhost:3007/api/v1/news").then((res) => {
+        console.log(res.data.news);
+        setNews(res.data.news);
+
+        })
+        
+       
+  
+    
   }, []);
 
   return (
