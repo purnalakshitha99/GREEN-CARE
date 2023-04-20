@@ -15,22 +15,6 @@ export default function CreateAppoinment() {
 
   const [farmer_name, setFname] = useState("");
 
-  // function submitData(e) {
-  //   e.preventDefault();
-  //   setLoading(true);
-
-  //   const newDetails = {
-  //     name,
-  //     description,
-  //     price,
-  //     exp,
-  //     mfd,
-  //     category,
-  //     quantity,
-  //   };
-
-  //   console.log(newDetails);
-  // }
 
   async function submitData(e) {
     alert("insert data");
@@ -49,7 +33,7 @@ export default function CreateAppoinment() {
       if (
         !topic ||
         !description ||
-        !reply ||
+        // !reply ||
         !date ||
         // !approvel ||
         !farmer_name
@@ -66,9 +50,9 @@ export default function CreateAppoinment() {
         const newDetails = {
           topic,
           description,
-          reply,
+          reply: "None",
           date,
-          approvel,
+          approvel: false,
           farmer_name,
         };
         console.log(newDetails);

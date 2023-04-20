@@ -1,53 +1,53 @@
 const News = require("../Models/news_model");
+const mongoose = require('mongoose');
 //import User from "../Models/User"; // user import *****
 const catchAsync = require("../Utils/catchAsync");
 const AppError = require("../Utils/AppError");
 
 export const getAllNews = async (req, res, next) => {
-    let news;
-    try {
-      news = await News.find().populate("user");
-    } catch (err) {
-      return console.log(err);
-    }
+  try {
+    const news = await News.find();
     if (!news) {
       return res.status(404).json({ message: "No News to Display!" });
     }
     return res.status(200).json({ news });
-  };
-
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ message: err.message });
+  }
+};
   export const addNews = async (req, res, next) => {
-    const { title, description, image, user } = req.body; 
+    const { title, description, image } = req.body; 
   //for user
-    let existingUser;
-    try {
-      existingUser = await User.findById(user);
-    } catch (err) {
-      return console.log(err);
-    }
-    if (!existingUser) {
-      return res.status(400).json({ message: " cannot find the user by this id" });
-    }
+    // let existingUser;
+    // try {
+    //   existingUser = await User.findById(user);
+    // } catch (err) {
+    //   return console.log(err);
+    // }
+    // if (!existingUser) {
+    //   return res.status(400).json({ message: " cannot find the user by this id" });
+    // }
     //upto here
     const news = new News({
       title,
       description,
       image,
-      user,
+      
     });
     try {
       const session = await mongoose.startSession();
       session.startTransaction();
       await news.save({ session });
-      existingUser.news.push(news);
-      await existingUser.save({ session });
+      // existingUser.news.push(news);
+      // await existingUser.save({ session }); user
       await session.commitTransaction();
     } catch (err) {
       console.log(err);
       return res.status(500).json({ message: err });
     }
   
-    return res.status(200).json({ blog });
+    return res.status(200).json({ news });
   };
 
   export const updateNews = async (req, res, next) => {

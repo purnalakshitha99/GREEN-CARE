@@ -10,9 +10,17 @@ const itemRouter = require('./Routes/item_routes');
 // farmer routes
 const farmerRouter = require('./Routes/farmer_routes');
 //common routes
+
+
+const appointmentRouter = require("./Routes/appointment_routes")
+
+const { default: newsRouter } = require("./Routes/news_routes"); // news routes (consultants')
+
+
 const AppError = require('./Utils/AppError');
 const HttpError = require('./Utils/http-error');
 const loginRoute = require('./Routes/login_routes');
+
 
 app.use(
   cors({
@@ -23,9 +31,6 @@ app.use(
 
 
 //consultant routes
-const appointmentRouter = require("./Routes/appointment_routes")
-
-const { default: newsRouter } = require("./Routes/news_routes"); // news routes (consultants')
 
 
 // routes
@@ -37,14 +42,25 @@ app.use(`${base}/stock-manager`, itemRouter);
 app.use(`${base}/farmer`, farmerRouter);
 //consultant's appoinments
 app.use(`${base}/appointment`, appointmentRouter);
+
+
+
+
 //consulant's news
 app.use(`${base}/news`, newsRouter);
+
 
 // Unsupported routes handler
 app.use((req, res, next) => {
   const error = new HttpError('Could not find this route', 404);
   throw error;
 });
+
+
+
+
+
+
 
 app.all("*", (req, res, next) => {
   next(new AppError(`can't find ${req.originalUrl} on this server!`, 404));
