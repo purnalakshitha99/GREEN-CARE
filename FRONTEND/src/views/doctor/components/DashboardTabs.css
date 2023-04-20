@@ -16,24 +16,18 @@ body {
   background-color: rgba(230, 238, 249, 0.5);
 }
 
-.container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.containerbox {
+ 
 }
 
 .tabs {
 	display: flex;
-	position: relative;
+  width: fit-content;
 	background-color: #fff;
 	box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15);
 	padding: 0.75rem;
 	border-radius: 99px;
+  margin-bottom: 40px;
 }
 
 .tabs * {
@@ -106,4 +100,17 @@ input[id="radio-3"]:checked ~ .glider {
   .tabs {
     transform: scale(0.6);
   }
+}
+
+
+.content {
+  display: flex;
+}
+
+.tabs-containerbox {
+  display: flex;
+}
+
+.table-containerbox {
+  margin-top: 1rem;
 }

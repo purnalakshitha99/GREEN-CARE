@@ -8,10 +8,10 @@ const DoctorDashboard = () => {
 
   return (
     <section id="learnMore" className="hero-block">
-      <header id="header">
         <AppHeader />
-      </header>
-    <DoctorCards/>
+      <div className="mb-5">
+      <DoctorCards/>
+      </div>
     <DashboardTabs/>
    
 

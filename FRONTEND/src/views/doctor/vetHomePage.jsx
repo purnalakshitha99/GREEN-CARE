@@ -2,7 +2,7 @@ import React from "react";
 import "../../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Carousel from "react-bootstrap/Carousel";
-import AppHeader from '../header';
+import AppHeader from "../header";
 
 var heroData = [
   {
@@ -12,7 +12,7 @@ var heroData = [
     description:
       "We aim to provide the highest level of veterinary services to farms throughout the Island and to achieve this through a growing team of dedicated farm animal vets ",
 
-    link: '/animalFormView',
+    link: "/animalFormView",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ var heroData = [
     description:
       "The system is designed to provide a range of services related to the health and wellbeing of farm animals. ",
 
-    link: '/animalFormView',
+    link: "/animalFormView",
   },
   {
     id: 3,
@@ -29,14 +29,14 @@ var heroData = [
     title: "  Farm animal - Wellness Consultation",
     description:
       "The Consultation will allow you to  ask your questions without embarrassment and without judgment",
-    link: '/animalFormView',
+    link: "/animalFormView",
   },
 ];
 
 export default function vetHomePage() {
   return (
     <section id="home" className="hero-block">
-        <AppHeader />
+      <AppHeader />
       <Carousel>
         {heroData.map((hero) => {
           return (
