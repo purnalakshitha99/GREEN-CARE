@@ -5,13 +5,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import GreenCare from '../assets/images/bg-testimonial.jpg';
 import '../App.css';
 
+
 export default function AppHeader(){
     return(
       <header id="main-header">
         <Navbar bg="light" expand="lg">
         <Container>
         <div>
-      <img src={GreenCare} alt="Green Care" />
+      <img src={GreenCare} alt="Green Care" className='ml-5'/>
     </div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

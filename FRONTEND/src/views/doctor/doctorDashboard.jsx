@@ -12,7 +12,10 @@ const DoctorDashboard = () => {
       <div className="mb-5">
       <DoctorCards/>
       </div>
-    <DashboardTabs/>
+      <div className="m-5">
+      <DashboardTabs/>
+      </div>
+    
    
 
 

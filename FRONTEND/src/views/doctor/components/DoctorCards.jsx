@@ -36,8 +36,8 @@ function DoctorCards() {
  
 
   return (
-    <section class="statistics mt-4">
-    <div class="row">
+    <section class="statistics mt-5">
+    <div class="row w-100">
       <div class="col-lg-4">
         <div class="box d-flex rounded-5 align-items-center mb-4 mb-lg-0 p-3">
           <i class="uil-envelope-shield fs-2 text-center bg-primary rounded-circle"></i>
