@@ -123,9 +123,8 @@ const AnimalForm = () => {
   };
 
   return (
-    <section id="learnMore" className="hero-block">
+    <section>
       <AppHeader />
-
       <div className="form-container">
         <h2><b>Submit your Request</b></h2>
         <form onSubmit={handleSubmit}>

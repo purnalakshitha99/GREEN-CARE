@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+
+.hero-block {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.carousel {
+  height: 100%;
+}
+
+.carousel-item {
+  position: relative;
+  height: 100%;
+}
+
+.carousel-item img {
+  object-fit: cover;
+  height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100vh;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(50% -50%);
+  text-align: center;
+  color: white;
+}
+
+.carousel-caption h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.carousel-caption p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.learn-more-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #fff;
+  color: #333;
+  font-size: 1.25rem;
+  border: none;
+  border-radius: 2rem;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.learn-more-btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.hero-block .carousel-item:before {
+  content: '';
+  background: rgba(7, 7, 7, 0.7);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

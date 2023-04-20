@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./DoctorCards.css";
+import { Icon } from '@iconify/react';
+
 
 
 function DoctorCards() {
@@ -37,10 +39,13 @@ function DoctorCards() {
 
   return (
     <section class="statistics mt-5">
+      <div className="mt-5">
     <div class="row w-100">
       <div class="col-lg-4">
         <div class="box d-flex rounded-5 align-items-center mb-4 mb-lg-0 p-3">
-          <i class="uil-envelope-shield fs-2 text-center bg-primary rounded-circle"></i>
+          <i class="uil-envelope-shield fs-2 text-center rounded-circle">
+          <Icon  icon="carbon:task-view" color="black" height={45}></Icon>
+          </i>
           <div class="ms-3">
             <div class="d-flex align-items-center">
               <h3 class="mb-0">{totalRequests}</h3> <span class="d-block ms-2">Total Requests</span>
@@ -51,7 +56,9 @@ function DoctorCards() {
       </div>
       <div class="col-lg-4">
         <div class="box d-flex rounded-5 align-items-center mb-4 mb-lg-0 p-3">
-          <i class="uil-file fs-2 text-center bg-danger rounded-circle"></i>
+          <i class="uil-file fs-2 text-center rounded-circle">
+          <Icon  icon="ic:outline-pending-actions" color="orange" height={45}></Icon>
+          </i>
           <div class="ms-3">
             <div class="d-flex align-items-center">
               <h3 class="mb-0">{pendingRequests}</h3> <span class="d-block ms-2">Pending Requests</span>
@@ -62,7 +69,9 @@ function DoctorCards() {
       </div>
       <div class="col-lg-4">
         <div class="box d-flex rounded-5 align-items-center p-3">
-          <i class="uil-users-alt fs-2 text-center bg-success rounded-circle"></i>
+          <i class="uil-users-alt fs-2 text-center rounded-circle">
+          <Icon  icon="fluent-mdl2:completed-solid" color="green" height={45}></Icon>
+          </i>
           <div class="ms-3">
             <div class="d-flex align-items-center">
               <h3 class="mb-0">{completedRequests}</h3> <span class="d-block ms-2">Completed Requests</span>
@@ -71,6 +80,7 @@ function DoctorCards() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section>
   );

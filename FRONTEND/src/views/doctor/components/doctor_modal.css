@@ -1,0 +1,131 @@
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 800px;
+    max-height: 500px;
+    transform: translateY(30%);
+    overflow-y: scroll;
+}
+
+.modal-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.modal-columns .column {
+    width: 50%;
+    text-align: left;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    border-right: 1px solid #ccc;
+    padding: 10px;
+}
+
+.column-2 {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input,
+textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+textarea {
+    height: 150px;
+}
+
+
+.send-via-email {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+label.sendviamail{
+display: inline-block; 
+white-space: nowrap;
+padding-bottom: 22px;
+}
+
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+.doctor-response {
+    margin-left: 20px;
+}
+
+.doctor-response label {
+    text-align: left;
+}
+
+.bordered {
+    border: 2px solid gray;
+  }
+  

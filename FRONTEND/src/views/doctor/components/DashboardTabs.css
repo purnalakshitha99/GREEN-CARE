@@ -88,6 +88,7 @@ input[id="radio-3"]:checked ~ .glider {
 .glider {
   position: absolute;
   display: flex;
+  margin-top: 7px;
   height: 54px;
   width: 200px;
   background-color: var(--secondary-color);

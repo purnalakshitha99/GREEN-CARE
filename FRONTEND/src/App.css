@@ -103,57 +103,6 @@ html {
     height: 20px;
   }
   
-  .content-block ul {
-    margin: 0 0 15px;
-  }
-  
-  .content-block ul li {
-    position: relative;
-    padding: 0 0 0 20px;
-    height: 20px;
-  }
-  
-  .content-block ul li:before {
-    content: '\f101';
-    font-family: 'fontawesome';
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: all 0.3s linear;
-    -webkit-transition: all 0.3s linear;
-  }
-  
-  .content-block ul li a {
-    color: #333;
-  }
-  
-  .content-block ul li a:hover {
-    color: #f64b4b;
-  }
-  
-  
-  .learn-more-btn{
-    background: #15A891;
-    border-color: #076e5f;
-    padding: 13px 35px;
-    font-size: 14px;
-    line-height: 18px;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: background 0.3s linear, color 0.3s linear;
-    -webkit-transition: background 0.3s linear, color 0.3s linear;
-  }
-  .learn-more-btn:focus,
-  .learn-more-btn:hover {
-    background: #f9f7f7;
-    border-color: rgba(91, 186, 171, 0.7);
-    color: #100f0f;
-  }
-  
-  .learn-more-btn .fas {
-    margin: 0 0 0 6px;
-    font-size: 15px;
-  }
   
   #main-header {
     position: fixed;
@@ -178,12 +127,6 @@ html {
     transition: all 0.5s linear;
   }
   
-  /* #main-header .navbar {
-    justify-content: space-between;
-    height: 80px;
-    background: none !important;
-    
-  } */
   
   #main-header .navbar-brand {
     color: #f64b4b;
@@ -259,37 +202,6 @@ html {
     border-bottom: 1px solid #e6e6e6;
   }
   
-  .hero-block {
-    margin: 65px 0 0;
-  }
-  
-  .hero-block .carousel-item:before {
-    content: '';
-    background: rgba(7, 7, 7, 0.7);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  .hero-block .carousel-item img {
-    max-width: 100%;
-  }
-  
-  .hero-block .carousel-caption {
-    left: 20%;
-    right: 20%;
-    transform: translateY(50%);
-    -webkit-transform: translateY(50%);
-    bottom: 50%;
-  }
-  
-  .hero-block p {
-    margin: 0 0 30px;
-  }
-  
-  
     #header {
       padding: 10px 0;
     }
@@ -304,18 +216,6 @@ html {
       padding: 7px 0;
     }
   
-    .hero-block .carousel-caption {
-      left: 7%;
-      right: 7%;
-    }
-  
-    .hero-block .carousel-control {
-      width: 5%;
-    }
-  
-    .hero-block p {
-      margin: 0 0 25px;
-    }
   
     .works-block .portfoliolist>div .label {
       height: 50px;
@@ -356,14 +256,6 @@ html {
   
     .block {
       padding: 40px 0 10px;
-    }
-  
-    .hero-block .carousel-caption {
-      display: none;
-    }
-  
-    .hero-block .carousel-control {
-      width: 15%;
     }
   
     .about-block .image {
@@ -408,7 +300,8 @@ html {
   }
   
   .App {
-    /* padding: 0.5rem 3.5rem; */
+
+
     color: var(--black);
     background: linear-gradient(
       106.37deg,
@@ -445,4 +338,6 @@ html {
     .AppGlass{
       grid-template-columns: 1fr;
     } 
-  }
+  } 
+  
+ 

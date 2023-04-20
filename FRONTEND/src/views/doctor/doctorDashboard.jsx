@@ -7,7 +7,7 @@ import DashboardTabs from "./components/DashboardTabs"
 const DoctorDashboard = () => {
 
   return (
-    <section id="learnMore" className="hero-block">
+    <section>
         <AppHeader />
       <div className="mb-5">
       <DoctorCards/>

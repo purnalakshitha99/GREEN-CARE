@@ -1,5 +1,5 @@
 import React from "react";
-import "../../App.css";
+import "./vetHomePage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Carousel from "react-bootstrap/Carousel";
 import AppHeader from "../header";
@@ -17,7 +17,7 @@ var heroData = [
   {
     id: 2,
     image: require("../../assets/images/img-hero2.jpg"),
-    title: "  Farm animal - Wellness Consultation",
+    title: "Farm animal - Wellness Consultation",
     description:
       "The system is designed to provide a range of services related to the health and wellbeing of farm animals. ",
 
@@ -26,7 +26,7 @@ var heroData = [
   {
     id: 3,
     image: require("../../assets/images/img-hero3.jpg"),
-    title: "  Farm animal - Wellness Consultation",
+    title: "Farm animal - Wellness Consultation",
     description:
       "The Consultation will allow you to  ask your questions without embarrassment and without judgment",
     link: "/animalFormView",
@@ -35,28 +35,26 @@ var heroData = [
 
 export default function vetHomePage() {
   return (
-    <section id="home" className="hero-block">
+    <section id="home">
       <AppHeader />
-      <Carousel>
-        {heroData.map((hero) => {
-          return (
-            <Carousel.Item key={hero.id}>
-              <img
-                className="d-block w-100"
-                src={hero.image}
-                alt={"slide " + hero.id}
-              />
-              <Carousel.Caption>
-                <h2>{hero.title}</h2>
-                <p>{hero.description}</p>
-                <a className="learn-more-btn" href={hero.link}>
-                  Learn More<i className="fas fa-chevron-right"></i>
-                </a>
-              </Carousel.Caption>
-            </Carousel.Item>
-          );
-        })}
-      </Carousel>
+      <dev className="hero-block">
+        <Carousel>
+          {heroData.map((hero) => {
+            return (
+              <Carousel.Item key={hero.id}>
+                <img src={hero.image} alt={"slide " + hero.id} />
+                <Carousel.Caption>
+                  <h2>{hero.title}</h2>
+                  <p>{hero.description}</p>
+                  <a className="learn-more-btn" href={hero.link}>
+                    Learn More <i className="fas fa-chevron-right"></i>
+                  </a>
+                </Carousel.Caption>
+              </Carousel.Item>
+            );
+          })}
+        </Carousel>
+      </dev>
     </section>
   );
 }

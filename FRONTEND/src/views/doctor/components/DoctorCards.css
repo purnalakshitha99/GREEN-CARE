@@ -5,7 +5,7 @@
 	--dk-gray-400: #9CA3AF;
 	--dk-gray-600: #3d3f42;
 	--dk-dark-bg: #313348;
-	--green-bg-color: rgba(20, 172, 148, 0.3);
+	--green-bg-color: rgba(20, 172, 148, 0.14);
 
 
 }
@@ -35,10 +35,14 @@ body {
 	color: var(--dk-dark-bg);
 }
 
+.row{
+	margin-top: 100px;
+}
 .statistics .box {
-	background-color: var(--green-bg-color);
+  background-color: var(--green-bg-color);
   margin-left: 20px;
   margin-right: 20px;
+
 }
 
 .statistics .box i {
@@ -49,6 +53,4 @@ body {
 
 .statistics .box p {
 	color: var(--dk-gray-600);
-  
-
 }
