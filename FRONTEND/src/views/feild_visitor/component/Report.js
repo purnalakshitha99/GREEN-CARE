@@ -25,7 +25,7 @@ export default function Report({_id, firstname,lastname,email,arrival,depature,p
 
             </div> */}
            
-            <form className=" justify-center w-[1000px] flex bg-slate-400/50 rounded-xl mt-5 mb-5 p-5 ">
+            <form className=" justify-center w-[1000px] flex shadow-xl bg-slate-400/50 rounded-xl mt-5 mb-5 p-5 ">
                 
         <div class="w-[1000px] max-w-lg">
           <div class="flex flex-wrap -mx-3 mb-6">

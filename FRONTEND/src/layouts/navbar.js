@@ -34,6 +34,7 @@ function NavBar() {
          <li className="text-black px-2 ">Home</li> */}
          <Link to="/fieldhome"className="hover:scale-110 hover:text-white ml-10">Home</Link>
          <Link to="/displayreport" className="hover:scale-110 hover:text-white ml-10">Reports</Link>
+         <Link to="/infotable" className="hover:scale-110 hover:text-white ml-10">Farmer</Link>
           {/* <span className="hover:scale-110 hover:text-white">Home</span>
           <span className="hover:scale-110 hover:text-white">About Us</span>
           <span className="hover:scale-110 hover:text-white">Contact Us</span> */}

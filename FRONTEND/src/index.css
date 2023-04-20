@@ -18,20 +18,20 @@ label {
   @apply text-blue-900 mt-3 mb-3 text-lg;
 }
 .btn-primary {
-  @apply bg-blue-900 text-white px-7 py-2 rounded-md mt-5;
+  @apply bg-blue-900/70 text-white px-7 py-2 rounded-md ;
 }
 .btn-primary2 {
-  @apply bg-red-500 text-white px-7 py-2 rounded-md mt-5;
+  @apply bg-red-500/70 hover:bg-red-500 text-white px-7 py-2 rounded-md ;
 }
 table {
-  @apply w-[800px] bg-green-600/40 rounded-2xl shadow-md;
+  @apply w-[800px] bg-slate-200 rounded-2xl shadow-md;
 }
 table thead tr td,
 table thead tr th {
-  @apply text-sm text-gray-600 uppercase border-b  px-4 py-2;
+  @apply text-sm  uppercase border px-4 py-2;
 }
 table tr td {
-  @apply px-4 py-1 border;
+  @apply px-4 py-1 border border-white;
 }
 table a {
   @apply px-4 rounded-sm inline-flex mx-1 items-center gap-1 text-sm py-1;

@@ -3,7 +3,7 @@ import axios from "axios";
 import EditCusInformation from "./EditCusInformation";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-
+import NavBar from "../../../layouts/navbar";
 
 const InformationTable = (props) => {
   const [farmers, setFarmers] = useState([]);
@@ -24,7 +24,7 @@ const InformationTable = (props) => {
     setId(e.target.value);
     setData(data);
     setEdit(true);
-  }
+  };
   const deleteData = (e) => {
     try {
       axios
@@ -32,80 +32,84 @@ const InformationTable = (props) => {
           `http://localhost:3007/api/v1/fieldvisitor/cusFarmer/${e.target.value}`
         )
         .then((res) => {
-          Swal.fire(
-            'Good job!',
-            'You clicked the button!',
-            'success'
-          )
+          Swal.fire("Good job!", "You clicked the button!", "success");
         });
     } catch (err) {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-        footer: '<a href="">Why do I have this issue?</a>'
-      })
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+        footer: '<a href="">Why do I have this issue?</a>',
+      });
     }
     console.log(e.target.value);
   };
 
   return (
     <>
-    <div>Farm Details</div> 
-    {
-      edit ? (<EditCusInformation onClick = {()=> setEdit(false)} id={Id} formData={data} /> ):( 
-    
-    <div className="w-full justify-center flex mt-20">
-      <table>
-        <thead>
-          <tr>
-            <td>Age</td>
-            <td>Name</td>
-            <td>e-mail</td>
-            <td>Phone Number</td>
-            <td>Area of Field</td>
-            <td>address</td>
-            <td>Report</td>
-            <td>edit</td>
-            <td>delete</td>
-          </tr>
-        </thead>
-        <tbody>
-          {farmers.map((row, index) => (
-            <tr key={index}>
-              <td> {row.name}</td>
-              <td> {row.age}</td>
-              <td>{row.email}</td>
-              <td>{row.phonenumber}</td>
-              <td>{row.Areaoffield}</td>
-              <td>{row.address}</td>
-              <td>
-                <Link to="/displayreport">Report</Link>
-              </td>
-              <td>
-                <button 
-                value={row._id}
-                onClick={(e) => {
-                  editData(e, row);
-                }}
-                className="btn-primary">edit</button>
-              </td>
-              <td>
-                <button
-                  value={row._id}
-                  onClick={deleteData}
-                  className="btn-primary"
-                >
-                  delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <Link to="/fieldinformation">click</Link>
-    </div>
-    )}
+      <NavBar />
+      <div>Farm Details</div>
+      {edit ? (
+        <EditCusInformation
+          onClick={() => setEdit(false)}
+          id={Id}
+          formData={data}
+        />
+      ) : (
+        <div className="w-full justify-center flex mt-20">
+          <table>
+            <thead className="font-bold ">
+              <tr>
+                <td>Age</td>
+                <td>Name</td>
+                <td>e-mail</td>
+                <td>Phone Number</td>
+                <td>Area of Field</td>
+                <td>address</td>
+                <td>Report</td>
+                <td>edit</td>
+                <td>delete</td>
+              </tr>
+            </thead>
+            <tbody>
+              {farmers.map((row, index) => (
+                <tr key={index}>
+                  <td> {row.name}</td>
+                  <td> {row.age}</td>
+                  <td>{row.email}</td>
+                  <td>{row.phonenumber}</td>
+                  <td>{row.Areaoffield}</td>
+                  <td>{row.address}</td>
+                  <td>
+                    <Link to="/displayreport">Report</Link>
+                  </td>
+                  <td>
+                    <button
+                      value={row._id}
+                      onClick={(e) => {
+                        editData(e, row);
+                      }}
+                      className="btn-primary"
+                    >
+                      edit
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      value={row._id}
+                      onClick={deleteData}
+                      className="btn-primary2 "
+                    >
+                      delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <Link to="/fieldinformation">click</Link>
+        </div>
+      )}
     </>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import Report from './Report';
+import NavBar from "../../../layouts/navbar";
 
 
 function ReporLlist() {
@@ -13,6 +14,8 @@ function ReporLlist() {
           });
       },[]);
   return (
+    <>
+    <NavBar/>
     <div>
       {
         reports.length > 0 && reports.map((report)=> 
@@ -21,6 +24,7 @@ function ReporLlist() {
         ) 
       }
     </div>
+    </>
   )
 }
 
