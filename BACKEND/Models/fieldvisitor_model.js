@@ -31,5 +31,5 @@ const farmerSchema = mongoose.Schema({
   },
 
 });
-const FarmModel = model("Farmer", farmerSchema);
+const FarmModel = model("Visitor", farmerSchema);
 module.exports = FarmModel;

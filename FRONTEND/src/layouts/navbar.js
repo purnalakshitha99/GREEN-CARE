@@ -32,9 +32,11 @@ function NavBar() {
           {/* <li className="text-black px-2 ">About Us</li>
          <li className="text-black px-2 ">Contact Us</li>
          <li className="text-black px-2 ">Home</li> */}
-          <span className="hover:scale-110 hover:text-white">Home</span>
+         <Link to="/fieldhome"className="hover:scale-110 hover:text-white ml-10">Home</Link>
+         <Link to="/displayreport" className="hover:scale-110 hover:text-white ml-10">Reports</Link>
+          {/* <span className="hover:scale-110 hover:text-white">Home</span>
           <span className="hover:scale-110 hover:text-white">About Us</span>
-          <span className="hover:scale-110 hover:text-white">Contact Us</span>
+          <span className="hover:scale-110 hover:text-white">Contact Us</span> */}
         </div>
         <div className=" ml-[85px] cursor-pointer items-center flex rounded-xl hover:scale-125 duration-300  ">
           <IoNotificationsOutline size={25} />

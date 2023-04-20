@@ -7,7 +7,7 @@ exports.addFarmer = catchAsync(async (req, res, next) => {
   console.log(req.body);
   let added_farmer = await Visitor.create(req.body);
   res.status(201).json({
-    status: "success",
+    message: "success",
     added_farmer,
   });
 });
@@ -23,7 +23,7 @@ exports.specificFarmer = catchAsync(async (req, res, next) => {
   let farmers = await Visitor.findById(req.params.id);
 
   res.status(201).json({
-    status: "success",
+    message: "success",
     data: {
       farmers,
     },
@@ -33,10 +33,10 @@ exports.specificFarmer = catchAsync(async (req, res, next) => {
 //update items
 exports.updateCusFarmer = catchAsync(async (req, res, next) => {
   req.body.user = req.user;
-  let updatefarmer = await Item.findByIdAndUpdate(req.params.id, req.body);
+  let updatefarmer = await Visitor.findByIdAndUpdate(req.params.id, req.body);
   res.status(201).json({
-    status: "success",
-    date: {
+    message: "success",
+    data: {
       updatefarmer,
     },
   });
@@ -47,7 +47,7 @@ exports.deleteFarmer = catchAsync(async (req, res, next) => {
   let deletedFarmer = await Visitor.findByIdAndDelete(req.params.id);
   res.status(200).json({
     status: "success",
-    date: {
+    data: {
       deletedFarmer,
     },
   });

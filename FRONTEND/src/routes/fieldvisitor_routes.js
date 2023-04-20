@@ -42,7 +42,10 @@ import InsertFarmerInformation from "../views/feild_visitor/component/InsertFarm
 import InformationTable from "../views/feild_visitor/component/InformationTable";
 import PageNotFound from "../views/feild_visitor/component/PageNotFound";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import FieldReport from "../views/feild_visitor/component/FieldReport";
 import { BrowserRouter } from "react-router-dom";
+import ReporLlist from "../views/feild_visitor/component/ReporLlist";
+import Report from "../views/feild_visitor/component/Report";
 
 function fieldvisitor_routes() {
   return (
@@ -56,6 +59,9 @@ function fieldvisitor_routes() {
             exact
             element={<InsertFarmerInformation />}
           ></Route>
+          <Route path="/fieldreport" exact element={<FieldReport />}></Route>
+          <Route path="/displayreport" exact element={<ReporLlist />}></Route>
+          <Route path="/report" exact element={<Report />}></Route>
           <Route path="*" exact element={<PageNotFound />}></Route>
         </Routes>
       </Router>

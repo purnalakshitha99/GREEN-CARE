@@ -1,62 +1,112 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import EditCusInformation from "./EditCusInformation";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const InformationTable = (props) => {
   const [farmers, setFarmers] = useState([]);
+  const [Id, setId] = useState("");
+  const [edit, setEdit] = useState(false);
+  const [data, setData] = useState({});
+
   useEffect(() => {
-    axios.get("http://localhost:3007/api/v1/fieldvisitor/cusFarmer").then((res) => {
-      setFarmers(res.data.data);
-    });
+    axios
+      .get("http://localhost:3007/api/v1/fieldvisitor/cusFarmer")
+      .then((res) => {
+        setFarmers(res.data);
+      });
   });
+  // edit data
+  const editData = (e, data) => {
+    console.log();
+    setId(e.target.value);
+    setData(data);
+    setEdit(true);
+  }
   const deleteData = (e) => {
     try {
-        axios.delete(`http://localhost:3007/api/v1/fieldvisitor/cusFarmer/${e.target.value}`).then((res) => {
-            console.log(res);
+      axios
+        .delete(
+          `http://localhost:3007/api/v1/fieldvisitor/cusFarmer/${e.target.value}`
+        )
+        .then((res) => {
+          Swal.fire(
+            'Good job!',
+            'You clicked the button!',
+            'success'
+          )
         });
-    }catch (err) {
-        console.log(err);
+    } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        footer: '<a href="">Why do I have this issue?</a>'
+      })
     }
     console.log(e.target.value);
-  }
+  };
+
   return (
-    <div className="w-full justify-center flex mt-20">
-
-    <table >
-      <thead>
-        <tr >
-          <td>Age</td>
-          <td>Name</td>
-          <td>e-mail</td>
-          <td>Phone Number</td>
-          <td>Area of Field</td>
-          <td>address</td>
-          <td>edit</td>
-          <td>delete</td>
-        </tr>
+    <>
+    <div>Farm Details</div> 
+    {
+      edit ? (<EditCusInformation onClick = {()=> setEdit(false)} id={Id} formData={data} /> ):( 
     
-      </thead>
-      <tbody>
-        {farmers.map((row, index) => (
-          <tr key={index}>
-            <td> {row.name}</td>
-            <td> {row.age}</td>
-            <td>{row.email}</td>
-            <td>{row.phonenumber}</td>
-            <td>{row.Areaoffield}</td>
-            <td>{row.address}</td>
-            <td>
-                <button  className="btn-primary">edit</button>
-            </td>
-            <td>
-                <button value={row._id} onClick={deleteData} className="btn-primary">delete</button>
-            </td>
-
+    <div className="w-full justify-center flex mt-20">
+      <table>
+        <thead>
+          <tr>
+            <td>Age</td>
+            <td>Name</td>
+            <td>e-mail</td>
+            <td>Phone Number</td>
+            <td>Area of Field</td>
+            <td>address</td>
+            <td>Report</td>
+            <td>edit</td>
+            <td>delete</td>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {farmers.map((row, index) => (
+            <tr key={index}>
+              <td> {row.name}</td>
+              <td> {row.age}</td>
+              <td>{row.email}</td>
+              <td>{row.phonenumber}</td>
+              <td>{row.Areaoffield}</td>
+              <td>{row.address}</td>
+              <td>
+                <Link to="/displayreport">Report</Link>
+              </td>
+              <td>
+                <button 
+                value={row._id}
+                onClick={(e) => {
+                  editData(e, row);
+                }}
+                className="btn-primary">edit</button>
+              </td>
+              <td>
+                <button
+                  value={row._id}
+                  onClick={deleteData}
+                  className="btn-primary"
+                >
+                  delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <Link to="/fieldinformation">click</Link>
     </div>
+    )}
+    </>
   );
 };
 export default InformationTable;

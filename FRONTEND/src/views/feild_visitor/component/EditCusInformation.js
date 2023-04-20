@@ -1,65 +1,62 @@
-import React, { useState } from "react";
-import axios from "axios";
-import NavBar from "../../../layouts/navbar";
+import React from 'react'
+import { useState } from 'react';
+import axios from 'axios';
 import Swal from 'sweetalert2'
-import { Link,  useNavigate,  } from "react-router-dom";
+ 
 
-const InsertFarmerInformation = ({ onClick, formData }) => {
-  const navigate = useNavigate();
-
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [age, setAge] = useState("");
-  const [email, setEmail] = useState("");
-  const [phonenumber, setPhone] = useState("");
-  const [Areaoffield, setAreaoffield] = useState("");
-  //const[animal, setAnimal] = useState("");
-  const farmerinformation = () => {
-    const farmerdoc = {
-      name: name,
-      address: address,
-      age: age,
-      email: email,
-      phonenumber: phonenumber,
-      Areaoffield: Areaoffield,
-      // animal: animal,
-    };
-
-    axios
-      .post("http://localhost:3007/api/v1/fieldvisitor/cusFarmer/", farmerdoc)
-      .then((res) => {
-        if (res.data.message === "success") {
+// without using back end and api passing data to another form to edit
+const EditCusInformation = ({onClick, id, formData})=> {
+  
+  const [name, setName] = useState(formData.name);
+  const [email, setEmail] = useState(formData.email);
+  const [age, setAge] = useState(formData.age);
+  const [phonenumber, setPhone] = useState(formData.phonenumber);
+  const [address, setAddress] = useState(formData.address);
+  const [Areaoffield, setAreaoffield] = useState(formData.Areaoffield);
+  console.log(id)
+  // edit data
+  const updafarmerinformation = ()=>{
+      const farmer = {
+        name: name,
+        email: email,
+        age:age,
+        phonenumber: phonenumber,
+        address: address,
+        Areaoffield:Areaoffield
+      };
+      axios.patch(`http://localhost:3007/api/v1/fieldvisitor/cusFarmer/${id}`,farmer).then((res)=>{
+        if(res.data.message === "success"){
+          setName("");
+          setEmail("");
+          setAge("");
+          setAddress("");
+          setPhone("");
+          setAreaoffield("");
           Swal.fire(
             'Good job!',
             'You clicked the button!',
             'success'
           )
-          
-        } else {
-          console.log("error")
-          
+          return onclick();
+        }else{
+          console.log("fail");
         }
       })
-      .catch((error) => {
-        try {
-          console.log(error);
-        } catch (error) {
-          console.log("error");
-        }
-      });
-  };
-
+      .catch((err)=>{
+      try {
+        console.log("error")
+      } catch (error) {
+        console.log("fields are empty")
+      }
+  })
+  }
+  
   return (
-    <>
-      <NavBar />
-      <div className=" bg-slate-300/40 flex justify-center w-[800px] ml-[350px] shadow-md rounded-xl mb-5">
-        {/* isuru */}
-
-        <div className="  justify-center flex  p-4">
+    <div>
+       <div className="  justify-center flex  p-4">
           <form>
-            <h1 className="ml-[150px] font-bold text-3xl" >Farmer Information</h1>
+           
             <label>Full Name</label>
-
             <input
               className="frmname border-2 border-gray-300 rounded-xl px-2 p-2 w-[500px] flex flex-row mb-2 shadow-md"
               type="text"
@@ -74,6 +71,7 @@ const InsertFarmerInformation = ({ onClick, formData }) => {
             <input
               className="frmname border-2 border-gray-300 rounded-xl px-2 p-2 w-[500px] flex flex-col mb-2 shadow-md"
               type="text"
+              required
               placeholder="asf@gmail.com"
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -125,26 +123,21 @@ const InsertFarmerInformation = ({ onClick, formData }) => {
             <button
               type="submit"
               className="btn-primary shadow-md ml-[150px]"
-              onClick={farmerinformation}
-              // onClick={()=>navigate("/infotable")}
-
+              onClick={updafarmerinformation}
             >
               Submit
             </button>
-            <button
+            {/* <button
               type="submit"
               className="btn-primary2 shadow-md ml-10"
-              href={"/"}
+              onClick={farmerinformation}
             >
               cancel
-            </button>
+            </button> */}
           </form>
-          
         </div>
-        
-      </div>
-    </>
-  );
-};
+    </div>
+  )
+}
 
-export default InsertFarmerInformation;
+export default EditCusInformation

@@ -11,6 +11,8 @@ const itemRouter = require('./Routes/item_routes');
 const farmerRouter = require('./Routes/farmer_routes');
 //field visitor route
 const fieldvisitor = require('./Routes/fieldvisitor_routes');
+// create report route
+const reportcreate = require('./Routes/createreport_routes');
 //common routes
 
 
@@ -45,6 +47,7 @@ app.use(`${base}/farmer`, farmerRouter);
 //consultant's appoinments
 app.use(`${base}/appointment`, appointmentRouter);
 app.use(`${base}/fieldvisitor`, fieldvisitor );
+app.use(`${base}/reportcreate`, reportcreate );
 
 
 
