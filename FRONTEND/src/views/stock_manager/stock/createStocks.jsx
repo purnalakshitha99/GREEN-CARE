@@ -6,6 +6,8 @@ import axios from "axios";
 import RetrieveStock from "./retrieveStock";
 
 export default function CreateStocks() {
+  const today = new Date().toISOString().split("T")[0];
+
   const [isLoading, setLoading] = useState(false);
 
   const [name, setName] = useState("");
@@ -186,25 +188,6 @@ export default function CreateStocks() {
                     </div>
 
                     <div class="row mb-3">
-                      <label for="inputEXP" class="col-sm-2 col-form-label">
-                        EXP
-                      </label>
-
-                      <div class="col-sm-10">
-                        <input
-                          type="date"
-                          id="exp"
-                          name="exp"
-                          style={{ borderradius: 0.25 }}
-                          required
-                          onChange={(e) => {
-                            setEXP(e.target.value);
-                          }}
-                        />
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
                       <label for="inputMFD" class="col-sm-2 col-form-label">
                         MFD
                       </label>
@@ -217,6 +200,26 @@ export default function CreateStocks() {
                           required
                           onChange={(e) => {
                             setMFD(e.target.value);
+                          }}
+                        />
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="inputEXP" class="col-sm-2 col-form-label">
+                        EXP
+                      </label>
+
+                      <div class="col-sm-10">
+                        <input
+                          type="date"
+                          id="exp"
+                          name="exp"
+                          style={{ borderradius: 0.25 }}
+                          required
+                          min={mfd}
+                          onChange={(e) => {
+                            setEXP(e.target.value);
                           }}
                         />
                       </div>

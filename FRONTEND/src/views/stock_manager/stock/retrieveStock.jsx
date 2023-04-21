@@ -8,6 +8,7 @@ import "jspdf-autotable";
 import Sidebar from "../../../layouts/sideBar";
 
 export default function RetrieveStock() {
+  const today = new Date().toISOString().split("T")[0];
   const { id } = useParams();
   const [loaderStatus, setLoaderStatus] = useState(false);
   const [tebleStatus, setTableStatus] = useState(true);
