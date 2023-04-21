@@ -11,7 +11,7 @@ const supplierSchema = new mongoose.Schema({
     type: String,
   },
   tel: {
-    type: Number,
+    type: String,
   },
   category: {
     type: String,
