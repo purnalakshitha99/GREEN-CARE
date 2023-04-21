@@ -141,7 +141,7 @@ export default function RetrieveStock() {
     });
     const date = Date().split(" ");
     const dateStr = date[1] + "-" + date[2] + "-" + date[3];
-    doc.text("stock-Details-Report", 14, 15).setFontSize(12);
+    doc.text("GREEN CARE_stock-Details-Report", 14, 15).setFontSize(12);
     doc.text(`Report Generated Date - ${dateStr} `, 14, 23);
     doc.save(`Stock-Details-Report_${dateStr}.pdf`);
   }
