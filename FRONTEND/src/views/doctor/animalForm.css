@@ -78,3 +78,7 @@ button[type="submit"]:hover {
   font-size: 14px;
   margin-top: 5px;
 }
+
+.bordered {
+  border: 2px solid gray;
+}

@@ -35,7 +35,7 @@ const RequestsTable = ({ category }) => {
   };
 
   const [doctorResponse, setDoctorResponse] = useState({
-    message: "",
+    doctorMessage: "",
     referenceLinks: "",
     doctorName: "",
     doctorContact: "",
@@ -53,20 +53,17 @@ const RequestsTable = ({ category }) => {
   };
 
   const handleSubmit = async () => {
-    const updatedData = [...data];
-    updatedData.push(doctorResponse);
     try {
       const res = await axios.patch(
         `http://localhost:3007/api/v1/animal-form/updateAnimalForm/${selectedRowData._id}`,
-        updatedData,
-        { headers: { "Content-Type": "application/json" } }
+        doctorResponse,
       );
       console.log(res.data);
     } catch (err) {
       console.error(err);
     }
     setDoctorResponse({
-      message: "",
+      doctorMessage: "",
       referenceLinks: "",
       doctorName: "",
       doctorContact: "",
@@ -148,10 +145,10 @@ const RequestsTable = ({ category }) => {
                   <form onSubmit={handleSubmit}>
                     <label htmlFor="message">Message:</label>
                     <textarea
-                      id="message"
-                      name="message"
+                      id="doctorMessage"
+                      name="doctorMessage"
                       className="bordered"
-                      value={doctorResponse.message}
+                      value={doctorResponse.doctorMessage}
                       onChange={handleInputChange}
                     />
 

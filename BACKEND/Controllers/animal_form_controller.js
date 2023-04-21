@@ -14,6 +14,12 @@ exports.formSubmit = async (req, res) => {
       attachment: req.file ? req.file.filename : "",
       message: req.body.message,
       status: req.body.status,
+      doctorMessage: req.body.status ? req.body.doctorMessage : "",
+      referenceLinks: req.body.referenceLinks ? req.body.referenceLinks : "",
+      doctorName: req.body.doctorName ? req.body.doctorName : "",
+      doctorContact: req.body.doctorContact ? req.body.doctorContact : "",
+      doctorEmail: req.body.doctorEmail ? req.body.doctorEmail : "",
+      sendViaEmail: req.body.sendViaEmail ? req.body.sendViaEmail : false,
     });
 
     await animal.save();
@@ -69,33 +75,22 @@ exports.getRequestCount = async (req, res) => {
 
 exports.doctorFormSubmit = async (req, res, next) => {
   try {
-    const updatedAnimal = new AnimalForm({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      phoneNumber: req.body.phoneNumber,
-      address: req.body.address,
-      age: parseInt(req.body.age),
-      weight: parseFloat(req.body.weight),
-      animalSpecies: req.body.animalSpecies,
-      attachment: req.file ? req.file.filename : "",
-      message: req.body.message,
+    const updatedAnimalForm = ({
       status: req.body.status,
-      doctorMessage: req.body.status,
-      referenceLinks: req.body.status,
-      doctorName: req.body.status,
-      doctorContact: req.body.status,
-      doctorEmail: req.body.status,
-      sendViaEmail: req.body.status,
+      doctorMessage: req.body.doctorMessage,
+      referenceLinks: req.body.referenceLinks,
+      doctorName: req.body.doctorName,
+      doctorContact: req.body.doctorContact,
+      doctorEmail: req.body.doctorEmail,
+      sendViaEmail: req.body.sendViaEmail,
     });
-    console.log(updateAnimalForm);
-    // let updateAnimalForm = await AnimalForm.findByIdAndUpdate(
-    //   req.params.id,
-    //   updatedAnimal
-    // ).then((updatedDocument) => {
-    //   console.log(updatedDocument);
-    //   res.send(updatedDocument);
-    // });
+    let updateAnimalForm = await AnimalForm.findByIdAndUpdate(
+      req.params.id,
+      updatedAnimalForm
+    ).then((updatedDocument) => {
+      console.log(updatedDocument);
+      res.send(updatedDocument);
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({

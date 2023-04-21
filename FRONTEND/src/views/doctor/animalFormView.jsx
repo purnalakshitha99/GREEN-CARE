@@ -16,6 +16,12 @@ const AnimalForm = () => {
     attachment: "",
     message: "",
     status: "Pending",
+    doctorMessage: "",
+    referenceLinks: "",
+    doctorName: "",
+    doctorContact: "",
+    doctorEmail: "",
+    sendViaEmail: false,
   });
 
   const [errors, setErrors] = useState({});
@@ -126,13 +132,16 @@ const AnimalForm = () => {
     <section>
       <AppHeader />
       <div className="form-container">
-        <h2><b>Submit your Request</b></h2>
+        <h2>
+          <b>Submit your Request</b>
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="firstName">First Name</label>
             <input
               type="text"
               name="firstName"
+              className="bordered"
               value={formData.firstName}
               onChange={handleChange}
             />
@@ -145,6 +154,7 @@ const AnimalForm = () => {
             <input
               type="text"
               name="lastName"
+              className="bordered"
               value={formData.lastName}
               onChange={handleChange}
             />
@@ -157,6 +167,7 @@ const AnimalForm = () => {
             <input
               type="email"
               name="email"
+              className="bordered"
               value={formData.email}
               onChange={handleChange}
             />
@@ -167,6 +178,7 @@ const AnimalForm = () => {
             <input
               type="text"
               name="phoneNumber"
+              className="bordered"
               value={formData.phoneNumber}
               onChange={handleChange}
             />
@@ -179,6 +191,7 @@ const AnimalForm = () => {
             <input
               type="text"
               name="address"
+              className="bordered"
               value={formData.address}
               onChange={handleChange}
             />
@@ -189,6 +202,7 @@ const AnimalForm = () => {
             <input
               type="text"
               name="age"
+              className="bordered"
               value={formData.age}
               onChange={handleChange}
             />
@@ -199,6 +213,7 @@ const AnimalForm = () => {
             <input
               type="text"
               name="weight"
+              className="bordered"
               value={formData.weight}
               onChange={handleChange}
             />
@@ -209,6 +224,7 @@ const AnimalForm = () => {
             <input
               type="text"
               name="animalSpecies"
+              className="bordered"
               value={formData.animalSpecies}
               onChange={handleChange}
             />
@@ -227,6 +243,7 @@ const AnimalForm = () => {
             <label htmlFor="message">Message</label>
             <textarea
               name="message"
+              className="bordered"
               value={formData.message}
               onChange={handleChange}
             />
