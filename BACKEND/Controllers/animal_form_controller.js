@@ -75,7 +75,7 @@ exports.getRequestCount = async (req, res) => {
 
 exports.doctorFormSubmit = async (req, res, next) => {
   try {
-    const updatedAnimalForm = ({
+    const updatedAnimalForm = {
       status: req.body.status,
       doctorMessage: req.body.doctorMessage,
       referenceLinks: req.body.referenceLinks,
@@ -83,13 +83,50 @@ exports.doctorFormSubmit = async (req, res, next) => {
       doctorContact: req.body.doctorContact,
       doctorEmail: req.body.doctorEmail,
       sendViaEmail: req.body.sendViaEmail,
-    });
+    };
     let updateAnimalForm = await AnimalForm.findByIdAndUpdate(
       req.params.id,
       updatedAnimalForm
     ).then((updatedDocument) => {
       console.log(updatedDocument);
       res.send(updatedDocument);
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      success: false,
+      error: "Server error",
+    });
+  }
+};
+
+exports.getRequestCount = async (req, res) => {
+  const category = req.params.category;
+  let count;
+  try {
+    if (category === "total") {
+      count = await AnimalForm.countDocuments();
+    } else {
+      count = await AnimalForm.countDocuments({ status: category });
+    }
+    res.json({ success: true, count });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      success: false,
+      error: "Server error",
+    });
+  }
+};
+
+exports.doctorFormDelete = async (req, res, next) => {
+  try {
+    let deleteDoctorForm = await AnimalForm.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      status: "success",
+      date: {
+        deleteDoctorForm,
+      },
     });
   } catch (err) {
     console.error(err);

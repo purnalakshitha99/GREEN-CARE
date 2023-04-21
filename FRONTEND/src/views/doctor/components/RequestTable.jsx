@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import "./doctor_modal.css";
 
@@ -56,7 +58,7 @@ const RequestsTable = ({ category }) => {
     try {
       const res = await axios.patch(
         `http://localhost:3007/api/v1/animal-form/updateAnimalForm/${selectedRowData._id}`,
-        doctorResponse,
+        doctorResponse
       );
       console.log(res.data);
     } catch (err) {
@@ -71,6 +73,17 @@ const RequestsTable = ({ category }) => {
       sendViaEmail: false,
     });
     setShowModal(false);
+  };
+
+  const handleDelete = async (row) => {
+    try {
+      const res = await axios.delete(
+        `http://localhost:3007/api/v1/animal-form/delete-docs/${row._id}`
+      );
+      console.log(res.data);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -95,6 +108,19 @@ const RequestsTable = ({ category }) => {
               <td>{row.animalSpecies}</td>
               <td>{row.age}</td>
               <td>{row.weight}</td>
+              {category === "Completed" ? (
+                <td>
+                  <i
+                    className="fa fa-trash"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDelete(row);
+                    }}
+                  ></i>
+                </td>
+              ) : (
+                <td></td>
+              )}
             </tr>
           ))}
         </tbody>

@@ -10,4 +10,6 @@ router.patch("/updateAnimalForm/:id",animal_form_controller.doctorFormSubmit);
 router.get("/:category", animal_form_controller.getRequests);
 router.get("/request-count/:category", animal_form_controller.getRequestCount);
 
+router.delete("/delete-docs/:id", animal_form_controller.doctorFormDelete);
+
 module.exports = router;
