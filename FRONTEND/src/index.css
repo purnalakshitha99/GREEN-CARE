@@ -18,24 +18,27 @@ label {
   @apply text-blue-900 mt-3 mb-3 text-lg;
 }
 .btn-primary {
-  @apply bg-blue-900/70 text-white px-7 py-2 rounded-md ;
+  @apply bg-blue-900/70 text-white px-6 py-1 rounded-md ;
 }
 .btn-primary2 {
-  @apply bg-red-500/70 hover:bg-red-500 text-white px-7 py-2 rounded-md ;
+  @apply bg-red-500/70 hover:bg-red-500 text-white px-5 py-1 rounded-md ;
 }
 table {
-  @apply w-[800px] bg-slate-200 rounded-2xl shadow-md;
+  @apply  bg-slate-200/40 md:w-[1450px] text-sm shadow-md m-10 text-[poppins];
 }
 table thead tr td,
 table thead tr th {
-  @apply text-sm  uppercase   px-4 py-2;
+  @apply text-sm  uppercase text-center md:text-left md:text-lg ;
+}
+table tbody tr td,
+table tbody  tr th {
+  @apply text-xs first-letter:uppercase text-center py-5  md:text-sm ;
 }
 table tr {
   @apply border border-white
 }
-table tr td {
-  @apply px-4 py-1  border-white;
-}
+
+
 table a {
   @apply px-4 rounded-sm inline-flex mx-1 items-center gap-1 text-sm py-1;
 }

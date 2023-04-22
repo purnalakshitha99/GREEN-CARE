@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const FieldReport = ({ onClick, formData }) => {
   const navigate = useNavigate();
+  const [time, setTime] = useState();
 
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
@@ -26,7 +27,7 @@ const FieldReport = ({ onClick, formData }) => {
       problem: problem,
       solution: solution,
     };
-console.log(reportdoc);
+    console.log(reportdoc);
     axios
       .post("http://localhost:3007/api/v1/reportcreate/reportgen", reportdoc)
       .then((res) => {
@@ -128,6 +129,7 @@ console.log(reportdoc);
                 }}
                 value={arrival}
               />
+            
             </div>
             <div class="w-full md:w-1/2 px-3">
               <label

@@ -48,7 +48,7 @@ const InformationTable = (props) => {
   return (
     <>
       <NavBar />
-      <div className="mt-[200px] font-bold text-2xl justify-center flex">Farmer Details</div>
+      <div className="mt-[100px] font-bold text-2xl justify-center flex">Farmer Details</div>
       {edit ? (
         <EditCusInformation
           onClick={() => setEdit(false)}
@@ -56,10 +56,10 @@ const InformationTable = (props) => {
           formData={data}
         />
       ) : (
-        <div className="w-full justify-center flex mt-10 ">
+        <div >
           <table>
-            <thead className="font-bold ">
-              <tr className="border border-white">
+            <thead className="font-semibold text-left ">
+              <tr >
                 <td>Age</td>
                 <td>Name</td>
                 <td>e-mail</td>
@@ -73,8 +73,8 @@ const InformationTable = (props) => {
             </thead>
             <tbody>
               {farmers.map((row, index) => (
-                <tr key={index}>
-                  <td> {row.name}</td>
+                <tr key={index} >
+                  <td > {row.name}</td>
                   <td> {row.age}</td>
                   <td>{row.email}</td>
                   <td>{row.phonenumber}</td>
