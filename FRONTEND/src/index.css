@@ -28,10 +28,13 @@ table {
 }
 table thead tr td,
 table thead tr th {
-  @apply text-sm  uppercase border px-4 py-2;
+  @apply text-sm  uppercase   px-4 py-2;
+}
+table tr {
+  @apply border border-white
 }
 table tr td {
-  @apply px-4 py-1 border border-white;
+  @apply px-4 py-1  border-white;
 }
 table a {
   @apply px-4 rounded-sm inline-flex mx-1 items-center gap-1 text-sm py-1;

@@ -1,11 +1,19 @@
-import React from 'react'
+import React from "react";
 
-
-export default function Report({_id, firstname,lastname,email,arrival,depature,problem,solution}){
-    return(
-        <>
-         <div className='justify-center flex  '>
-            {/* <div className='w-full justify-between bg-slate-500 justify-center flex flex-row'>
+export default function Report({
+  _id,
+  firstname,
+  lastname,
+  email,
+  arrival,
+  depature,
+  problem,
+  solution,
+}) {
+  return (
+    <>
+      <div className="justify-center flex ">
+        {/* <div className='w-full justify-between bg-slate-500 justify-center flex flex-row'>
                 
             <label>name</label>
             <h4 >{firstname} {lastname}</h4>
@@ -24,20 +32,19 @@ export default function Report({_id, firstname,lastname,email,arrival,depature,p
             <h4>{solution}</h4>
 
             </div> */}
-           
-            <form className=" justify-center w-[1000px] flex shadow-xl bg-slate-400/50 rounded-xl mt-5 mb-5 p-5 ">
-                
-        <div class="w-[1000px] max-w-lg">
-          <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                class="block uppercase tracking-wide  text-xl font-bold mb-2 rounde text-blue-900"
-                for="grid-first-name"
-              >
-                First Name
-              </label>
-              <span className='text-lg'>{firstname}</span>
-              {/* <input
+
+        <form className=" justify-center w-[1000px] flex shadow-xl bg-white rounded-2xl mt-5 mb-5 p-5 ">
+          <div class="w-[1000px] max-w-lg">
+            <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                  class="block uppercase tracking-wide  font-bold mb-2 rounde text-black"
+                  for="grid-first-name"
+                >
+                  First Name
+                </label>
+                <span className="">{firstname}</span>
+                {/* <input
                 className="frmname appearance-none block w-full border-gray-300 border-2 rounded-xl py-3 px-4 mb-3 leading-tight "
                 id="grid-first-name"
                 type="text"
@@ -45,17 +52,16 @@ export default function Report({_id, firstname,lastname,email,arrival,depature,p
                 
                 value={firstname}
               /> */}
-              
-            </div>
-            <div class="w-full md:w-1/2 px-3">
-              <label
-                class="block uppercase tracking-wide  text-xl font-bold mb-2 text-blue-900"
-                for="grid-last-name"
-              >
-                Last Name
-              </label>
-              <span className='text-lg'>{lastname}</span>
-              {/* <input
+              </div>
+              <div class="w-full md:w-1/2 px-3">
+                <label
+                  class="block uppercase tracking-wide  font-bold mb-2 text-black"
+                  for="grid-last-name"
+                >
+                  Last Name
+                </label>
+                <span className="">{lastname}</span>
+                {/* <input
                 className="frmname appearance-none block w-full border-gray-300 border-2 rounded-xl py-3 px-4 mb-3 leading-tight "
                 id="grid-last-name"
                 type="text"
@@ -64,52 +70,51 @@ export default function Report({_id, firstname,lastname,email,arrival,depature,p
                
                 value={lastname}
               /> */}
+              </div>
             </div>
-          </div>
 
-          <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full px-3">
-              <label class="block uppercase tracking-wide  text-xl font-bold mb-2 text-blue-900">
-                E-Mail
-              </label>
-             <span className='text-lg'>{email}</span>
+            <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full px-3">
+                <label class="block uppercase tracking-wide  font-bold mb-2 text-black">
+                  E-Mail
+                </label>
+                <span>{email}</span>
+              </div>
             </div>
-          </div>
-          <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                class="block uppercase tracking-wide  text-xl font-bold mb-2 text-blue-900"
-                for="grid-first-name"
-              >
-                Arival time
-              </label>
-              <span className='text-lg'>{arrival}</span>
+            <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                  class="block uppercase tracking-wide  font-bold mb-2 text-black"
+                  for="grid-first-name"
+                >
+                  Arival time
+                </label>
+                <span>{arrival}</span>
+              </div>
+              <div class="w-full md:w-1/2 px-3">
+                <label
+                  class="block uppercase tracking-wide  font-bold mb-2 text-black"
+                  for="grid-last-name"
+                >
+                  Dipature Time
+                </label>
+                <span>{depature}</span>
+              </div>
             </div>
-            <div class="w-full md:w-1/2 px-3">
-              <label
-                class="block uppercase tracking-wide  text-xl font-bold mb-2 text-blue-900"
-                for="grid-last-name"
-              >
-                Dipature Time
-              </label>
-             <span className='text-lg'>{depature}</span>
+            <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full px-3">
+                <label class="block uppercase tracking-wide   font-bold mb-2 text-black">
+                  Problem
+                </label>
+                <textarea
+                  className="frmname appearance-none block w-full  bg-slate-400/10 rounded-xl py-5 px-4 mb-3 leading-tight "
+                  type="text"
+                  value={problem}
+                />
+              </div>
             </div>
-          </div>
-          <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full px-3">
-              <label class="block uppercase tracking-wide  text-xl font-bold mb-2 text-blue-900">
-                Problem
-              </label>
-              <textarea
-                className="frmname appearance-none block w-full text-lg bg-slate-400/10 rounded-xl py-5 px-4 mb-3 leading-tight "
-                type="text"
-                
-                value={problem}
-              />
-            </div>
-          </div>
 
-          {/* <div class="flex flex-wrap -mx-3 mb-6">
+            {/* <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
               <label class="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                 Upload Image
@@ -120,23 +125,21 @@ export default function Report({_id, firstname,lastname,email,arrival,depature,p
               />
             </div>
           </div> */}
-          <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full px-3">
-              <label class="block uppercase tracking-wide text-blue-900 text-xl font-bold mb-2">
-                Solution
-              </label>
-              <textarea
-                className="frmname appearance-none block w-full text-lg bg-slate-400/10 rounded-xl py-5 px-4 mb-3 leading-tight "
-                type="text"
-                value={solution}
-              />
+            <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full px-3">
+                <label class="block uppercase tracking-wide text-black font-bold mb-2">
+                  Solution
+                </label>
+                <textarea
+                  className="frmname appearance-none block w-full  bg-slate-400/10 rounded-xl py-5 px-4 mb-3 leading-tight "
+                  type="text"
+                  value={solution}
+                />
+              </div>
             </div>
           </div>
-          
-        </div>
-        
-      </form> 
-        </div>
-        </>
-    )
+        </form>
+      </div>
+    </>
+  );
 }

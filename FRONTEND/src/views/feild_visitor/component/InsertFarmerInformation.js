@@ -52,7 +52,7 @@ const InsertFarmerInformation = ({ onClick, formData }) => {
   return (
     <>
       <NavBar />
-      <div className=" bg-slate-300/40 flex justify-center w-[800px] ml-[350px] shadow-md rounded-xl mb-5">
+      <div className=" bg-slate-300/40 flex justify-center w-[800px] ml-[350px] mt-20 shadow-md rounded-xl mb-5">
         {/* isuru */}
 
         <div className="  justify-center flex  p-4">

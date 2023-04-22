@@ -52,7 +52,7 @@ function fieldvisitor_routes() {
     <div>
       <Router>
         <Routes>
-          <Route path="/fieldhome" exact element={<Home />}></Route>
+          <Route path="/" exact element={<Home />}></Route>
           <Route path="/infotable" exact element={<InformationTable />}></Route>
           <Route
             path="/fieldinformation"

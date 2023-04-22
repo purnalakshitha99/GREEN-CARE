@@ -48,7 +48,7 @@ console.log(reportdoc);
   return (
     <>
       <NavBar />
-      <form className=" justify-center flex ">
+      <form className=" justify-center flex  mt-[150px]">
         <div class="w-full max-w-lg" onSubmit={CreateReport}>
           <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
