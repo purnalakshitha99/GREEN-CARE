@@ -32,7 +32,7 @@ table thead tr th {
 }
 table tbody tr td,
 table tbody  tr th {
-  @apply text-xs first-letter:uppercase text-center py-5  md:text-sm ;
+  @apply text-xs first-letter:uppercase text-center py-5 md:text-left  md:text-sm ;
 }
 table tr {
   @apply border border-white

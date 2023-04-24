@@ -4,12 +4,17 @@ import EditCusInformation from "./EditCusInformation";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import NavBar from "../../../layouts/navbar";
+import PopupReport from "./PopupReport";
 
 const InformationTable = (props) => {
   const [farmers, setFarmers] = useState([]);
   const [Id, setId] = useState("");
   const [edit, setEdit] = useState(false);
   const [data, setData] = useState({});
+
+  const[popreport, setpopreport] = useState(false);
+  const handleClose = ()=> setpopreport(false)
+
 
   useEffect(() => {
     axios
@@ -81,7 +86,9 @@ const InformationTable = (props) => {
                   <td>{row.Areaoffield}</td>
                   <td>{row.address}</td>
                   <td>
-                    <Link to="/displayreport">Report</Link>
+                    <Link
+                    onClick={()=> setpopreport(true)}
+                    >Report</Link>
                   </td>
                   <td>
                     <button
@@ -110,6 +117,7 @@ const InformationTable = (props) => {
           {/* <Link to="/fieldinformation">click</Link> */}
         </div>
       )}
+      < PopupReport onClose={handleClose} visivle={popreport} />
     </>
   );
 };

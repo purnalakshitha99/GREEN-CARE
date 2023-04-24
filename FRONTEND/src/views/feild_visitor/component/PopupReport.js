@@ -1,18 +1,30 @@
-import React from "react";
+import React from 'react'
 
-export default function Report({
-  _id,
-  firstname,
-  lastname,
-  email,
-  arrival,
-  depature,
-  problem,
-  solution,
+function PopupReport({visivle, onClose,
+
+    _id,
+    firstname,
+    lastname,
+    email,
+    arrival,
+    depature,
+    problem,
+    solution,
+
 }) {
+    const handleClose = (e)=>{
+       if (e.target.id === "container")  onClose();
+         
+    };
+
+    if(!visivle) return null;
   return (
-    <>
-      <div className="bg-slate-100/50 pb-4 md:m-5 md:flex md:ml-[300px] shadow-lg md:w-[800px] ">
+    <div 
+    id='container'
+    onClick={handleClose}
+    className='fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center'>
+      
+      <div className="bg-white pb-4 md:m-5 md:flex md:ml-[300px] shadow-lg md:w-[800px] ">
         <form className=" mt-5 md:w-full md:px-10 md:m-10">
           <div className="grid grid-cols-2 justify-center md:flex ">
             <div className="px-3 mb-6 md:mb-0">
@@ -85,6 +97,10 @@ export default function Report({
           </div>
         </form>
       </div>
-    </>
-  );
+      
+      </div>
+   
+  )
 }
+
+export default PopupReport
