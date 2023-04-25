@@ -125,7 +125,7 @@ const EditCusInformation = ({onClick, id, formData})=> {
               className="btn-primary shadow-md ml-[150px]"
               onClick={updafarmerinformation}
             >
-              Submit
+              Update
             </button>
             {/* <button
               type="submit"

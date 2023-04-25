@@ -87,6 +87,7 @@ const InformationTable = (props) => {
                   <td>{row.address}</td>
                   <td>
                     <Link
+                    className="text-left"
                     onClick={()=> setpopreport(true)}
                     >Report</Link>
                   </td>
