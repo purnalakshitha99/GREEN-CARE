@@ -8,6 +8,8 @@ import RetrieveStock from "./retrieveStock";
 export default function CreateStocks() {
   const today = new Date().toISOString().split("T")[0];
 
+  console.log(today);
+
   const [isLoading, setLoading] = useState(false);
 
   const [name, setName] = useState("");
@@ -239,6 +241,7 @@ export default function CreateStocks() {
                           id="inputQuantity"
                           style={{ height: 32 }}
                           required
+                          min={0}
                           onChange={(e) => {
                             setQuantity(e.target.value);
                           }}
@@ -315,10 +318,12 @@ export default function CreateStocks() {
                       </label>
                       <div class="col-sm-3">
                         <input
+                          placeholder="Rs"
                           type="number"
                           class="form-control"
                           id="inputEmail3"
                           required
+                          min={0}
                           onChange={(e) => {
                             setPrice(e.target.value);
                           }}

@@ -1,4 +1,5 @@
 import React from "react";
+import Sidebar from "../../../layouts/sideBar";
 
 export default function DashBoard() {
   return (
