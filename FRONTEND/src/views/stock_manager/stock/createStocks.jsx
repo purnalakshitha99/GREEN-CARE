@@ -294,9 +294,9 @@ export default function CreateStocks() {
                         <select className="form-select form-select-sm mb-3">
                           <option value="fertilizer">Select Supplier</option>
                           <option value="fertilizer">fertilizer</option>
-                          <option value="saab">Farm animal foods</option>
-                          <option value="opel">plant & seeds</option>
-                          <option value="audi">Pesticides</option>
+                          <option value="farmAnimal">Farm animal foods</option>
+                          <option value="plant">plant & seeds</option>
+                          <option value="pesticides">Pesticides</option>
                         </select>
                       </div>
                     </div>
@@ -358,4 +358,17 @@ export default function CreateStocks() {
       </div>
     </div>
   );
+}
+{
+  /* <div className="form-group">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            className="form-control"
+            id="name"
+            name="name"
+            value={items.name}
+            onChange={handleInputChange}
+          />
+        </div> */
 }
