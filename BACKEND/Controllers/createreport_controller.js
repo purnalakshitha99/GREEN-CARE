@@ -1,15 +1,49 @@
 const report = require("../Models/createreport_model");
 const catchAsync = require("../Utils/catchAsync");
 const AppError = require("../Utils/AppError");
+const multer = require("multer");
+const uploadMiddleware = multer({ dest: "uploads/" });
+const fs = require("fs");
 
 exports.createreport = catchAsync(async (req, res, next) => {
-  // req.body.user = req.user;
-  console.log(req.body);
-  let create_report = await report.create(req.body);
-  res.status(201).json({
-    message: "success",
-    create_report,
+  uploadMiddleware.single("file");
+  
+  const { originalname, path } = req.file;
+
+  const parts = originalname.split(".");
+  const ext = parts[parts.length - 1];
+  const newPath = path + "." + ext;
+  fs.renameSync(path, newPath);
+
+  const { firstname, lastname, email, arrival, depature, problem, solution,date } =
+    req.body;
+
+  if (
+    !firstname ||
+    !lastname ||
+    !email ||
+    !arrival ||
+    !depature ||
+    !problem ||
+    !solution||
+    !date
+  ) {
+    return res.status(400).json({ message: " fields are empty" });
+  }
+  const postDoc = await report.create({
+    firstname,
+    lastname,
+    email,
+    arrival,
+    depature,
+    date,
+    problem,
+    solution,
+    cover: newPath,
   });
+  res
+    .status(201)
+    .json({ message: "Resource created successfully", data: postDoc });
 });
 
 //get all items
@@ -21,14 +55,11 @@ exports.Allreports = catchAsync(async (req, res, next) => {
 
 //get specific items
 exports.specificReport = catchAsync(async (req, res, next) => {
-  let reports = await report.findById(req.params.id);
-
-  res.status(201).json({
-    message: "success",
-    data: {
-      reports,
-    },
-  });
+  const { id } = req.params;
+  console.log(id);
+  const reports = await report.findById(id);
+  res.json(reports);
+  console.log(reports);
 });
 
 //update items

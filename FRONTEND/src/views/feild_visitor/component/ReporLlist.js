@@ -11,6 +11,7 @@ function ReporLlist() {
       });
     });
   }, []);
+
   return (
     <>
       <NavBar />

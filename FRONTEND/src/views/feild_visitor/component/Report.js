@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Report({
   _id,
@@ -9,7 +10,10 @@ export default function Report({
   depature,
   problem,
   solution,
-}) {
+}) 
+// console.log(_id);
+{
+  const navigate = useNavigate();
   return (
     <>
       <div className="bg-slate-100/50 pb-4 md:m-5 md:flex md:ml-[300px] shadow-lg md:w-[800px] ">
@@ -80,7 +84,13 @@ export default function Report({
             </div>
           </div>
           <div className="flex justify-center ">
-            <button className="btn-primary px-5 m-3">Edit</button>
+            <Link to={"/editreport/"+_id}
+              className="btn-primary px-5 m-3"
+              // onClick={()=>navigate("/editreport")}
+              // onClick={() => navigate("/editreport/"+_id)}
+            >
+              Edit
+            </Link>
             <button className="btn-primary2 m-3 px-5">Delete</button>
           </div>
         </form>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaTh, FaBars, FaUserAlt, FaRegChartBar } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
-const Sidebar = ({ children }) => {
+const Sidebar = () => {
   // const [isOpen, setIsOpen] = useState(false);
   // const toggle = () => setIsOpen(!isOpen);
   const menuItem = [
@@ -43,7 +43,7 @@ const Sidebar = ({ children }) => {
           </NavLink>
         ))}
       </div>
-      <main>{children}</main>
+      <main></main>
     </div>
   );
 };

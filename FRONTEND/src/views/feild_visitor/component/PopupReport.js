@@ -17,6 +17,8 @@ function PopupReport({visivle, onClose,
          
     };
 
+    //console.log(email)
+
     if(!visivle) return null;
   return (
     <div 

@@ -11,7 +11,7 @@ const InformationTable = (props) => {
   const [Id, setId] = useState("");
   const [edit, setEdit] = useState(false);
   const [data, setData] = useState({});
-
+// pop up information
   const[popreport, setpopreport] = useState(false);
   const handleClose = ()=> setpopreport(false)
 
@@ -88,7 +88,10 @@ const InformationTable = (props) => {
                   <td>
                     <Link
                     className="text-left"
-                    onClick={()=> setpopreport(true)}
+                    onClick={(e) => {
+                      setpopreport(e, row);
+                    }}
+                   // onClick={()=> setpopreport(true)}
                     >Report</Link>
                   </td>
                   <td>

@@ -22,6 +22,9 @@ const reportOfField = mongoose.Schema({
     type: String,
     required: true,
   },
+  date: {
+    type: String,
+  },
   problem: {
     type: String,
     required: true,
@@ -30,7 +33,9 @@ const reportOfField = mongoose.Schema({
     type: String,
     required: true,
   },
-  
+  cover: {
+    type: String,
+  },
 });
 const FieldReport = model("report", reportOfField);
 module.exports = FieldReport;

@@ -7,8 +7,8 @@ function Home() {
     <>
       <NavBar />
 
-      <div className="max-w-[1640px] p-4 mx-auto mt-20">
-        <div className="max-h-[500px] relative ">
+      <div className="max-w-[1640px] p-4 mx-auto mt-20 ">
+        <div className="max-h-[500px] relative -z-50 ">
           {/* overlay */}
           <div className="absolute w-full h-full text-gray-200 max-h-[500px] bg-black/40 flex flex-col justify-center"></div>
           <img
