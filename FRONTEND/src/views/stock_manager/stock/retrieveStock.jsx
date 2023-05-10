@@ -188,11 +188,11 @@ export default function RetrieveStock() {
                 <th scope="col">Item ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Description</th>
-                <th scope="col">Price</th>
+                <th scope="col">Price (Rs)</th>
                 <th scope="col">exp</th>
                 <th scope="col">mfd</th>
                 <th scope="col">category</th>
-                <th scope="col">quantity</th>
+                <th scope="col">Quantity (Kg)</th>
                 <th></th>
               </tr>
             </thead>
