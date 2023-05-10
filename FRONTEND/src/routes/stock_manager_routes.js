@@ -18,7 +18,7 @@ export default function stock_manager_routes() {
     <BrowserRouter>
       <Sidebar>
         <Routes>
-          <Route path="/" element={<DashBoard />} />
+          <Route path="/" exact element={<DashBoard />} />
 
           <Route path="/dashboard" exact element={<DashBoard />}></Route>
           <Route path="/create" exact element={<CreateStocks />}></Route>
