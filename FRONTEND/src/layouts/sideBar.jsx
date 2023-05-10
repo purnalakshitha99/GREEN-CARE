@@ -8,17 +8,17 @@ const Sidebar = ({ children }) => {
   // const toggle = () => setIsOpen(!isOpen);
   const menuItem = [
     {
-      path: "/dashboard",
+      path: "/stock-manager/dashboard",
       name: "Dashboard",
       icon: <FaTh />,
     },
     {
-      path: "/create",
+      path: "/stock-manager/create",
       name: "Stocks",
       icon: <FaUserAlt />,
     },
     {
-      path: "/createSupplier",
+      path: "/stock-manager/createSupplier",
       name: "Supplier",
       icon: <FaRegChartBar />,
     },

@@ -20,19 +20,39 @@ export default function stock_manager_routes() {
         <Routes>
           <Route path="/" exact element={<DashBoard />} />
 
-          <Route path="/dashboard" exact element={<DashBoard />}></Route>
-          <Route path="/create" exact element={<CreateStocks />}></Route>
-          <Route path="/retrieve" exact element={<RetrieveStock />}></Route>
-          {/* <Route path="/suppliers" exact element={<Suppliers />}></Route> */}
-          <Route path="/item/:id" exact element={<ShowItems />}></Route>
-          <Route path="/supplier/:id" exact element={<ShowSupplier />}></Route>
           <Route
-            path="/createSupplier"
+            path="/stock-manager/dashboard"
+            exact
+            element={<DashBoard />}
+          ></Route>
+          <Route
+            path="/stock-manager/create"
+            exact
+            element={<CreateStocks />}
+          ></Route>
+          <Route
+            path="/stock-manager/retrieve"
+            exact
+            element={<RetrieveStock />}
+          ></Route>
+          {/* <Route path="/suppliers" exact element={<Suppliers />}></Route> */}
+          <Route
+            path="/stock-manager/item/:id"
+            exact
+            element={<ShowItems />}
+          ></Route>
+          <Route
+            path="/stock-manager/supplier/:id"
+            exact
+            element={<ShowSupplier />}
+          ></Route>
+          <Route
+            path="/stock-manager/createSupplier"
             exact
             element={<CreateSupplier />}
           ></Route>
           <Route
-            path="/retrieveSupplier"
+            path="/stock-manager/retrieveSupplier"
             exact
             element={<RetrieveSupplier />}
           ></Route>
