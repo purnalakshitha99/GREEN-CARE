@@ -13,8 +13,9 @@ export default function ShowSupplier() {
       axios
         .get(`http://localhost:3007/api/v1/supplier/supplier/${id}`)
         .then((res) => {
-          setAllItems(res.data.data.items);
-          console.log(res.data.data.items);
+          console.log(res.data.data.suppliers);
+          setAllItems(res.data.data.suppliers);
+          console.log(res.data.data.suppliers);
         })
         .catch((err) => alert(err.message));
     };
