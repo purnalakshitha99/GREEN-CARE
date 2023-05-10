@@ -1,16 +1,16 @@
-const HttpError = require("../Utils/http-error");
-const { validationResult } = require("express-validator");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const HttpError = require('../Utils/http-error');
+const { validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
-const User = require("../Models/user_register_model");
+const User = require('../Models/user_register_model');
 
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
     return next(
-      new HttpError("Invalid inputs passed, please check your data.", 422)
+      new HttpError('Invalid inputs passed, please check your data.', 422)
     );
   }
 
@@ -20,11 +20,11 @@ const signup = async (req, res, next) => {
   try {
     hasUser = await User.findOne({ email: email });
   } catch (err) {
-    return next(new HttpError("Signing up failed, please try again.", 500));
+    return next(new HttpError('Signing up failed, please try again.', 500));
   }
   if (hasUser) {
     return next(
-      new HttpError("email already exists. Pleas Login instead", 422)
+      new HttpError('email already exists. Pleas Login instead', 422)
     );
   }
 
@@ -32,7 +32,7 @@ const signup = async (req, res, next) => {
   try {
     hashedPassword = await bcrypt.hash(password, 12);
   } catch (err) {
-    return next(new HttpError("Could not create user, please try again.", 500));
+    return next(new HttpError('Could not create user, please try again.', 500));
   }
 
   const createdUser = new User({
@@ -40,14 +40,14 @@ const signup = async (req, res, next) => {
     email,
     address,
     phone,
-    category: "farmer",
+    category: 'farmer',
     password: hashedPassword,
   });
 
   try {
     await createdUser.save();
   } catch (err) {
-    const error = new HttpError("Creating user failed, please try again.", 500);
+    const error = new HttpError('Creating user failed, please try again.', 500);
     return next(error);
   }
 
@@ -55,16 +55,19 @@ const signup = async (req, res, next) => {
   try {
     token = jwt.sign(
       { userId: createdUser.id, email: createdUser.email },
-      "issaraha_dhore_yathura_thiyenne_isuru_laga",
-      { expiresIn: "1h" }
+      'issaraha_dhore_yathura_thiyenne_isuru_laga',
+      { expiresIn: '1h' }
     );
   } catch (err) {
-    return next(new HttpError("Signing up failed, please try again.", 500));
+    return next(new HttpError('Signing up failed, please try again.', 500));
   }
 
-  res
-    .status(201)
-    .json({ userId: createdUser.id, email: createdUser.email, token: token });
+  res.status(201).json({
+    userId: createdUser.id,
+    email: createdUser.email,
+    token: token,
+    message: 'success',
+  });
 };
 
 const getUserById = async (req, res, next) => {
@@ -75,7 +78,7 @@ const getUserById = async (req, res, next) => {
     user = await User.findById(userId);
   } catch (err) {
     const error = new HttpError(
-      "Something went wrong, could not find a user.",
+      'Something went wrong, could not find a user.',
       500
     );
     return next(error);
@@ -83,7 +86,7 @@ const getUserById = async (req, res, next) => {
 
   if (!user) {
     return next(
-      new HttpError("Could not find a user for the provided id.", 404)
+      new HttpError('Could not find a user for the provided id.', 404)
     );
   }
 
@@ -96,7 +99,7 @@ const updateUser = async (req, res, next) => {
   if (!errors.isEmpty()) {
     return next(
       new HttpError(
-        "Invalid inputs passed, please check and Re Enter data.",
+        'Invalid inputs passed, please check and Re Enter data.',
         422
       )
     );
@@ -110,7 +113,7 @@ const updateUser = async (req, res, next) => {
     updatedUser = await User.findById(userId);
   } catch (err) {
     return next(
-      new HttpError("Something went wrong, could not update user.", 500)
+      new HttpError('Something went wrong, could not update user.', 500)
     );
   }
 
@@ -122,7 +125,7 @@ const updateUser = async (req, res, next) => {
     await updatedUser.save();
   } catch (err) {
     return next(
-      new HttpError("Something went wrong, could not update user.", 500)
+      new HttpError('Something went wrong, could not update user.', 500)
     );
   }
 
@@ -138,7 +141,7 @@ const deleteUser = async (req, res, next) => {
     return next(new HttpError("Something went wrong , can't delete user", 500));
   }
 
-  res.status(200).json({ message: "Deleted user." });
+  res.status(200).json({ message: 'Deleted user.' });
 };
 
 exports.signup = signup;
