@@ -31,10 +31,10 @@ export default function CreateSupplier() {
   // }
 
   async function submitData(e) {
-    alert("insert data");
+    e.preventDefault();
+
     setLoading(true);
     try {
-      e.preventDefault();
       const newDetails1 = {
         companyName,
         location,
@@ -87,7 +87,7 @@ export default function CreateSupplier() {
     } catch (err) {
       console.log(err);
     }
-    setLoading(false);
+    // setLoading(false);
   }
 
   function clear() {}

@@ -234,14 +234,15 @@ export default function CreateStocks() {
                       >
                         Quantity
                       </label>
-                      <div class="col-sm-2">
+                      <div class="col-sm-5">
                         <input
                           type="number"
+                          placeholder="kg/ml/packet"
                           class="form-control"
                           id="inputQuantity"
                           style={{ height: 32 }}
                           required
-                          min={0}
+                          min={0} //-marks
                           onChange={(e) => {
                             setQuantity(e.target.value);
                           }}

@@ -124,7 +124,7 @@ export default function RetrieveStock() {
       .map((ticket, index) => {
         const ticketData = [
           index + 1,
-          ticket.itemId,
+          // ticket.itemId,
           ticket.name,
           ticket.description,
           ticket.price,
@@ -146,7 +146,7 @@ export default function RetrieveStock() {
     });
     const date = Date().split(" ");
     const dateStr = date[1] + "-" + date[2] + "-" + date[3];
-    doc.text("GREEN CARE_stock-Details-Report", 14, 15).setFontSize(12);
+    doc.text("GREEN-CARE-Stock-Details-Report", 65, 15).setFontSize(8);
     doc.text(`Report Generated Date - ${dateStr} `, 14, 23);
     doc.save(`Stock-Details-Report_${dateStr}.pdf`);
   }

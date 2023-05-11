@@ -134,6 +134,19 @@ export default function RetrieveSupplier() {
     doc.save(`Supplier-Details-Report_${dateStr}.pdf`);
   }
 
+  function handleSearch(e) {
+    if (e.length > 0) {
+      var result = AllItems.filter((input) => {
+        return (
+          input.category.toLowerCase().includes(e.toLowerCase()) ||
+          input.name.toLowerCase().includes(e.toLowerCase())
+        );
+      });
+
+      setAllItems(result);
+    }
+  }
+
   return (
     <div>
       <div hidden={tebleStatus}>

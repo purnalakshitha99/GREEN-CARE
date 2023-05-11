@@ -19,17 +19,8 @@ export default function test() {
           >
             <div class="navbar-nav">
               <img src="{logo}" alt="React Image" />
-              <a href="#" class="nav-item nav-link">
-                Profile
-              </a>
+
               <div class="nav-item dropdown">
-                <a
-                  href="#"
-                  class="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                >
-                  Messages
-                </a>
                 <div class="dropdown-menu">
                   <a href="#" class="dropdown-item">
                     Inbox
