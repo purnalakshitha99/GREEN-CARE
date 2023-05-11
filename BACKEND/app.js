@@ -40,15 +40,8 @@ app.use(express.json({ limit: '10kb' }));
 app.use(`${base}`, loginRoute);
 app.use(`${base}/stock-manager`, itemRouter);
 app.use(`${base}/farmer`, farmerRouter);
-//consultant's appoinments
 app.use(`${base}/appointment`, appointmentRouter);
 app.use(`${base}/salary`, salaryRouter);
-
-
-
-
-
-//consulant's news
 app.use(`${base}/news`, newsRouter);
 
 

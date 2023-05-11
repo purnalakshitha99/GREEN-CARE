@@ -1,24 +1,33 @@
 const mongoose = require("mongoose");
 
 const salarySchema = new mongoose.Schema({
-  employee_type: {
-    type: String,
-  },
-  id: {
+
+  employee_id: {
     type: String,
   },
   month: {
     type: String,
   },
-  days: {
+  days_worked: {
     type: Number,
   },
   amount: {
     type: Number,
   },
+  firstName :{
+    type : String
+  }, 
+  lastName :{
+    type : String
+  },
+  position : {
+    type : String
+  },
+  NIC :{
+    type : String
+  }
 
-
-  // user: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, //foriegn column
+ 
 });
 
 const Salary = mongoose.model("Salary", salarySchema);

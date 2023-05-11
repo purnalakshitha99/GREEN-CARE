@@ -1,0 +1,54 @@
+.salaryTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.salaryTable th, .salaryTable td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+.salaryTable th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.salaryTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.salaryTable tr:hover {
+  background-color: #ddd;
+}
+
+.salaryTable input {
+  width: 80%;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+}
+
+.salaryTable input:focus {
+  outline: none;
+  background-color: #ddd;
+}
+
+.salaryTable td:last-child {
+  border-right: none;
+}
+
+.salaryTable button[type="delete"] {
+  background-color: #f44336;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.salaryTable button[type="delete"]:hover {
+  background-color: #d32f2f;
+}

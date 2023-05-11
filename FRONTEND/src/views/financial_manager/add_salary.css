@@ -1,8 +1,7 @@
-/* this is the new css */
 .form-container {
     max-width: 500px;
-    margin: 0 auto;
-    padding: 50px;
+    margin: 60px auto;
+    padding: 30px 50px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     
@@ -16,6 +15,7 @@
   form {
     display: flex;
     flex-direction: column;
+    
   }
   
   .form-group {
@@ -44,10 +44,11 @@
   }
   
   button[type="submit"] {
-    background-color: #4CAF50;
-    color: #fff;
+    background-color: #319e8f;
+    color: #ffffff;
     border: none;
-    padding: 10px 10px;
+    font-weight: bold;
+    padding: 10px 16px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
@@ -55,10 +56,24 @@
   }
   
   button[type="button-clear"] {
-    background-color: #cac4c4;
-    color: #fff;
+    background-color: #d54040;
+    color: #ffffff;
     border: none;
-    padding: 10px 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  button[type="button-details"] {
+    background-color: #6dbfec;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
@@ -75,6 +90,38 @@
   .error {
     color: red;
     font-size: 14px;
-    margin-top: 5px;
+    margin-top: 5px;
   }
+  
+  .bordered {
+    border: 2px solid gray;
+  }
+
+  .add-month {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .add-month-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    min-width: 160px;
+  }
+  
+  .month:hover .month-content {
+    display: block;
+  }
+  
+  .month-content a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .month-content a:hover {
+    background-color: #f2f2f2;
+  }
+  
   

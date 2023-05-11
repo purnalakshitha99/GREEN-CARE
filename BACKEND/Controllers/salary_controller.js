@@ -18,6 +18,20 @@ exports.myAllSalary = catchAsync(async (req, res, next) => {
   res.json(all_salary);
 });
 
+// exports.getEmployeeSalary = async (req, res) => {
+//   try {
+//     const employeeSalary = await Salary.find({ employee_id: req.params.employee_id });
+//     if (employeeSalary.length === 0) {
+//       return res.status(404).json({ message: "Salary not found for the specified employee ID" });
+//     }
+//     res.status(200).json(employeeSalary);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).json({ message: "Server error" });
+//   }
+// };
+
+
 //get specific salary
 exports.specificSalary = catchAsync(async (req, res, next) => {
   let salaries = await Salary.findById(req.params.id);
@@ -52,3 +66,7 @@ exports.deleteSalary = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+//get employee ID from employees
+
+// exports.getEmployeeId
