@@ -35,7 +35,7 @@ const AddNews = () => {
     console.log(inputs);
     sendRequest()
       .then((data) => console.log(data))
-      // .then(() => navigate("/test"));
+      .then(() => navigate("/test"));
   };
   return (
     <div>

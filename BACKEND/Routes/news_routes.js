@@ -12,7 +12,7 @@ import {
 const newsRouter = express.Router();
 
 newsRouter.get("/", getAllNews);
-newsRouter.post("/add", addNews);
+newsRouter.post("/add", addNews); //edited for image upload
 newsRouter.put("/update/:id", updateNews);
 newsRouter.get("/:id", getById);
 newsRouter.delete("/:id", deleteNews);

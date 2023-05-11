@@ -64,7 +64,7 @@ export default function RetrieveStock() {
               theme: "dark",
               useTransparency: true,
               onOk: function () {
-                window.location = "/create";
+                window.location = "/appolist";
               },
             });
           }

@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"; // this is consultant view
 import { Link } from "react-router-dom";
 import axios from "axios";
-// import SoloAlert from "soloalert";
+import SoloAlert from "soloalert";
 // import validation from "validator";
 import jspdf from "jspdf";
 import "jspdf-autotable";
+import {FaCheckCircle, FaTimesCircle} from 'react-icons/fa'
+import moment from 'moment'
+import '../../assets/styles/styles.css'
+import {  AiFillEdit,  } from "react-icons/ai";
+import {MdDelete } from 'react-icons/md'
 import Sidebar from "../../layouts/sideBar";
 
 export default function () {
@@ -18,22 +23,78 @@ export default function () {
 
   //This useEffect function used to get all user's data
   useEffect(() => {
-    async function getDetails() {
-      try {
-        const result = await axios.get('http://localhost:3007/api/v1/appointment/appointment/');
-
+   
+       
+fetchData()
         // console.log(result);
-        setAllItems(result.data.all_appointment);
-        console.log(result.data.all_appointment);
+        
         // setLoaderStatus(false);
         setTableStatus(false);
-      } catch (err) {
-        console.log(err.message);
-      }
-    }
+     
 
-    getDetails();
+    
   }, []);
+
+  //FetchData 
+  function fetchData() {
+    const result =  axios.get('http://localhost:3007/api/v1/appointment/appointment/').then((response) => {
+      console.log(response)
+      setAllItems(response.data.all_appointment);
+       
+      })
+  }
+  function deleteItem(id) {
+    // id.preventDefault();
+
+    SoloAlert.confirm({
+      title: "Confirm Delete",
+      body: "Are you sure",
+      theme: "dark",
+      useTransparency: true,
+      onOk: async function () {
+        try {
+          const result = await (
+            await axios.delete(
+              `http://localhost:3007/api/v1/appointment/appointment/${id}`
+            )
+          ).status;
+          console.log(result);
+
+          if (result === 200) {
+            SoloAlert.alert({
+              title: "Welcome!",
+              body: "Deletion is successful",
+              icon: "success",
+              theme: "dark",
+              useTransparency: true,
+              onOk: function () {
+                window.location = "/appolist";
+              },
+            });
+          }
+        } catch (err) {
+          SoloAlert.alert({
+            title: "Oops!",
+            body: "Something went wrong",
+            icon: "error",
+            theme: "dark",
+            useTransparency: true,
+            onOk: function () {},
+          });
+        }
+      },
+      onCancel: function () {
+        SoloAlert.alert({
+          title: "Oops!",
+          body: "You canceled delete request",
+          icon: "warning",
+          theme: "dark",
+          useTransparency: true,
+          onOk: function () {},
+        });
+      },
+    });
+  }
 
   // //This useEffect method is used to perform a searching function
   // useEffect(() => {
@@ -67,7 +128,7 @@ tickets
       index + 1, // add the count as the index + 1
       ticket.topic,
       ticket.description,
-      ticket.date,
+      moment(ticket.date).format("DD-MM-YYYY"),
       ticket.farmer_name,
       ticket.approvel ? 'Approved' : 'Not approved',
       ticket.reply,
@@ -86,47 +147,70 @@ tickets
     doc.save(`Appointment-Details-Report_${dateStr}.pdf`);
   }
 
+  //Search function
+  function handleSearch(e) {
+    if(e.length > 0 ) {
+      var result = AllItems.filter(input => {
+        return input.topic.toLowerCase().includes(e.toLowerCase()) || input.farmer_name.toLowerCase().includes(e.toLowerCase());
+      });
+
+      
+      setAllItems(result);
+    }else {
+      fetchData();
+    }
+  }
+
   return (
     <div class="content">
-      <div class="d-flex justify-content-center"></div>
+    
+    
 
-      <div hidden={tebleStatus}>
+      <div className="m-5" hidden={tebleStatus}>
         {/* This part used to get all users data into table */}
-        <nav className="navbar bg-white">
-          <div className="container-fluid">
-            <h3>Appointment</h3>
+       
+          <div class="d-flex justify-content-between align-items-center">
+            <h2 className = "text-dark mb-0">Appointment</h2>
+           
+           <div>
+           
             <button
-              type="button"
-              class="btn btn-outline-danger"
-              id="pdfButton"
-              onClick={(e) => {
-                generatePDF(AllItems);
-              }}
+            type="button"
+            class="btn btn-warning custom-btn"
+            id="pdfButton"
+            onClick={(e) => {
+              generatePDF(AllItems);
+            }}
             >
-              <i className="fa fa-file-pdf"></i> PDF
+            <i className="fa fa-file-pdf"></i> Export as PDF
             </button>
-            <form className="d-flex">
-              <input
-                className="form-control me-2"
+           </div>
+           
+          </div>
+
+        <hr />
+
+        <div className="row">
+             <div className = "col-md-4 mb-3 ">
+             <input
+                className="form-control rounded-pill"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
                 onChange={(e) => {
-                  setsearch(e.target.value);
+                  handleSearch(e.target.value)
                 }}
               />
-            </form>
-          </div>
-        </nav>
-        <hr />
+             </div>
+            </div>
 
-        <div>
-          <table className="table table-hover " style={{ width: "100%" }}>
+        <div className ="table-responsive" >
+          <table className="table table-hover table-borded " >
             <thead>
               <tr>
-                <th scope="col">Appointment ID</th>
+                <th scope="col">ID</th>
                 <th scope="col">Topic</th>
-                <th scope="col">Description</th>
+                <th scope="col-3">Description</th>
                 <th scope="col">Date</th>
                 <th scope="col">Farmer Name</th>
                 <th scope="col">Approval</th>
@@ -138,23 +222,32 @@ tickets
             {AllItems.map((item, count = 0) => (
               <tbody>
                 <tr>
-                  <td>{count+1}</td>
+                  <td className="col">{count+1}</td>
                   <td>{item.topic}</td>
-                  <td>{item.description} </td>
-                  <td>{item.date} </td>
+                  <td className='col-3'>{item.description} </td>
+                  <td>{moment(item.date).format("DD-MM-YYYY")} </td>
                   <td>{item.farmer_name} </td>
-                  <td>{item.approvel? 'Approved' : 'Not approved'} </td>
+                  <td className="col">{item.approvel? <FaCheckCircle className="icons" style={{color: 'green'}}/> : <FaTimesCircle className 
+                  ='icons' style ={{color:'red'}}/>} </td>
                   <td>{item.reply} </td>
                   
                  
 
                   <td>
-                    <Link to={`/get/${item._id}`} className="btn btn-primary">
-                      Update
-                    </Link>{" "}
-                    <button type="button" className="btn btn-danger">
-                      Delete
+                   <div className="d-flex"> <Link style = {{ color: "white"}} to={`/appoupdate/${item._id}`} className="btn btn-warning">
+                   < AiFillEdit/>
+                    </Link> 
+                    <button
+                      type="button"
+                      onClick={() => {
+                        deleteItem(item._id);
+                      }}
+                      style = {{marginLeft: "10px", color: "white"}}
+                      className="btn btn-danger"
+                    >
+                      <MdDelete/>
                     </button>
+                    </div>
                   </td>
                 </tr>
               </tbody>
