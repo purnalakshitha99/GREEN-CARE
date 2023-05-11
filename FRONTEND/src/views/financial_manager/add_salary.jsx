@@ -180,7 +180,7 @@ const SalaryForm = () => {
   return (
     <section id="learnMore" className="hero-block">
       <div class="form-container">
-        <h2>Salary management</h2>
+        <h2>Add salaries</h2>
 
    
     <form  onSubmit={handleSubmit}>
