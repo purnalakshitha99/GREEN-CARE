@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./DashboardTabs.css";
 import RequestsTable from "./RequestTable";
-
 const DashboardTabs = () => {
-  const [selectedTab, setSelectedTab] = useState("total");
+const [selectedTab, setSelectedTab] = useState("Total");
 
   return (
     <div className="containerbox" align = 'center'>
@@ -12,10 +11,10 @@ const DashboardTabs = () => {
           type="radio"
           id="radio-1"
           name="tab-group"
-          value="total"
+          value="Total"
           defaultChecked
-          checked={selectedTab === "total"}
-          onClick={()=>{setSelectedTab("total")}}
+          checked={selectedTab === "Total"}
+          onClick={()=>{setSelectedTab("Total")}}
         />
         <label className="tab" htmlFor="radio-1">
           Total
@@ -28,6 +27,7 @@ const DashboardTabs = () => {
           checked={selectedTab === "Pending"}
           onClick={()=>{setSelectedTab("Pending")}}
         />
+        
         <label className="tab" htmlFor="radio-2">
           Pending
         </label>
@@ -42,6 +42,7 @@ const DashboardTabs = () => {
         <label className="tab" htmlFor="radio-3">
           Completed
         </label>
+        
         <span className="glider"></span>
       </div>
       <div className="tab-content">

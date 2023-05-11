@@ -38,7 +38,7 @@ exports.getRequests = async (req, res) => {
   const category = req.params.category;
   let Forms;
   try {
-    if (category === "total") {
+    if (category === "Total") {
       Forms = await AnimalForm.find();
     } else {
       Forms = await AnimalForm.find({ status: category });
@@ -58,7 +58,7 @@ exports.getRequestCount = async (req, res) => {
   const category = req.params.category;
   let count;
   try {
-    if (category === "total") {
+    if (category === "Total") {
       count = await AnimalForm.countDocuments();
     } else {
       count = await AnimalForm.countDocuments({ status: category });
@@ -104,7 +104,7 @@ exports.getRequestCount = async (req, res) => {
   const category = req.params.category;
   let count;
   try {
-    if (category === "total") {
+    if (category === "Total") {
       count = await AnimalForm.countDocuments();
     } else {
       count = await AnimalForm.countDocuments({ status: category });

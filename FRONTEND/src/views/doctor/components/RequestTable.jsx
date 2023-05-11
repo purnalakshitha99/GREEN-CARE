@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import "./doctor_modal.css";
+import jspdf from "jspdf";
+import moment from "moment";
 
 const RequestsTable = ({ category }) => {
   const [data, setData] = useState([]);
@@ -24,6 +26,7 @@ const RequestsTable = ({ category }) => {
 
   const [showModal, setShowModal] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState({});
+  const [AllItems, setAllItems] = useState([]);
 
   const handleRowClick = (rowData) => {
     setSelectedRowData(rowData);
@@ -84,7 +87,48 @@ const RequestsTable = ({ category }) => {
     } catch (err) {
       console.error(err);
     }
+      window.location.reload(false);
   };
+
+  //function to generate a pdf
+function generatePDF(tickets) {
+  const doc = new jspdf();
+  const tableColumn = [
+    "ID",
+    "Animal Species",
+    "Name",
+    "Age",
+    "Weight",
+    "message",   
+  ];
+  const tableRows = [];
+
+tickets
+.slice(0)
+.reverse()
+.map((ticket, index) => {
+  const ticketData = [
+    index + 1, // add the count as the index + 1
+    ticket.animalSpecies,
+    ticket.firstName,
+    ticket.age,
+    ticket.weight,
+    ticket.message,
+  ];
+  tableRows.push(ticketData);
+});
+
+  doc.autoTable(tableColumn, tableRows, {
+    styles: { fontSize: 8 },
+    startY: 35,
+  });
+  const date = Date().split(" ");
+  const dateStr = date[1] + "-" + date[2] + "-" + date[3];
+  doc.text(`${category} Appointments`, 14, 15).setFontSize(12);
+  doc.text(`Report Generated Date - ${dateStr} `, 14, 23);
+  doc.save(`Doc-Appointment-Details-Report_${dateStr}.pdf`);
+}
+
 
   return (
     <>
@@ -125,6 +169,16 @@ const RequestsTable = ({ category }) => {
           ))}
         </tbody>
       </table>
+      <button
+           type="button"
+           class="btn btn-warning custom-btn"
+           id="pdfButton"
+           onClick={(e) => {
+             generatePDF(data);
+           }}
+           >
+           <i className="fa fa-file-pdf"></i> Export as PDF
+           </button>
       {showModal && (
         <div className="modal">
           <div className="modal-content">
@@ -232,6 +286,7 @@ const RequestsTable = ({ category }) => {
                     </div>
 
                     <button type="submit">Submit</button>
+                    
                   </form>
                 </div>
               </div>

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./DoctorCards.css";
 import { Icon } from '@iconify/react';
-
+import jspdf from "jspdf";
+import moment from "moment";
 
 
 function DoctorCards() {
@@ -14,7 +15,7 @@ function DoctorCards() {
   useEffect(() => {
     const fetchRequestsCount = async () => {
       try {
-        const total = await axios.get("http://localhost:3007/api/v1/animal-form/request-count/total");
+        const total = await axios.get("http://localhost:3007/api/v1/animal-form/request-count/Total");
         setTotalRequests(total.data.count);
       } catch (error) {
         console.error(error);
@@ -34,8 +35,10 @@ function DoctorCards() {
     };
 
     fetchRequestsCount();
+
+
   }, []);
- 
+
 
   return (
     <section class="statistics mt-5">
@@ -80,10 +83,13 @@ function DoctorCards() {
           </div>
         </div>
       </div>
+      
     </div>
     </div>
+    
   </section>
   );
 }
+
 
 export default DoctorCards;
