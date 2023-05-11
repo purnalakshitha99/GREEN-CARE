@@ -119,8 +119,9 @@ export default function RetrieveStock() {
     tickets
       .slice(0)
       .reverse()
-      .map((ticket) => {
+      .map((ticket, index) => {
         const ticketData = [
+          index + 1,
           ticket.itemId,
           ticket.name,
           ticket.description,
