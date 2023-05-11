@@ -93,17 +93,19 @@ export default function CreateSupplier() {
   function clear() {}
 
   return (
-    <div class="container-fluid">
+    <div class="container" style={{ marginLeft: "12%" }}>
       <div class="row flex-nowrap">
-        <div class="col py-5">
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
-            Add supplier
-          </button>
+        <div class="col">
+          <div class="float-end mt-2">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Add supplier
+            </button>
+          </div>
 
           <div
             class="modal fade"
@@ -113,7 +115,7 @@ export default function CreateSupplier() {
             aria-hidden="true"
           >
             <div class="modal-dialog">
-              <div class="modal-content" style={{ width: 750 }}>
+              <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">
                     add supplier
@@ -260,10 +262,7 @@ export default function CreateSupplier() {
               </div>
             </div>
           </div>
-          <div
-            class="shadow-lg p-1 mb-3 bg-body rounded"
-            style={{ width: "120%", alignItems: "center" }}
-          >
+          <div className="mt-5">
             <RetrieveSupplier />
           </div>
         </div>

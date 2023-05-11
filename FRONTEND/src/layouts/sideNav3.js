@@ -85,9 +85,9 @@ export default function test() {
         </NavLink>
       </div>
 
-      <div class="content">
+      {/* <div class="content">
         <DashBoard />
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -17,9 +17,8 @@ import SideNav from "../layouts/sideNav3.js";
 export default function stock_manager_routes() {
   return (
     <BrowserRouter>
+      <SideNav />
       <Routes>
-        <Route path="/stock-manager" exact element={<SideNav />} />
-
         <Route
           path="/stock-manager/dashboard"
           exact
