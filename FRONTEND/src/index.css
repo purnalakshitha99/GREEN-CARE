@@ -61,3 +61,7 @@
 .image {
   object-fit: contain;
 }
+.imge {
+  width: 500px;
+  height: 100px;
+}

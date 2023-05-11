@@ -55,51 +55,54 @@ app.use(`${base}/damagereportcreate`, damagereportcreate);
 app.use("/uploads", express.static(__dirname + "/uploads"));
 // app.use("/uploads2", express.static(__dirname + "/uploads2"));
 
-// app.post("/newpost2", async (req, res) => {
-//   // const { originalname, path } = req.file;
-//   // const parts = originalname.split(".");
-//   // const ext = parts[parts.length - 1];
-//   // const newPath = path + "." + ext;
-//   // fs.renameSync(path, newPath);
-//   console.log("hhh");
-//   const {
-//     firstname,
-//     lastname,
-//     email,
-//     arrival,
-//     depature,
-//     problem,
-//     solution,
-//     date,
-//   } = req.body;
+app.post("/newpost2", async (req, res) => {
+  // const { originalname, path } = req.file;
+  // const parts = originalname.split(".");
+  // const ext = parts[parts.length - 1];
+  // const newPath = path + "." + ext;
+  // fs.renameSync(path, newPath);
+  console.log("hhh");
+  const {
+    firstname,
+    lastname,
+    email,
+    arrival,
+    depature,
+    problem,
+    solution,
+    date,
+  } = req.body;
 
-//   if (
-//     !firstname ||
-//     !lastname ||
-//     !email ||
-//     !arrival ||
-//     !depature ||
-//     !problem ||
-//     !solution ||
-//     !date
-//   ) {
-//     return res.status(400).json({ message: " fields are empty" });
-//   }
-//   const postDoc = await report.create({
-//     firstname,
-//     lastname,
-//     email,
-//     arrival,
-//     depature,
-//     date,
-//     problem,
-//     solution,
-//     cover: newPath,
-//   });
-//   res
-//     .status(201)
-//     .json({ message: "Resource created successfully", data: postDoc });
-// });
+  if (
+    !firstname ||
+    !lastname ||
+    !email ||
+    !arrival ||
+    !depature ||
+    !problem ||
+    !solution ||
+    !date
+  ) {
+    return res.status(400).json({ message: " fields are empty" });
+  }
+  const postDoc = await report.create({
+    firstname,
+    lastname,
+    email,
+    arrival,
+    depature,
+    date,
+    problem,
+    solution,
+    cover: newPath,
+  });
+  res
+    .status(201)
+    .json({ message: "Resource created successfully", data: postDoc });
+});
+
+
+// photo upload part for damage report
 
 app.post("/newpost", uploadMiddleware.single("file"), async (req, res) => {
   console.log(req.body.d_departure);
