@@ -23,6 +23,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.1",
     "mongoose-unique-validator": "^4.0.0",
+    "multer": "^1.4.5-lts.1",
     "pino": "^8.11.0",
     "pino-pretty": "^9.4.0"
   }

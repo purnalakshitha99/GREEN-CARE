@@ -42,6 +42,8 @@ app.use(`${base}/stock-manager`, itemRouter);
 app.use(`${base}/farmer`, farmerRouter);
 //consultant's appoinments
 app.use(`${base}/appointment`, appointmentRouter);
+app.use('/news_images', express.static('news_images'));
+
 
 
 

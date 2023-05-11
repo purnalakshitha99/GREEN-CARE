@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 //import User from "../Models/User"; // user import *****
 const catchAsync = require("../Utils/catchAsync");
 const AppError = require("../Utils/AppError");
+import multer from 'multer';
+
+
+
 
 export const getAllNews = async (req, res, next) => {
   try {
@@ -16,8 +20,10 @@ export const getAllNews = async (req, res, next) => {
     return res.status(500).json({ message: err.message });
   }
 };
-  export const addNews = async (req, res, next) => {
-    const { title, description, image } = req.body; 
+const upload = multer({ dest: 'news_images/' }); 
+
+export const addNews = async (req, res, next) => {
+  const { title, description } = req.body;
   //for user
     // let existingUser;
     // try {
@@ -32,9 +38,9 @@ export const getAllNews = async (req, res, next) => {
     const news = new News({
       title,
       description,
-      image,
-      
+      image: req.file.path,
     });
+    
     try {
       const session = await mongoose.startSession();
       session.startTransaction();

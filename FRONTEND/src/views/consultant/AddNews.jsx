@@ -13,23 +13,33 @@ const AddNews = () => {
     description: "",
     imageURL: "",
   });
-  const handleChange = (e) => {
+  const handleFileChange = (e) => {
     setInputs((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value,
+      image: e.target.files[0],
     }));
   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputs(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+  
   const sendRequest = async () => {
-    const res = await axios.post("http://localhost:3007/api/v1/news/add/", {
-        title: inputs.title,
-        description: inputs.description,
-        image: inputs.imageURL,
-        // user: localStorage.getItem("userId"),
-      })
+    const formData = new FormData();
+    formData.append('title', inputs.title);
+    formData.append('description', inputs.description);
+    formData.append('image', inputs.image);
+  
+    const res = await axios.post("http://localhost:3007/api/v1/news/add/", formData)
       .catch((err) => console.log(err));
     const data = await res.data;
     return data;
   };
+
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
@@ -85,16 +95,14 @@ const AddNews = () => {
             variant="outlined"
           />
           <InputLabel sx={labelStyles}>
-            ImageURL
+            Image
           </InputLabel>
-          <TextField
-           
-            name="imageURL"
-            onChange={handleChange}
-            value={inputs.imageURL}
-            margin="auto"
-            variant="outlined"
+          <input
+            type="file"
+            name="image"
+            onChange={handleFileChange}
           />
+
           <Button
             sx={{ mt: 2, borderRadius: 4 }}
             variant="contained"
