@@ -150,6 +150,18 @@ export default function RetrieveStock() {
     doc.text(`Report Generated Date - ${dateStr} `, 14, 23);
     doc.save(`Stock-Details-Report_${dateStr}.pdf`);
   }
+  function handleSearch(e) {
+    if (e.length > 0) {
+      var result = AllItems.filter((input) => {
+        return (
+          input.category.toLowerCase().includes(e.toLowerCase()) ||
+          input.name.toLowerCase().includes(e.toLowerCase())
+        );
+      });
+
+      setAllItems(result);
+    }
+  }
 
   return (
     <div>
@@ -175,7 +187,7 @@ export default function RetrieveStock() {
                 placeholder="Search"
                 aria-label="Search"
                 onChange={(e) => {
-                  setsearch(e.target.value);
+                  handleSearch(e.target.value);
                 }}
               />
             </form>
