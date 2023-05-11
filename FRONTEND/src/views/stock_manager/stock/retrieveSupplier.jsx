@@ -138,7 +138,7 @@ export default function RetrieveSupplier() {
     <div>
       <div hidden={tebleStatus}>
         {/* This part used to get all users data into table */}
-        <nav className="navbar bg-white">
+        <nav className="navbar bg-white" style={{ width: "160%" }}>
           <div className="container-fluid">
             <h3>VIEW-Supplier</h3>
             <button
@@ -175,6 +175,8 @@ export default function RetrieveSupplier() {
                 <th scope="col">location</th>
                 <th scope="col">Tel</th>
                 <th scope="col">category</th>
+                <th></th>
+                <th></th>
 
                 <th></th>
               </tr>
@@ -185,9 +187,9 @@ export default function RetrieveSupplier() {
                   <td>{count + 1}</td>
                   <td>{item.companyName}</td>
                   <td> {item.location} </td>
-                  <td>{item.emial}</td>
-                  <td> {item.tel} </td>
-                  <td>{item.category}</td>
+                  <td> {item.tel}</td>
+                  <td>{item.category} </td>
+                  <td></td>
 
                   <td>
                     <Link
