@@ -135,9 +135,7 @@ export default function RetrieveSupplier() {
   }
 
   return (
-    <div class="content">
-      <div class="d-flex justify-content-center"></div>
-
+    <div>
       <div hidden={tebleStatus}>
         {/* This part used to get all users data into table */}
         <nav className="navbar bg-white">
@@ -169,7 +167,7 @@ export default function RetrieveSupplier() {
         <hr />
 
         <div>
-          <table className="table table-hover " style={{ width: "100%" }}>
+          <table className="table table-hover " style={{ width: "150%" }}>
             <thead>
               <tr>
                 <th scope="col">supplier ID</th>

@@ -155,7 +155,7 @@ export default function RetrieveStock() {
     <div>
       <div hidden={tebleStatus}>
         {/* This part used to get all users data into table */}
-        <nav className="navbar bg-white" style={{ width: "80%" }}>
+        <nav className="navbar bg-white" style={{ width: "60%" }}>
           <div className="container-fluid">
             <h3>VIEW-Stocks</h3>
             <button

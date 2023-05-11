@@ -93,19 +93,17 @@ export default function CreateSupplier() {
   function clear() {}
 
   return (
-    <div class="container" style={{ marginLeft: "12%" }}>
+    <div class="container" style={{ marginLeft: "15%" }}>
       <div class="row flex-nowrap">
         <div class="col">
-          <div class="float-end mt-2">
-            <button
-              type="button"
-              class="btn btn-primary"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-            >
-              Add supplier
-            </button>
-          </div>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Add supplier
+          </button>
 
           <div
             class="modal fade"
