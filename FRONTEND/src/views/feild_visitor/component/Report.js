@@ -10,6 +10,7 @@ export default function Report({
   depature,
   problem,
   solution,
+  date,
 }) 
 // console.log(_id);
 {
@@ -59,6 +60,13 @@ export default function Report({
                 Departure Time :
               </label>
               <span className="text-sm">{depature}</span>
+              <label
+                className="block first-letter-uppercase text-lg font-semibold mb-1 rounde text-gray-400"
+                for="grid-last-name"
+              >
+                Date :
+              </label>
+              <span className="text-sm">{date}</span>
             </div>
           </div>
 

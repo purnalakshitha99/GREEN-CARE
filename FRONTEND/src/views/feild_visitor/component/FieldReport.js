@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 const FieldReport = () => {
   const navigate = useNavigate();
-  
 
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
@@ -58,28 +57,27 @@ const FieldReport = () => {
     data.set("date", date);
     data.set("problem", problem);
     data.set("solution", solution);
-console.log(files)
+    console.log(files);
     // data.set("id", id);
     if (files?.[0]) {
       data.set("file", files?.[0]);
     }
     const response = await fetch("http://localhost:3007/newpost", {
       method: "POST",
-      
+
       body: data,
     });
-    if(response.status ===400){
-     // toast.success("fiels are empty ");
-    }
-    else if (response.status===201) {
+    if (response.status === 400) {
+      // toast.success("fiels are empty ");
+    } else if (response.status === 201) {
       // toast.success("Resource update successfully");
       // setTimeout(() => {
       //   setRedirect(true);
       // }, 1000);
-    }else {
+    } else {
       //toast.error("Server error");
-    }
-  }
+    }
+  }
 
   return (
     <>
@@ -164,7 +162,6 @@ console.log(files)
                 }}
                 value={arrival}
               />
-            
             </div>
             <div class="w-full md:w-1/2 px-3">
               <label
@@ -185,22 +182,22 @@ console.log(files)
             </div>
           </div>
           <div class="w-full md:w-1/2 px-3">
-              <label
-                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                for="grid-last-name"
-              >
-                Date
-              </label>
-              <input
-                className="frmname appearance-none block w-full border-gray-300 border-2 rounded-xl py-3 px-4 mb-2 leading-tight "
-                id="grid-last-name"
-                type="date"
-                onChange={(e) => {
-                  setDate(e.target.value);
-                }}
-                value={date}
-              />
-            </div>
+            <label
+              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              for="grid-last-name"
+            >
+              Date
+            </label>
+            <input
+              className="frmname appearance-none block w-full border-gray-300 border-2 rounded-xl py-3 px-4 mb-2 leading-tight "
+              id="grid-last-name"
+              type="date"
+              onChange={(e) => {
+                setDate(e.target.value);
+              }}
+              value={date}
+            />
+          </div>
           <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
               <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">

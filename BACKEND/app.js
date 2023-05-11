@@ -10,11 +10,12 @@ const studentRouter = require("./Routes/student_routes");
 //stock manager routes
 const itemRouter = require("./Routes/item_routes");
 // farmer routes
-const farmerRouter = require('./Routes/farmer_routes');
+const farmerRouter = require("./Routes/farmer_routes");
 //field visitor route
-const fieldvisitor = require('./Routes/fieldvisitor_routes');
+const fieldvisitor = require("./Routes/fieldvisitor_routes");
 // create report route
-const reportcreate = require('./Routes/createreport_routes');
+const reportcreate = require("./Routes/createreport_routes");
+const damagereportcreate = require("./Routes/damagereport_route");
 //common routes
 
 //manager routes
@@ -27,6 +28,7 @@ const { default: newsRouter } = require("./Routes/news_routes"); // news routes 
 const AppError = require("./Utils/AppError");
 const HttpError = require("./Utils/http-error");
 const loginRoute = require("./Routes/login_routes");
+const damageReport = require("./Models/damagereport_model");
 
 app.use(
   cors({
@@ -46,44 +48,96 @@ app.use(`${base}/stock-manager`, itemRouter);
 app.use(`${base}/farmer`, farmerRouter);
 //consultant's appoinments
 app.use(`${base}/appointment`, appointmentRouter);
-app.use(`${base}/fieldvisitor`, fieldvisitor );
-app.use(`${base}/reportcreate`, reportcreate );
+app.use(`${base}/fieldvisitor`, fieldvisitor);
+app.use(`${base}/reportcreate`, reportcreate);
+app.use(`${base}/damagereportcreate`, damagereportcreate);
 
 app.use("/uploads", express.static(__dirname + "/uploads"));
+// app.use("/uploads2", express.static(__dirname + "/uploads2"));
 
+// app.post("/newpost2", async (req, res) => {
+//   // const { originalname, path } = req.file;
+//   // const parts = originalname.split(".");
+//   // const ext = parts[parts.length - 1];
+//   // const newPath = path + "." + ext;
+//   // fs.renameSync(path, newPath);
+//   console.log("hhh");
+//   const {
+//     firstname,
+//     lastname,
+//     email,
+//     arrival,
+//     depature,
+//     problem,
+//     solution,
+//     date,
+//   } = req.body;
 
+//   if (
+//     !firstname ||
+//     !lastname ||
+//     !email ||
+//     !arrival ||
+//     !depature ||
+//     !problem ||
+//     !solution ||
+//     !date
+//   ) {
+//     return res.status(400).json({ message: " fields are empty" });
+//   }
+//   const postDoc = await report.create({
+//     firstname,
+//     lastname,
+//     email,
+//     arrival,
+//     depature,
+//     date,
+//     problem,
+//     solution,
+//     cover: newPath,
+//   });
+//   res
+//     .status(201)
+//     .json({ message: "Resource created successfully", data: postDoc });
+// });
 
 app.post("/newpost", uploadMiddleware.single("file"), async (req, res) => {
+  console.log(req.body.d_departure);
   const { originalname, path } = req.file;
   const parts = originalname.split(".");
   const ext = parts[parts.length - 1];
   const newPath = path + "." + ext;
   fs.renameSync(path, newPath);
 
-  const { firstname, lastname, email, arrival, depature, problem, solution,date } =
-    req.body;
+  const {
+    fullname,
+    email,
+    phonenumber,
+    d_arrival,
+    d_departure,
+    date,
+    damagedetails,
+  } = req.body;
 
   if (
-    !firstname ||
-    !lastname ||
+    !fullname ||
+    !phonenumber ||
+    !d_arrival ||
+    !d_departure ||
     !email ||
-    !arrival ||
-    !depature ||
-    !problem ||
-    !solution||
-    !date
+    !date ||
+    !damagedetails
   ) {
-    return res.status(400).json({ message: " fields are empty" });
+    return res.status(400).json({ message: " fields are empty now" });
   }
-  const postDoc = await report.create({
-    firstname,
-    lastname,
+  const postDoc = await damageReport.create({
+    fullname,
     email,
-    arrival,
-    depature,
+    phonenumber,
+    d_arrival,
+    d_departure,
     date,
-    problem,
-    solution,
+    damagedetails,
     cover: newPath,
   });
   res

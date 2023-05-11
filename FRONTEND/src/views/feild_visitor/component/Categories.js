@@ -5,6 +5,7 @@ import { HiDocumentText } from "react-icons/hi";
 import { BsFillPersonVcardFill } from "react-icons/bs";
 import fieldinformation from "./InsertFarmerInformation"
 import fieldreport from "./FieldReport"
+import damagereport from "./DamageReport"
 import { Link } from "react-router-dom";
 function Categories() {
   return (
@@ -24,8 +25,10 @@ function Categories() {
           <h2 className="font-bold sm:text-xl ">Field Report</h2>
         </div>
         <div className="bg-gray-200/50 rounded-lg p-4 flex flex-col justify-between items-center hover:cursor-pointer hover:scale-105 shadow-lg">
+          <Link to='/damagereport'>
           <HiDocumentText size={80} className="" />
           <h2 className="font-bold sm:text-xl ">Damage Report</h2>
+          </Link>
         </div>
         
         <div className="bg-gray-200/50 rounded-lg p-4 flex flex-col justify-between items-center hover:cursor-pointer hover:scale-105 shadow-lg">
