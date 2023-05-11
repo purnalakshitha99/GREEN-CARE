@@ -85,13 +85,16 @@ const AnimalForm = () => {
 
   const validateForm = () => {
     let errors = {};
+    const nameRegex = /^[A-Za-z]+$/; // Regex to validate only letters
     const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     const phoneNumberRegex = /^\d{10}$/g;
-    const attachmentRegex = /\.(pdf|doc|docx)$/i;
-
+    const attachmentRegex =/\.(png)$/i; // Updated regex to accept .png files
     if (!formData.firstName.trim()) {
       errors.firstName = "First name is required";
+    } else if(!nameRegex.test(formData.firstName.trim())){
+      errors.firstName="Use letters only";
     }
+    
     if (!formData.lastName.trim()) {
       errors.lastName = "Last name is required";
     }
@@ -120,10 +123,10 @@ const AnimalForm = () => {
     if (
       formData.attachment.trim() &&
       !attachmentRegex.test(formData.attachment)
-    ) {
-      errors.attachment =
-        "Invalid file type (only PDF, DOC, and DOCX are allowed)";
-    }
+) {
+errors.attachment =
+"Invalid file type (only PNG files are allowed)";
+}
 
     return errors;
   };
@@ -219,19 +222,32 @@ const AnimalForm = () => {
             />
             {errors.weight && <span className="error">{errors.weight}</span>}
           </div>
-          <div className="form-group">
-            <label htmlFor="animalSpecies">Animal Species</label>
-            <input
-              type="text"
-              name="animalSpecies"
-              className="bordered"
-              value={formData.animalSpecies}
-              onChange={handleChange}
-            />
-            {errors.animalSpecies && (
-              <span className="error">{errors.animalSpecies}</span>
-            )}
-          </div>
+          
+<div className="form-group">
+  
+  <label htmlFor="animalSpecies">Animal Species</label>
+ 
+  <select
+    name="animalSpecies"
+    className="bordered"
+    value={formData.animalSpecies}
+    onChange={handleChange}
+  >
+    <option value="">Select an animal species</option>
+    <option value="cow">Cow</option>
+    <option value="sheep">Sheep</option>
+    <option value="goat">Goat</option>
+    <option value="chicken">Chicken</option>
+    <option value="pig">Pig</option>
+    <option value="horse">Horse</option>
+    <option value="rabbit">Rabbit</option>
+  </select>
+  
+  {errors.animalSpecies && (
+    <span className="error">{errors.animalSpecies}</span>
+  )}
+  
+</div>
           <div className="form-group">
             <label htmlFor="attachment">Attachment</label>
             <input type="file" name="attachment" onChange={handleChange} />

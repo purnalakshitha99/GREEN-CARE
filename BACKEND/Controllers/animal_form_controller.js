@@ -100,25 +100,6 @@ exports.doctorFormSubmit = async (req, res, next) => {
   }
 };
 
-exports.getRequestCount = async (req, res) => {
-  const category = req.params.category;
-  let count;
-  try {
-    if (category === "Total") {
-      count = await AnimalForm.countDocuments();
-    } else {
-      count = await AnimalForm.countDocuments({ status: category });
-    }
-    res.json({ success: true, count });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({
-      success: false,
-      error: "Server error",
-    });
-  }
-};
-
 exports.doctorFormDelete = async (req, res, next) => {
   try {
     let deleteDoctorForm = await AnimalForm.findByIdAndDelete(req.params.id);
