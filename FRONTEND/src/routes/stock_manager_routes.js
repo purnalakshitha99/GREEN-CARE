@@ -12,52 +12,51 @@ import ShowItems from "../views/stock_manager/stock/showOne";
 import CreateSupplier from "../views/stock_manager/stock/suppliers";
 import RetrieveSupplier from "../views/stock_manager/stock/retrieveSupplier";
 import ShowSupplier from "../views/stock_manager/stock/showOneSupplier";
+import SideNav from "../layouts/sideNav3.js";
 
 export default function stock_manager_routes() {
   return (
     <BrowserRouter>
-      <Sidebar>
-        <Routes>
-          <Route path="/" exact element={<DashBoard />} />
+      <Routes>
+        <Route path="/stock-manager" exact element={<SideNav />} />
 
-          <Route
-            path="/stock-manager/dashboard"
-            exact
-            element={<DashBoard />}
-          ></Route>
-          <Route
-            path="/stock-manager/create"
-            exact
-            element={<CreateStocks />}
-          ></Route>
-          <Route
-            path="/stock-manager/retrieve"
-            exact
-            element={<RetrieveStock />}
-          ></Route>
-          {/* <Route path="/suppliers" exact element={<Suppliers />}></Route> */}
-          <Route
-            path="/stock-manager/item/:id"
-            exact
-            element={<ShowItems />}
-          ></Route>
-          <Route
-            path="/stock-manager/supplier/:id"
-            exact
-            element={<ShowSupplier />}
-          ></Route>
-          <Route
-            path="/stock-manager/createSupplier"
-            exact
-            element={<CreateSupplier />}
-          ></Route>
-          <Route
-            path="/stock-manager/retrieveSupplier"
-            exact
-            element={<RetrieveSupplier />}
-          ></Route>
-        </Routes>
-      </Sidebar>
+        <Route
+          path="/stock-manager/dashboard"
+          exact
+          element={<DashBoard />}
+        ></Route>
+        <Route
+          path="/stock-manager/create"
+          exact
+          element={<CreateStocks />}
+        ></Route>
+        <Route
+          path="/stock-manager/retrieve"
+          exact
+          element={<RetrieveStock />}
+        ></Route>
+        {/* <Route path="/suppliers" exact element={<Suppliers />}></Route> */}
+        <Route
+          path="/stock-manager/item/:id"
+          exact
+          element={<ShowItems />}
+        ></Route>
+        <Route
+          path="/stock-manager/supplier/:id"
+          exact
+          element={<ShowSupplier />}
+        ></Route>
+        <Route
+          path="/stock-manager/createSupplier"
+          exact
+          element={<CreateSupplier />}
+        ></Route>
+        <Route
+          path="/stock-manager/retrieveSupplier"
+          exact
+          element={<RetrieveSupplier />}
+        ></Route>
+      </Routes>
     </BrowserRouter>
   );
 }

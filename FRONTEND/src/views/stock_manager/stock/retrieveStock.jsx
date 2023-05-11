@@ -124,7 +124,7 @@ export default function RetrieveStock() {
       .map((ticket, index) => {
         const ticketData = [
           index + 1,
-          // ticket.itemId,
+          ticket.itemId,
           ticket.name,
           ticket.description,
           ticket.price,
@@ -152,12 +152,10 @@ export default function RetrieveStock() {
   }
 
   return (
-    <div class="content">
-      <div class="d-flex justify-content-center"></div>
-
+    <div>
       <div hidden={tebleStatus}>
         {/* This part used to get all users data into table */}
-        <nav className="navbar bg-white">
+        <nav className="navbar bg-white" style={{ width: "80%" }}>
           <div className="container-fluid">
             <h3>VIEW-Stocks</h3>
             <button
@@ -197,6 +195,7 @@ export default function RetrieveStock() {
                 <th scope="col">mfd</th>
                 <th scope="col">category</th>
                 <th scope="col">Quantity (Kg)</th>
+                <th>Actions</th>
                 <th></th>
               </tr>
             </thead>
@@ -213,7 +212,12 @@ export default function RetrieveStock() {
                     {new Date(item.exp).getMonth()}/
                     {new Date(item.exp).getDate()}{" "}
                   </td>
-                  <td>{item.mfd}</td>
+                  <td>
+                    {" "}
+                    {new Date(item.mfd).getFullYear()}/
+                    {new Date(item.mfd).getMonth()}/
+                    {new Date(item.mfd).getDate()}{" "}
+                  </td>
                   <td>{item.category}</td>
                   <td>{item.quantity}</td>
 

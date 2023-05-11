@@ -110,10 +110,10 @@ export default function CreateStocks() {
   return (
     <div class="container-fluid">
       <div class="row flex-nowrap">
-        <div class="col py-5">
+        <div class="col ">
           <button
             type="button"
-            class="btn btn-primary"
+            class="btn btn-primary mb-4 mt-4"
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
@@ -128,7 +128,7 @@ export default function CreateStocks() {
             aria-hidden="true"
           >
             <div class="modal-dialog">
-              <div class="modal-content" style={{ width: 750 }}>
+              <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">
                     Add Items
@@ -358,10 +358,7 @@ export default function CreateStocks() {
               </div>
             </div>
           </div>
-          <div
-            class="shadow-lg p-1 mb-3 bg-body rounded"
-            style={{ width: "120%", alignItems: "center" }}
-          >
+          <div class="shadow-lg p-1 mb-3 bg-body rounded">
             <RetrieveStock />
           </div>
         </div>
