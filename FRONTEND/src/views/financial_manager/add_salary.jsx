@@ -10,9 +10,7 @@ const SalaryForm = () => {
 
   const navigate = useNavigate(); 
 
-  const handleGoToUpdate = ()=>{
-    navigate("/update_salary")
-  }
+
 
   const [formData, setFormData] = useState({
     employee_id: "",
@@ -121,9 +119,7 @@ const SalaryForm = () => {
       errors.employee_id = "Employee ID is required";
     }
   
-    if (!formData.month.trim()) {
-      errors.month = "Month is required";
-    }
+  
     if (!formData.firstName.trim()) {
       errors.firstName = "first name is required";
     }
@@ -140,6 +136,11 @@ const SalaryForm = () => {
     if (!formData.NIC.trim()) {
       errors.NIC = "NIC is required";
     }
+
+    if (!formData.month.trim()) {
+      errors.month = "Month is required";
+    }
+
     if (!formData.days_worked.trim()) {
       errors.days_worked = "Worked days is required";
    }
@@ -164,7 +165,7 @@ const SalaryForm = () => {
       errors.amount = "amount is required";
     } 
 
-  if(validateNIC(formData.NIC)){
+  if(!validateNIC(formData.NIC)){
     errors.NIC = "NIC is not valid"
   }
 
@@ -247,28 +248,7 @@ const SalaryForm = () => {
     />
     {errors.amount && <span className="error">{errors.amount}</span>}
   </div>
-{/* 
-<div class="form-group">
-  <label htmlFor="employee_type">Employee Type</label>
-    <select
-     name="position"
-     value={formData.position}
-     onChange={handleChange}
-                            >
-      <option value="">Select Employee Type</option>
-      <option value="manager">Manager</option>
-      <option value="consultant">Consutant</option>
-      <option value="field_visitor">Field Visitor</option>
-      <option value="trainee">Trainee</option>
 
-      </select>
-    {errors.position && (
-      <span className="error">{errors.position}</span>
-    )}
-  </div> */}
-
-
- 
   <label htmlFor="month">Month</label>
     <select
      name="month"
@@ -320,7 +300,6 @@ const SalaryForm = () => {
   <div className="form-actions">
     <button type="submit" onClick={handleSubmit}>Submit</button>
     <button type="button-clear" onClick={handleClear}>Clear</button>
-    <button type="button-clear" onClick={() => navigate('/update_salary')}>updtae page</button>
     <button type="button-details" onClick={() => navigate('/edit_salary')}>Go to Details</button>  
   </div>
 </form>

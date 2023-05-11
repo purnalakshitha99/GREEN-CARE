@@ -166,6 +166,8 @@ const EditSalary = () => {
                   <td>{salary.amount}</td>
                   <td>
                     <button type='delete' onClick={() => handleDelete(salary)}>Delete</button>
+                    <button type="view" onClick={() => navigate('/update_salary')}>view</button>
+
                   </td>
                 </>
               )}
