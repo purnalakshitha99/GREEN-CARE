@@ -139,6 +139,7 @@ errors.attachment =
           <b>Submit your Request</b>
         </h2>
         <form onSubmit={handleSubmit}>
+        <div className="form-containerform">
           <div className="form-group">
             <label htmlFor="firstName">First Name</label>
             <input
@@ -222,7 +223,14 @@ errors.attachment =
             />
             {errors.weight && <span className="error">{errors.weight}</span>}
           </div>
-          
+          <div className="form-group">
+            <label htmlFor="attachment">Attachment</label>
+            <input type="file" name="attachment" onChange={handleChange} />
+            {errors.attachment && (
+              <span className="error">{errors.attachment}</span>
+            )}
+          </div>
+
 <div className="form-group">
   
   <label htmlFor="animalSpecies">Animal Species</label>
@@ -248,12 +256,7 @@ errors.attachment =
   )}
   
 </div>
-          <div className="form-group">
-            <label htmlFor="attachment">Attachment</label>
-            <input type="file" name="attachment" onChange={handleChange} />
-            {errors.attachment && (
-              <span className="error">{errors.attachment}</span>
-            )}
+          
           </div>
           <div className="form-group">
             <label htmlFor="message">Message</label>
@@ -264,12 +267,14 @@ errors.attachment =
               onChange={handleChange}
             />
           </div>
+          
           <div className="form-actions">
             <button type="submit">Submit</button>
             <button type="button-clear" onClick={handleClear}>
               Clear
             </button>
           </div>
+          
         </form>
       </div>
     </section>

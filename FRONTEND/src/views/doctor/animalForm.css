@@ -1,10 +1,14 @@
 .form-container {
   max-width: 500px;
   margin: 60px auto;
-  padding: 30px 50px;
+  padding: 10px 10px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   
+}
+.form-containerform {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 h2 {
@@ -19,7 +23,15 @@ form {
 }
 
 .form-group {
-  margin-bottom: 20px;
+  flex-basis: 50%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .form-group {
+    flex-basis: 100%;
+  }
 }
 
 label {
