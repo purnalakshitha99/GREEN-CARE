@@ -51,21 +51,18 @@ const signup = async (req, res, next) => {
     return next(error);
   }
 
-  let token;
-  try {
-    token = jwt.sign(
-      { userId: createdUser.id, email: createdUser.email },
-      'issaraha_dhore_yathura_thiyenne_isuru_laga',
-      { expiresIn: '1h' }
-    );
-  } catch (err) {
-    return next(new HttpError('Signing up failed, please try again.', 500));
-  }
+  // let token;
+  // try {
+  //   token = jwt.sign(
+  //     { userId: createdUser.id, email: createdUser.email },
+  //     'issaraha_dhore_yathura_thiyenne_isuru_laga',
+  //     { expiresIn: '1h' }
+  //   );
+  // } catch (err) {
+  //   return next(new HttpError('Signing up failed, please try again.', 500));
+  // }
 
   res.status(201).json({
-    userId: createdUser.id,
-    email: createdUser.email,
-    token: token,
     message: 'success',
   });
 };

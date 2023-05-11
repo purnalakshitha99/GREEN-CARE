@@ -17,7 +17,7 @@ router.post(
   userController.signup
 );
 
-router.use(checkAuth); // if the user is not authenticated, the following routes will not be executed
+// router.use(checkAuth); // if the user is not authenticated, the following routes will not be executed
 
 router.get("/profile/:uid", userController.getUserById);
 

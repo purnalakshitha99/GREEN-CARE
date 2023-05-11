@@ -4,35 +4,41 @@ import NavBar from '../../layouts/navbar';
 import Swal from 'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
 
-const UserLogin = () => {
+const LoginUser = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  //const[animal, setAnimal] = useState("");
 
-
-  const farmerinformation = (e) => {
+  const loginInformation = (e) => {
     e.preventDefault();
-
+    alert("hi")
     const farmerdoc = {
       email: email,
       password: password,
       // animal: animal,
     };
-
+    alert("hi mama alert")
     axios
       .post('http://localhost:3007/api/v1/login', farmerdoc)
       .then((res) => {
         if (res.data.message === 'success') {
+          alert("hi mama success alert ek")
           Swal.fire('Good job!', 'You clicked the button!', 'success');
         } else {
+          alert("hi mama fail alert ek")
           console.log('error');
         }
       })
       .catch((error) => {
         try {
           console.log(error);
+          alert("hi mama try alert ek")
+
         } catch (error) {
+          alert("hi mama catch alert ek")
+
           console.log('error');
         }
       });
@@ -40,52 +46,68 @@ const UserLogin = () => {
 
   return (
     <>
-      <div>
-        <NavBar />
-      </div>
-      <div className=" bg-slate-300/40 flex justify-center w-[800px] ml-[280px] mt-[150px] shadow-md rounded-xl mb-[50px]">
-        {/* isuru */}
+      <div
+        class="mask d-flex align-items-center h-100 gradient-custom-3"
+        className="mainRegDiv"
+      >
+        <div class="container h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+              <div class="card" style={{ borderRadius: '15px' }}>
+                <div class="card-body p-5">
+                  <h2 class="text-uppercase text-center mb-5">
+                    Register With Your Details
+                  </h2>
 
-        <div className="  justify-center flex  p-4">
-          <form>
-            <h1 className="ml-[70px] mt- font-bold text-3xl">
-              Login with Credentials
-            </h1>
+                  <form>
 
-            <label>E-Mail</label>
-            <input
-              className="frmname border-2 border-gray-300 rounded-xl px-2 p-2 w-[500px] flex flex-col mb-2 shadow-md"
-              type="text"
-              placeholder="asf@gmail.com"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-            <label>Password</label>
-            <input
-              className="frmname border-2 border-gray-300 rounded-xl px-2 p-2 w-[500px] flex flex-col mb-2 shadow-md"
-              type="text"
-              placeholder="password"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-            <button
-              type="submit"
-              className="btn-primary shadow-md ml-[150px]"
-              onClick={farmerinformation}
-              // onClick={()=>navigate("/infotable")}
-            >
-              Login
-            </button>
-            <button type="submit" className="btn-primary2 shadow-md ml-10">
-              cancel
-            </button>
-          </form>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example3cg">
+                        Your Email
+                      </label>
+                      <input
+                        type="email"
+                        id="form3Example3cg"
+                        class="form-control form-control-lg"
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                        }}
+                      />
+                    </div>
+
+
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example4cg">
+                        Password
+                      </label>
+                      <input
+                        type="password"
+                        id="form3Example4cg"
+                        class="form-control form-control-lg"
+                        onChange={(e) => {
+                          setPassword(e.target.value);
+                        }}
+                      />
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                      <button
+                        type="button"
+                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                        onClick={loginInformation}
+                      >
+                        Login
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default UserLogin;
+export default LoginUser;
