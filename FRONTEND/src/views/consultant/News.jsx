@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import Modal from 'react-modal';
 import "../../assets/styles/styles.css"
+import { useEffect, useState, useRef } from "react";
 
 Modal.setAppElement('#root'); // This line is needed for accessibility reasons
 
@@ -13,6 +14,8 @@ const News = () => {
   const [updateNewsDescription, setUpdateNewsDescription] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
+  const [updateNewsImage, setUpdateNewsImage] = useState(null);
+  const fileInputRef = useRef(null);
 
   // Function to fetch news from the server
   const fetchNews = () => {
@@ -44,18 +47,22 @@ const News = () => {
       })
   }
   
-  const updateNews = (id, title, description) => {
+  const updateNews = (id, title, description, image) => {
     setUpdateNewsId(id);
     setUpdateNewsTitle(title);
     setUpdateNewsDescription(description);
+    setUpdateNewsImage(image);
     setModalIsOpen(true);
   }
-
   const saveUpdate = () => {
-    axios.put(`http://localhost:3007/api/v1/news/update/${updateNewsId}`, {
-      title: updateNewsTitle,
-      description: updateNewsDescription,
-    })
+    const formData = new FormData();
+    formData.append('title', updateNewsTitle);
+    formData.append('description', updateNewsDescription);
+    if (fileInputRef.current.files[0]) {
+      formData.append('image', fileInputRef.current.files[0]);
+    }
+
+    axios.put(`http://localhost:3007/api/v1/news/update/${updateNewsId}`, formData)
       .then((res) => {
         fetchNews();
       })
@@ -71,6 +78,7 @@ const News = () => {
   }
 
   return (
+    
     <div className="container m-5">
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         <h2>Update News</h2>
@@ -78,12 +86,20 @@ const News = () => {
         <input value={updateNewsDescription} onChange={(e) => setUpdateNewsDescription(e.target.value)} placeholder="Description" />
         <button onClick={saveUpdate}>Save</button>
       </Modal>
+      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+        <h2>Update News</h2>
+        <input value={updateNewsTitle} onChange={(e) => setUpdateNewsTitle(e.target.value)} placeholder="Title" />
+        <input value={updateNewsDescription} onChange={(e) => setUpdateNewsDescription(e.target.value)} placeholder="Description" />
+        <input type="file" ref={fileInputRef} />
+        <button onClick={saveUpdate}>Save</button>
+      </Modal>
       <div className="row">
         {news.length > 0 ? (
           news.map((article) => (
             <div className="col-md-3 my-3" key={article._id}>
               <div className="card">
-                <img src={article.image ? article.image  : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"} className="card-img-top" alt="..." />
+                <img src={article.image ? `http://localhost:3007/${article.image}` : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"} className="card-img-top" alt="..." />
+
                 <div className="card-body">
                   <h5 className="card-title">{article.title}</h5>
                   <p className="card-text">{article.description}</p>

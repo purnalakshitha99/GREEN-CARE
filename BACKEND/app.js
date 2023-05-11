@@ -46,6 +46,13 @@ app.use(`${base}/stock-manager`, itemRouter);
 app.use(`${base}/farmer`, farmerRouter);
 //consultant's appoinments
 app.use(`${base}/appointment`, appointmentRouter);
+
+app.use('/news_images', express.static('news_images'));
+
+
+
+
+
 app.use(`${base}/fieldvisitor`, fieldvisitor );
 app.use(`${base}/reportcreate`, reportcreate );
 
@@ -90,6 +97,7 @@ app.post("/newpost", uploadMiddleware.single("file"), async (req, res) => {
     .status(201)
     .json({ message: "Resource created successfully", data: postDoc });
 });
+
 
 //consulant's news
 app.use(`${base}/news`, newsRouter);

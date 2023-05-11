@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 //import User from "../Models/User"; // user import *****
 const catchAsync = require("../Utils/catchAsync");
 const AppError = require("../Utils/AppError");
+import multer from 'multer';
+
+
+
 
 export const getAllNews = async (req, res, next) => {
   try {
@@ -16,8 +20,10 @@ export const getAllNews = async (req, res, next) => {
     return res.status(500).json({ message: err.message });
   }
 };
-  export const addNews = async (req, res, next) => {
-    const { title, description, image } = req.body; 
+const upload = multer({ dest: 'news_images/' }); 
+
+export const addNews = async (req, res, next) => {
+  const { title, description } = req.body;
   //for user
     // let existingUser;
     // try {
@@ -32,9 +38,9 @@ export const getAllNews = async (req, res, next) => {
     const news = new News({
       title,
       description,
-      image,
-      
+      image: req.file.path,
     });
+    
     try {
       const session = await mongoose.startSession();
       session.startTransaction();
@@ -53,21 +59,34 @@ export const getAllNews = async (req, res, next) => {
   export const updateNews = async (req, res, next) => {
     const { title, description } = req.body;
     const newsId = req.params.id;
+    
+    // Assuming the image file is sent in the 'image' field of the request body
+    const imagePath = req.file ? req.file.path : null;
+  
+    let updateObject = {
+      title,
+      description,
+    };
+  
+    // Only add the image path to the update object if it was provided in the request
+    if (imagePath) {
+      updateObject.image = imagePath;
+    }
+  
     let news;
     try {
-      news = await News.findByIdAndUpdate(newsId, {
-        title,
-        description,
-      }, { new: true });
-      
+      news = await News.findByIdAndUpdate(newsId, updateObject, { new: true });
     } catch (err) {
       return console.log(err);
     }
+  
     if (!news) {
-      return res.status(500).json({ message: "Unable To Update The news" });
+      return res.status(404).json({ message: "News not found" });
     }
+  
     return res.status(200).json({ news });
   };
+  
   export const getById = async (req, res, next) => {
     const id = req.params.id;
     let news;

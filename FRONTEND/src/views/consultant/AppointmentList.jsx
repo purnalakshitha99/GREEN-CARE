@@ -227,8 +227,7 @@ tickets
                   <td className='col-3'>{item.description} </td>
                   <td>{moment(item.date).format("DD-MM-YYYY")} </td>
                   <td>{item.farmer_name} </td>
-                  <td className="col">{item.approvel? <FaCheckCircle className="icons" style={{color: 'green'}}/> : <FaTimesCircle className 
-                  ='icons' style ={{color:'red'}}/>} </td>
+                  <td className="col">{item.approvel? <FaCheckCircle className="icons" style={{color: 'green'}}/> : <FaTimesCircle className ='icons' style ={{color:'red'}}/>} </td>
                   <td>{item.reply} </td>
                   
                  
