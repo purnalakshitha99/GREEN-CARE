@@ -55,10 +55,11 @@ export const getAllNews = async (req, res, next) => {
     const newsId = req.params.id;
     let news;
     try {
-      news = await news.findByIdAndUpdate(newsId, {
+      news = await News.findByIdAndUpdate(newsId, {
         title,
         description,
-      });
+      }, { new: true });
+      
     } catch (err) {
       return console.log(err);
     }
@@ -83,20 +84,21 @@ export const getAllNews = async (req, res, next) => {
   
   export const deleteNews = async (req, res, next) => {
     const id = req.params.id;
-  
     let news;
+  
     try {
-      news = await news.findByIdAndRemove(id).populate("user");
-      await news.user.news.pull(news);
-      await news.user.save();
+      news = await News.findByIdAndRemove(id);
+      if (!news) {
+        return res.status(404).json({ message: "No News Found!!" });
+      }
+  
+      return res.status(200).json({ message: "Successfully Deleted" });
     } catch (err) {
       console.log(err);
-    }
-    if (!news) {
       return res.status(500).json({ message: "Unable To Delete" });
     }
-    return res.status(200).json({ message: "Successfully Delete" });
   };
+  
   
   export const getByUserId = async (req, res, next) => {
     const userId = req.params.id;
@@ -111,4 +113,3 @@ export const getAllNews = async (req, res, next) => {
     }
     return res.status(200).json({ news: userNews });
   };
-  

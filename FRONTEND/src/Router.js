@@ -7,7 +7,11 @@ import Fieldvisitor_routes from "./routes/fieldvisitor_routes";
 export default function Router() {
   return (
     <div>
+
       {/* <Stock_manager_routes /> */}
+
+      <Stock_manager_routes />
+
       <Consultant_routes />
       <Fieldvisitor_routes />
 

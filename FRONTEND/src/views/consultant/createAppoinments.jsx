@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; //this farmer view
 import { useState, useEffect } from "react";
 import SoloAlert from "soloalert";
 // import Side_nav from "../../layouts/side_nav.jsx";
@@ -83,17 +83,21 @@ export default function CreateAppoinment() {
   function clear() {}
 
   return (
-    <div class="container-fluid">
+    <div>
       <div class="row flex-nowrap">
         <div class="col py-5">
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
+        <div class="container1 d-flex justify-content-center text-center">
+        <button
+  type="button"
+  class="btn btn-primary custom-btn1"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+  style={{ backgroundColor: "#15a891" }}
+>
+            
             New Appointments
           </button>
+          </div>
 
           <div
             class="modal fade"
@@ -102,7 +106,7 @@ export default function CreateAppoinment() {
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog">
+            <div class="modal-dialog" >
               <div class="modal-content" style={{ width: 750 }}>
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">
@@ -159,13 +163,6 @@ export default function CreateAppoinment() {
                       </div>
                     </div>
 
-                    {/* <div class="row mb-3">
-                            <label for="appointmentReply" class="col-sm-2 col-form-label">Reply</label>
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" id="appointmentReply" required onChange={(e) => {setReply(e.target.value)}} />
-                            </div>
-                          </div> */}
-
                     <div class="row mb-3">
                       <label
                         for="appointmentDate"
@@ -185,13 +182,6 @@ export default function CreateAppoinment() {
                         />
                       </div>
                     </div>
-
-                    {/* <div class="row mb-3">
-                            <label for="appointmentApprovel" class="col-sm-2 col-form-label">Approval</label>
-                            <div class="col-sm-6">
-                              <input type="checkbox" class="form-check-input" id="appointmentApprovel" onChange={(e) => {setApprovel(e.target.checked)}} />
-                            </div>
-                          </div> */}
 
                     <div class="row mb-3">
                       <label for="farmerName" class="col-sm-2 col-form-label">
@@ -238,42 +228,7 @@ export default function CreateAppoinment() {
               </div>
             </div>
           </div>
-          {/* <div
-            class="shadow-lg p-1 mb-2 bg-body rounded"
-            style={{ width: "70%", alignItems: "center" }}
-          >
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>@ee</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-            </table>
-          </div> */}
+          
         </div>
       </div>
     </div>
