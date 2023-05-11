@@ -16,7 +16,7 @@ const newsRouter = express.Router();
 
 newsRouter.get("/", getAllNews);
 newsRouter.post("/add", upload.single('image'), addNews); // edited for image upload
-newsRouter.put("/update/:id", updateNews);
+newsRouter.put('/update/:id', upload.single('image'), updateNews);
 newsRouter.get("/:id", getById);
 newsRouter.delete("/:id", deleteNews);
 newsRouter.get("/user/:id", getByUserId); // getting news from the user

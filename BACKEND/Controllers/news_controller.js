@@ -59,7 +59,7 @@ export const addNews = async (req, res, next) => {
   export const updateNews = async (req, res, next) => {
     const { title, description } = req.body;
     const newsId = req.params.id;
-  
+    
     // Assuming the image file is sent in the 'image' field of the request body
     const imagePath = req.file ? req.file.path : null;
   
