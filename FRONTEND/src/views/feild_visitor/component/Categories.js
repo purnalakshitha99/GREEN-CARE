@@ -3,38 +3,61 @@ import { TbReportMoney } from "react-icons/tb";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import { HiDocumentText } from "react-icons/hi";
 import { BsFillPersonVcardFill } from "react-icons/bs";
-import fieldinformation from "./InsertFarmerInformation"
-import fieldreport from "./FieldReport"
-import damagereport from "./DamageReport"
+import fieldinformation from "./InsertFarmerInformation";
+import fieldreport from "./FieldReport";
+import damagereport from "./DamageReport";
 import { Link } from "react-router-dom";
 function Categories() {
   return (
-    <div className="max-w-[1500px] m-auto px-6 py-12">
+    <div className=" con1 container ms-5 d-flex justify-content-center align-items-center ">
       {/* categories */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-6 ">
-      <div className="bg-gray-200/50 rounded-lg p-4 flex flex-col justify-between items-center hover:cursor-pointer hover:scale-105 shadow-lg">
-          
-          <Link to="/fieldinformation"><BsFillPersonVcardFill  size={80} className="" /></Link>
-          <h2 className="font-bold sm:text-xl ">farmer information</h2>
+      <div className="row">
+        <div className="col">
+          <div class="out " >
+            <Link to="/fieldinformation">
+              <BsFillPersonVcardFill
+                size={100}
+                className="icon"
+              />
+            </Link>
+            <div class="text">
+              <h3 className="">farmer information</h3>
+            </div>
+          </div>
         </div>
 
-        <div className="bg-gray-200/50 rounded-lg p-4 flex flex-col justify-between items-center hover:cursor-pointer hover:scale-105 shadow-lg">
+        <div className="col">
+          <div class="out " >
           <Link to="/fieldreport">
-          <HiOutlineClipboardDocumentList size={80} className="" />
+            <HiOutlineClipboardDocumentList size={100} className="icon" />
           </Link>
-          <h2 className="font-bold sm:text-xl ">Field Report</h2>
+            <div class="text">
+              <h3 className="">Field Report</h3>
+            </div>
+          </div>
         </div>
-        <div className="bg-gray-200/50 rounded-lg p-4 flex flex-col justify-between items-center hover:cursor-pointer hover:scale-105 shadow-lg">
-          <Link to='/damagereport'>
-          <HiDocumentText size={80} className="" />
-          <h2 className="font-bold sm:text-xl ">Damage Report</h2>
+        <div className="col">
+          <div class="out " >
+          <Link to="/damagereport">
+          <HiDocumentText size={100} className="icon" />
           </Link>
+            <div class="text">
+              <h3 className="">damage Report</h3>
+            </div>
+          </div>
+        </div>
+
+        <div className="col">
+          <div class="out " >
+          <Link >
+          <TbReportMoney size={100} className="icon" />
+          </Link>
+            <div class="text">
+              <h3 className="">Bill Genarate</h3>
+            </div>
+          </div>
         </div>
         
-        <div className="bg-gray-200/50 rounded-lg p-4 flex flex-col justify-between items-center hover:cursor-pointer hover:scale-105 shadow-lg">
-          <TbReportMoney size={80} className="" />
-          <h2 className="font-bold sm:text-xl ">Bill Genarate</h2>
-        </div>
       </div>
     </div>
   );
