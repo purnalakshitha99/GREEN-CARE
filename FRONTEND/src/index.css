@@ -1,41 +1,63 @@
-.div2{
-    border-radius: 20px;
-    box-shadow: 3px 3px 3px 3px rgb(0, 0, 0,0.2);
-    
+.div2 {
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px 3px rgb(0, 0, 0, 0.2);
 }
-.btn1{
-    background: green;
-    height: 40px;
-    width: 150px;
-    border-radius: 15px;
-    border: none;
-}
-
-.btn2{
-    background: red;
-    height: 40px;
-    width: 150px;
-    border-radius: 15px;
-    border: none;
-}
-.text{
-    justify-content: center;
-    text-align: center;
-}
-.out{
-    border-color: black;
-    background: lightgray;
-    border-radius: 10px;
-    padding: 20px;
-    height: 220px;
-    width: 250px;
-}
-.con1{
-    margin-top: 100px;
-    margin-bottom: 50px;
+.btn1 {
+  background: green;
+  height: 40px;
+  width: 150px;
+  border-radius: 15px;
+  border: none;
+  margin-right: 60px;
 }
 
-.icon{
-    
-    margin-left: 50px;
+.btn2 {
+  background: red;
+  height: 40px;
+  width: 150px;
+  border-radius: 15px;
+  border: none;
+}
+.btn3 {
+  background: green;
+  height: 40px;
+  width: 100px;
+  border-radius: 15px;
+  border: none;
+}
+.tableDiv {
+  width: 1200px;
+  margin-left: 100px;
+  margin-top: 100px;
+}
+
+.btn4 {
+  background: red;
+  height: 40px;
+  width: 100px;
+  border-radius: 15px;
+  border: none;
+}
+.text {
+  justify-content: center;
+  text-align: center;
+}
+.out {
+  border-color: black;
+  background: lightgray;
+  border-radius: 10px;
+  padding: 20px;
+  height: 220px;
+  width: 250px;
+}
+.con1 {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.icon {
+  margin-left: 50px;
+}
+.image {
+  object-fit: contain;
 }

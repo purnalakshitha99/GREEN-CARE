@@ -13,7 +13,7 @@ function Categories() {
       {/* categories */}
       <div className="row">
         <div className="col">
-          <div class="out " >
+          <div class="out"  >
             <Link to="/fieldinformation">
               <BsFillPersonVcardFill
                 size={100}

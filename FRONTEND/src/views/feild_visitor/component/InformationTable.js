@@ -11,10 +11,9 @@ const InformationTable = (props) => {
   const [Id, setId] = useState("");
   const [edit, setEdit] = useState(false);
   const [data, setData] = useState({});
-// pop up information
-  const[popreport, setpopreport] = useState(false);
-  const handleClose = ()=> setpopreport(false)
-
+  // pop up information
+  const [popreport, setpopreport] = useState(false);
+  const handleClose = () => setpopreport(false);
 
   useEffect(() => {
     axios
@@ -53,7 +52,9 @@ const InformationTable = (props) => {
   return (
     <>
       <NavBar />
-      <div className="mt-[100px] font-bold text-2xl justify-center flex">Farmer Details</div>
+      <div className="mt-[100px] font-bold text-2xl justify-center flex">
+        Farmer Details
+      </div>
       {edit ? (
         <EditCusInformation
           onClick={() => setEdit(false)}
@@ -61,46 +62,37 @@ const InformationTable = (props) => {
           formData={data}
         />
       ) : (
-        <div >
-          <table>
-            <thead className="font-semibold text-left ">
-              <tr >
-                <td>Age</td>
+        <div className="tableDiv">
+          <table className="table table-success table-striped">
+            <thead className="fw-bold">
+              <tr>
                 <td>Name</td>
+                <td>Age</td>
                 <td>e-mail</td>
                 <td>Phone Number</td>
                 <td>Area of Field</td>
                 <td>address</td>
-                <td>Report</td>
                 <td>edit</td>
                 <td>delete</td>
               </tr>
             </thead>
             <tbody>
               {farmers.map((row, index) => (
-                <tr key={index} >
-                  <td > {row.name}</td>
+                <tr key={index}>
+                  <td> {row.name}</td>
                   <td> {row.age}</td>
                   <td>{row.email}</td>
                   <td>{row.phonenumber}</td>
                   <td>{row.Areaoffield}</td>
                   <td>{row.address}</td>
-                  <td>
-                    <Link
-                    className="text-left"
-                    onClick={(e) => {
-                      setpopreport(e, row);
-                    }}
-                   // onClick={()=> setpopreport(true)}
-                    >Report</Link>
-                  </td>
+
                   <td>
                     <button
                       value={row._id}
                       onClick={(e) => {
                         editData(e, row);
                       }}
-                      className="btn-primary"
+                      className="btn3"
                     >
                       edit
                     </button>
@@ -109,7 +101,7 @@ const InformationTable = (props) => {
                     <button
                       value={row._id}
                       onClick={deleteData}
-                      className="btn-primary2 "
+                      className="btn4 "
                     >
                       delete
                     </button>
@@ -121,7 +113,7 @@ const InformationTable = (props) => {
           {/* <Link to="/fieldinformation">click</Link> */}
         </div>
       )}
-      < PopupReport onClose={handleClose} visivle={popreport} />
+      <PopupReport onClose={handleClose} visivle={popreport} />
     </>
   );
 };

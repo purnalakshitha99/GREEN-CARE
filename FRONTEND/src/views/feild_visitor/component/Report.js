@@ -11,68 +11,60 @@ export default function Report({
   problem,
   solution,
   date,
-}) 
-// console.log(_id);
-{
+}) {
+  // console.log(_id);
   const navigate = useNavigate();
   return (
     <>
-      <div className="bg-slate-100/50 pb-4 md:m-5 md:flex md:ml-[300px] shadow-lg md:w-[800px] ">
-        <form className=" mt-5 md:w-full md:px-10 md:m-10">
-          <div className="grid grid-cols-2 justify-center md:flex ">
-            <div className="px-3 mb-6 md:mb-0">
-              <label
-                className="block md:w-[300px] first-letter-uppercase text-lg font-semibold mb-1 text-gray-400"
-                for="grid-first-name"
-              >
-                First Name :
+      {/* BOOSTRAP form */}
+
+      <div className="form  d-flex justify-content-center align-items-center bg-white mb-5">
+        <div className="div2 w-50 border p-5">
+          <form className="">
+            {/* Boostrap css */}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">
+                First Name
               </label>
               <span className="text-sm">{firstname}</span>
-
-              <label
-                className="block first-letter-uppercase text-lg font-semibold mb-1 rounde text-gray-400"
-                for="grid-last-name"
-              >
-                Last Name :
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">
+                Last Name
               </label>
               <span className="text-sm">{lastname}</span>
-              <label
-                className="block  first-letter-uppercase text-lg font-semibold mb-1 text-gray-400"
-                for="grid-first-name"
-              >
-                E-mail Address:
+            </div>
+            <div class="mb-3 ">
+              <label for="exampleInputEmail1" class="form-label">
+                Email address
               </label>
               <span className="text-sm">{email}</span>
+              <div id="emailHelp" class="form-text">
+                We'll never share your email with anyone else.
+              </div>
             </div>
 
-            <div className="w-full px-3 ">
-              <label
-                className="block first-letter-uppercase text-lg font-semibold mb-1 rounde text-gray-400"
-                for="grid-last-name"
-              >
-                Arrival Time :
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">
+                Arival time
               </label>
               <span className="text-sm">{arrival}</span>
-              <label
-                className="block first-letter-uppercase text-lg font-semibold mb-1 rounde text-gray-400"
-                for="grid-last-name"
-              >
-                Departure Time :
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">
+                Departure time
               </label>
               <span className="text-sm">{depature}</span>
-              <label
-                className="block first-letter-uppercase text-lg font-semibold mb-1 rounde text-gray-400"
-                for="grid-last-name"
-              >
-                Date :
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">
+                Date
               </label>
               <span className="text-sm">{date}</span>
             </div>
-          </div>
 
-          <div className=" pb-3">
-            <div className="w-full px-3">
-              <label className="block  first-letter-uppercase text-lg font-semibold mb-1 text-gray-400">
+            <div class="mb-5">
+              <label for="exampleInputEmail1" class="form-label">
                 Problem
               </label>
               <textarea
@@ -80,8 +72,10 @@ export default function Report({
                 type="text"
                 value={problem}
               />
+            </div>
 
-              <label className="block uppercase tracking-wide  text-gray-400 font-bold mb-2">
+            <div class="mb-5">
+              <label for="exampleInputEmail1" class="form-label">
                 Solution
               </label>
               <textarea
@@ -90,19 +84,23 @@ export default function Report({
                 value={solution}
               />
             </div>
-          </div>
-          <div className="flex justify-center ">
-            <Link to={"/editreport/"+_id}
-              className="btn-primary px-5 m-3"
-              // onClick={()=>navigate("/editreport")}
-              // onClick={() => navigate("/editreport/"+_id)}
-            >
-              Edit
-            </Link>
-            <button className="btn-primary2 m-3 px-5">Delete</button>
-          </div>
-        </form>
+
+            <div class="d-flex justify-content-center mb-5">
+              <Link to={"/editreport/" + _id}>
+                <button type="submit" class="btn1 btn-success px-5 ">
+                  Edit
+                </button>
+              </Link>
+              <Link to={"/visitorhome"}>
+                <button type="cancel" class="btn2 btn-danger ms-5 px-5 ">
+                  cancel
+                </button>
+              </Link>
+            </div>
+          </form>
+        </div>
       </div>
+      {/* boostrap for end */}
     </>
   );
 }
