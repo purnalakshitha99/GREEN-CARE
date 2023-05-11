@@ -45,7 +45,7 @@ export default function ShowSupplier() {
           if (result.isConfirmed) {
             Swal.fire("Saved!", "", "success");
             console.log("awaa");
-            navigate("/retrieve");
+            navigate("/stock-manager/retrieve");
           } else if (result.isDenied) {
             Swal.fire("Changes are not saved", "", "info");
           }

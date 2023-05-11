@@ -64,7 +64,7 @@ export default function RetrieveSupplier() {
               theme: "dark",
               useTransparency: true,
               onOk: function () {
-                window.location = "/create";
+                window.location = "/stock-manager/create";
               },
             });
           }
@@ -193,7 +193,7 @@ export default function RetrieveSupplier() {
 
                   <td>
                     <Link
-                      to={`/supplier/${item._id}`}
+                      to={`/stock-manager/supplier/${item._id}`}
                       className="btn btn-primary"
                     >
                       Update

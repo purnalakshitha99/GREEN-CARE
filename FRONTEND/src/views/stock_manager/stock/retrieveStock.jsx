@@ -65,7 +65,7 @@ export default function RetrieveStock() {
               theme: "dark",
               useTransparency: true,
               onOk: function () {
-                window.location = "/create";
+                window.location = "/stock-manager/create";
               },
             });
           }
@@ -128,7 +128,11 @@ export default function RetrieveStock() {
           ticket.name,
           ticket.description,
           ticket.price,
-          ticket.exp,
+          new Date(ticket.exp).getFullYear() +
+            "/" +
+            new Date(ticket.exp).getMonth() +
+            "/" +
+            new Date(ticket.exp).getDate(),
           ticket.mfd,
           ticket.category,
           ticket.quantity,
@@ -203,13 +207,21 @@ export default function RetrieveStock() {
                   <td>{item.name}</td>
                   <td> {item.description} </td>
                   <td>{item.price}</td>
-                  <td> {item.exp} </td>
+                  <td>
+                    {" "}
+                    {new Date(item.exp).getFullYear()}/
+                    {new Date(item.exp).getMonth()}/
+                    {new Date(item.exp).getDate()}{" "}
+                  </td>
                   <td>{item.mfd}</td>
                   <td>{item.category}</td>
                   <td>{item.quantity}</td>
 
                   <td>
-                    <Link to={`/item/${item._id}`} className="btn btn-primary">
+                    <Link
+                      to={`/stock-manager/item/${item._id}`}
+                      className="btn btn-primary"
+                    >
                       Update
                     </Link>{" "}
                   </td>
