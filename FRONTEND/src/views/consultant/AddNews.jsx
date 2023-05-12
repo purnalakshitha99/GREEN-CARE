@@ -37,8 +37,8 @@ const AddNews = () => {
 
     if (!description || description === "") {
       newErrors.description = "Description cannot be blank";
-    } else if (description.length > 300) {
-      newErrors.description = "Description must be maximum 300 characters!";
+    } else if (description.length > 2000) {
+      newErrors.description = "Description must be maximum 2000 characters!";
     }
 
     if (!image || image === "") {

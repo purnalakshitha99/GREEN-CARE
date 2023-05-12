@@ -71,13 +71,53 @@ const News = () => {
   }
 
   return (
+    
     <div className="container mt-5">
-      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-        <h2>Update News</h2>
-        <input value={updateNewsTitle} onChange={(e) => setUpdateNewsTitle(e.target.value)} placeholder="Title" />
-        <input value={updateNewsDescription} onChange={(e) => setUpdateNewsDescription(e.target.value)} placeholder="Description" />
-        <button onClick={saveUpdate}>Save</button>
-      </Modal>
+      <h1 style={{ color: '#06b093' , fontSize: '3em' }}>News and Notices</h1>
+
+      <Modal 
+  isOpen={modalIsOpen} 
+  onRequestClose={() => setModalIsOpen(false)}
+  style={{
+    overlay: {
+      backgroundColor: 'rgba(0, 0, 0, 0.75)'
+    },
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      backgroundColor: '#fff',
+      border: '1px solid #ccc',
+      borderRadius: '4px',
+      padding: '20px'
+    }
+  }}
+>
+  <h2 style={{color: '#06b093'}}>Update News</h2>
+  <input 
+    style={{width: '100%', padding: '10px', marginBottom: '10px'}} 
+    value={updateNewsTitle} 
+    onChange={(e) => setUpdateNewsTitle(e.target.value)} 
+    placeholder="Title" 
+  />
+  <textarea 
+  style={{width: '100%', padding: '10px', marginBottom: '10px' , height: '100px'}} 
+  value={updateNewsDescription} 
+  onChange={(e) => setUpdateNewsDescription(e.target.value)} 
+  placeholder="Description" 
+/>
+
+  <button 
+    style={{padding: '10px 20px', backgroundColor: '#06b093', border: 'none', color: '#fff', cursor: 'pointer'}} 
+    onClick={saveUpdate}
+  >
+    Save
+  </button>
+</Modal>
+
       <div className="row">
         {news.length > 0 ? (
           news.map((article) => (

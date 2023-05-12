@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from './gc_logo.jpeg'; // Replace 'logo.jpg' with your actual image file name
+import logo from './gcl2.png'; // Replace 'logo.jpg' with your actual image file name
 
 
 function NavigationBar() {
