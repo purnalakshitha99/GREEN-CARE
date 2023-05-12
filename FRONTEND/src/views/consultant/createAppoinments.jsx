@@ -3,82 +3,76 @@ import { useState, useEffect } from "react";
 import SoloAlert from "soloalert";
 // import Side_nav from "../../layouts/side_nav.jsx";
 import axios from "axios";
+import Form from "react-bootstrap/Form";
 
 export default function CreateAppoinment() {
   const [isLoading, setLoading] = useState(false);
+  const [form, setForm] = useState({});
+  const [errors, setErrors] = useState({});
 
-  const [topic, setTopic] = useState("");
-  const [description, setDescription] = useState("");
-  const [reply, setReply] = useState("");
-  const [date, setDate] = useState("");
-  const [approvel, setApprovel] = useState("");
+  const setField = (field, value) => {
+    setForm({
+      ...form,
+      [field]: value,
+    });
+    // Check and see if errors exist, and remove them from the error object:
+    if (!!errors[field])
+      setErrors({
+        ...errors,
+        [field]: null,
+      });
+  };
 
-  const [farmer_name, setFname] = useState("");
+  const findFormErrors = () => {
+    const { topic, description, date, farmer_name } = form;
+    const newErrors = {};
+    // Topic errors
+    if (!topic || topic === "") newErrors.topic = "topic cannot be blank!";
+    else if (topic.length > 30) newErrors.topic = "topic is too long!";
+    // Description errors
+    if (!description || description === "")
+      newErrors.description = "description cannot be blank";
+    else if (description.length > 300)
+      newErrors.description = "description is too long!";
 
+    // Farmer Name errors
+    if (!farmer_name || farmer_name === "")
+      newErrors.farmer_name = "cannot be blank!";
+    else if (farmer_name.length > 100)
+      newErrors.farmer_name = "comment is too long!";
 
-  async function submitData(e) {
-    alert("insert data");
-    setLoading(true);
-    try {
-      e.preventDefault();
-      const newDetails1 = {
-        topic,
-        description,
-        reply,
-        date,
-        approvel,
-        farmer_name,
-      };
-      console.log(newDetails1);
-      if (
-        !topic ||
-        !description ||
-        // !reply ||
-        !date ||
-        // !approvel ||
-        !farmer_name
-      ) {
+    return newErrors;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // get our new errors
+    const newErrors = findFormErrors();
+    // Conditional logic:
+    if (Object.keys(newErrors).length > 0) {
+      // We got errors!
+      setErrors(newErrors);
+    } else {
+      // No errors!
+      const data = (
+        await axios.post(
+          "http://localhost:3007/api/v1/appointment/appointment/",
+          form
+        )
+      ).status;
+      console.log(data);
+      if (data === 201) {
         SoloAlert.alert({
-          title: "Oops!",
-          body: "Please fill all fields",
-          icon: "warning",
+          title: "Success!",
+          body: "Appointment added successfully",
+          icon: "success",
           theme: "dark",
           useTransparency: true,
           onOk: function () {},
         });
-      } else {
-        const newDetails = {
-          topic,
-          description,
-          reply: "None",
-          date,
-          approvel: false,
-          farmer_name,
-        };
-        console.log(newDetails);
-        const data = await (
-          await axios.post(
-            "http://localhost:3007/api/v1/appointment/appointment/",
-            newDetails
-          )
-        ).status;
-        console.log(data);
-        if (data === 201) {
-          SoloAlert.alert({
-            title: "Welcome!",
-            body: "Data added successfully",
-            icon: "success",
-            theme: "dark",
-            useTransparency: true,
-            onOk: function () {},
-          });
-        }
       }
-    } catch (err) {
-      console.log(err);
     }
-    setLoading(false);
-  }
+  };
 
   function clear() {}
 
@@ -86,17 +80,16 @@ export default function CreateAppoinment() {
     <div>
       <div class="row flex-nowrap">
         <div class="col py-5">
-        <div class="container1 d-flex justify-content-center text-center">
-        <button
-  type="button"
-  class="btn btn-primary custom-btn1"
-  data-bs-toggle="modal"
-  data-bs-target="#exampleModal"
-  style={{ backgroundColor: "#15a891" }}
->
-            
-            New Appointments
-          </button>
+          <div class="container d-flex justify-content-center text-center">
+            <button
+              type="button"
+              class="btn btn-primary custom-btn1"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              style={{ backgroundColor: "#15a891" }}
+            >
+              Add Appointment
+            </button>
           </div>
 
           <div
@@ -106,7 +99,7 @@ export default function CreateAppoinment() {
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog" >
+            <div class="modal-dialog">
               <div class="modal-content" style={{ width: 750 }}>
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">
@@ -127,10 +120,18 @@ export default function CreateAppoinment() {
                         for="appointmentTopic"
                         class="col-sm-2 col-form-label"
                       >
-                        Topic
+                        Topic *
                       </label>
                       <div class="col-sm-6">
-                        <input
+                        <Form.Control
+                          type="text"
+                          onChange={(e) => setField("topic", e.target.value)}
+                          isInvalid={!!errors.topic}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.topic}
+                        </Form.Control.Feedback>
+                        {/* <input
                           type="text"
                           class="form-control"
                           id="appointmentTopic"
@@ -138,7 +139,7 @@ export default function CreateAppoinment() {
                           onChange={(e) => {
                             setTopic(e.target.value);
                           }}
-                        />
+                        /> */}
                       </div>
                     </div>
 
@@ -147,19 +148,21 @@ export default function CreateAppoinment() {
                         for="appointmentDescription"
                         class="col-sm-2 col-form-label"
                       >
-                        Description
+                        Description *
                       </label>
                       <div class="col-sm-6">
-                        <input
+                        <Form.Control
                           type="text"
-                          class="form-control"
-                          id="appointmentDescription"
-                          style={{ height: 60 }}
-                          required
-                          onChange={(e) => {
-                            setDescription(e.target.value);
-                          }}
+                          as="textarea"
+                          rows={3}
+                          onChange={(e) =>
+                            setField("description", e.target.value)
+                          }
+                          isInvalid={!!errors.description}
                         />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.description}
+                        </Form.Control.Feedback>
                       </div>
                     </div>
 
@@ -175,9 +178,11 @@ export default function CreateAppoinment() {
                           type="date"
                           class="form-control"
                           id="appointmentDate"
+                          defaultValue={new Date().toISOString().substr(0, 10)}
+                          min={new Date().toISOString().substr(0, 10)}
                           required
                           onChange={(e) => {
-                            setDate(e.target.value);
+                            setField("date", e.target.value);
                           }}
                         />
                       </div>
@@ -185,37 +190,38 @@ export default function CreateAppoinment() {
 
                     <div class="row mb-3">
                       <label for="farmerName" class="col-sm-2 col-form-label">
-                        Farmer Name
+                        Farmer Name *
                       </label>
                       <div class="col-sm-6">
-                        <input
+                        <Form.Control
                           type="text"
-                          class="form-control"
-                          id="farmerName"
-                          required
-                          onChange={(e) => {
-                            setFname(e.target.value);
-                          }}
+                          onChange={(e) =>
+                            setField("farmer_name", e.target.value)
+                          }
+                          isInvalid={!!errors.farmer_name}
                         />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.farmer_name}
+                        </Form.Control.Feedback>
                       </div>
                     </div>
 
                     <div class="modal-footer">
                       <button
                         type="button"
-                        class="btn btn-secondary"
+                        class="btn btn-danger"
                         data-bs-dismiss="modal"
                         onClick={(e) => {
                           clear(e);
                         }}
                       >
-                        Close
+                        Cancel
                       </button>
                       <button
                         type="button"
-                        class="btn btn-primary"
+                        class="btn btn-success"
                         onClick={(e) => {
-                          submitData(e);
+                          handleSubmit(e);
                         }}
                         disabled={isLoading}
                       >
@@ -228,7 +234,6 @@ export default function CreateAppoinment() {
               </div>
             </div>
           </div>
-          
         </div>
       </div>
     </div>

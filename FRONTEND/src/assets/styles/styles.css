@@ -1,53 +1,57 @@
 /* Consultant CSS Starts */
 .icons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }
 /* Consultant CSS Ends */
 
 /* NEWS SECTIONS STARTS */
 .card-read-more {
-    text-decoration: none;
-    text-align: right;
-    display: block;
-    cursor: pointer;
-     
+  text-decoration: none;
+  text-align: right;
+  display: block;
+  cursor: pointer;
+   
 }
 .card-span {color: black;}
 .card-span:hover {
 color: #15A891;
- 
+
 }
 
 .custom-btn {
-    color: white;
-    background-color: #15A891;
-  }
-  
-  .custom-btn:focus,
-  .custom-btn:active {
-    color: white;
-    background-color: #15A891;
-    outline: none;
-    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
-  }
+  color: white;
+  background-color: #15A891;
+}
 
-  .container1 {
-    
-    background-image: url("pexels-stephan-müller-753869.jpg");
-    background-size: cover;
-    height: 400px;
-    
-    opacity: 0.8;
-    position: relative;
+.custom-btn:focus,
+.custom-btn:active {
+  color: white;
+  background-color: #15A891;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
+}
+
+.container1 {
+  
+  background-image: url("pexels-stephan-müller-753869.jpg");
+  background-size: cover;
+  height: 400px;
+  
+  opacity: 0.8;
+  position: relative;
 }
 
 .custom-btn1 {
-    font-size: 20px;
-    padding: 6px 12px;
-  }
+  font-size: 20px;
+  padding: 6px 12px;
+}
 
-  
+
+.update-btn {
+  margin-left: 10px;
+}
+
 /* NEWS SECTION ENDS */
