@@ -1,7 +1,4 @@
 const AnimalForm = require("../Models/vet_form_model");
-const multer = require("multer");
-
-const upload = multer({ dest: "uploads/" });
 
 exports.formSubmit = async (req, res) => {
   try {
@@ -14,7 +11,7 @@ exports.formSubmit = async (req, res) => {
       age: parseInt(req.body.age),
       weight: parseFloat(req.body.weight),
       animalSpecies: req.body.animalSpecies,
-      attachment: req.body.attachment ? req.body.attachment : "",
+      attachment: req.file ? req.file.filename : "",
       message: req.body.message,
       status: req.body.status,
       doctorMessage: req.body.status ? req.body.doctorMessage : "",
@@ -26,9 +23,6 @@ exports.formSubmit = async (req, res) => {
     });
 
     await animal.save();
-    if (req.body.attachment != "" || req.body.attachment != null) {
-       upload.single('req.body.attachment');
-    }
 
     res.json({ success: true });
   } catch (err) {

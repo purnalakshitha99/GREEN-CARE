@@ -13,7 +13,7 @@ const AnimalForm = () => {
     age: "",
     weight: "",
     animalSpecies: "",
-    attachment: null,
+    attachment: "",
     message: "",
     status: "Pending",
     doctorMessage: "",
@@ -57,7 +57,7 @@ const AnimalForm = () => {
         age: "",
         weight: "",
         animalSpecies: "",
-        attachment: null,
+        attachment: "",
         message: "",
       });
       alert("Form submitted successfully!");
@@ -77,7 +77,7 @@ const AnimalForm = () => {
       age: "",
       weight: "",
       animalSpecies: "",
-      attachment: null,
+      attachment: "",
       message: "",
     });
     setErrors({});

@@ -146,7 +146,7 @@ tickets
         <tbody>
           {data.map((row) => (
             <tr key={row._id} onClick={() => handleRowClick(row)}>
-              <td>{'#'+row._id.substring(0, 7)}</td>
+              <td>{row._id}</td>
               <td>{row.message}</td>
               <td>{row.firstName}</td>
               <td>{row.animalSpecies}</td>
@@ -189,7 +189,7 @@ tickets
               <div className="column">
                 <h2>Patient Details</h2>
                 <p>
-                  <strong>Ref:</strong> {'#'+selectedRowData._id.substring(0, 7)}
+                  <strong>Ref:</strong> {selectedRowData._id}
                 </p>
                 <p>
                   <strong>First Name:</strong> {selectedRowData.firstName}
