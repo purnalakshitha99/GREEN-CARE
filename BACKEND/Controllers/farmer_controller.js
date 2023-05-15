@@ -68,11 +68,10 @@ const signup = async (req, res, next) => {
 };
 
 const getUserById = async (req, res, next) => {
-  const userId = req.params.uid; // {uid : 'u1'}
-
+  const userEmail = req.params.email;
   let user;
   try {
-    user = await User.findById(userId);
+    user = await User.findOne({ email: userEmail });
   } catch (err) {
     const error = new HttpError(
       'Something went wrong, could not find a user.',

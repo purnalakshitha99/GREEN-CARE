@@ -3,12 +3,8 @@ import axios from 'axios';
 import NavBar from '../../layouts/navbar';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
-// import localStorage from 'localStorage';
-
 
 const LoginUser = () => {
-
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   //const[animal, setAnimal] = useState("");
@@ -24,21 +20,14 @@ const LoginUser = () => {
       .post('http://localhost:3007/api/v1/login', farmerdoc)
       .then((res) => {
         if (res.data.message === 'success') {
-          // localStorage.setItem("username", res.data.user.name);
-          // localStorage.setItem("email", res.data.user.email);
-          // localStorage.setItem("address", res.data.user.address);
-          // localStorage.setItem("phone", res.data.user.phone);
-          // localStorage.setItem("role", res.data.user.category);
+          localStorage.setItem('userEmail', email);
           
+
           // Swal.fire('Good job!', 'You clicked the button!', 'success');
           window.location.href = '/farmer/dashboard';
         } else {
           console.log('error');
-          Swal.fire(
-            'Invalid Credentials',
-            'You clicked the button!',
-            'error'
-          )
+          Swal.fire('Invalid Credentials', 'You clicked the button!', 'error');
         }
       })
       .catch((error) => {
@@ -49,7 +38,6 @@ const LoginUser = () => {
         }
       });
   };
-
   return (
     <>
       <div
@@ -121,4 +109,3 @@ const LoginUser = () => {
 };
 
 export default LoginUser;
-
