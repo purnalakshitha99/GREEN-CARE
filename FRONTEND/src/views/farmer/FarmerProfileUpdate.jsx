@@ -8,11 +8,13 @@ import Navbar from '../farmer/ALNavbar';
 const FarmerProfile = () => {
   const email = localStorage.getItem('userEmail');
   console.log(email);
+  const navigate = useNavigate();
 
   const [name, setName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
+  const [uid,setUid] = useState('');
 
   console.log(name);
 
@@ -27,6 +29,8 @@ const FarmerProfile = () => {
         setUserEmail(response.data.user.email);
         setPhone(response.data.user.phone);
         setAddress(response.data.user.address);
+        setUid(response.data.user.id);
+
       } catch (error) {
         console.log(error);
       }
@@ -34,6 +38,26 @@ const FarmerProfile = () => {
 
     fetchFarmerProfile();
   }, []); // Empty dependency array to run only once
+
+  const handleUpdateProfile = async () => {
+    try {
+      const response = await axios.patch(
+        `http://localhost:3007/api/v1/farmer/profile/${uid}`,
+        {
+          name,
+          address,
+          phone
+        }
+      );
+      Swal.fire('Success', response.data.message, 'success');
+      // You can redirect the user to a different page after successful update
+      navigate('/farmer/profile');
+    } catch (error) {
+      Swal.fire('Error', error.response.data.message, 'error');
+    }
+  };
+  
+
 
   return (
     <>
@@ -72,7 +96,12 @@ const FarmerProfile = () => {
                     <p class="mb-0">Full Name</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">{name}</p>
+                  <input
+                      type="text"
+                      className="form-control"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
                   </div>
                 </div>
                 <hr />
@@ -88,7 +117,7 @@ const FarmerProfile = () => {
                     <p class="mb-0">Email</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">{email}</p>
+                  <p class="text-muted mb-0">{email}</p>
                   </div>
                 </div>
                 <hr />
@@ -104,7 +133,12 @@ const FarmerProfile = () => {
                     <p class="mb-0">Phone</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">{phone}</p>
+                  <input
+                      type="text"
+                      className="form-control"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
                   </div>
                 </div>
                 <hr />
@@ -120,14 +154,23 @@ const FarmerProfile = () => {
                     <p class="mb-0">Address</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">{address}</p>
+                  <input
+                      type="text"
+                      className="form-control"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                    />
                   </div>
                 </div>
               </div>
             </div>
             <div
               class="row"
-              style={{ marginTop: '30px', marginBottom: '30px' }}
+              style={{
+                marginTop: '30px',
+                marginBottom: '30px',
+                marginLeft: '70px',
+              }}
             >
               <div class="col-sm-3"></div>
               <div class="col-sm-9">
@@ -139,19 +182,12 @@ const FarmerProfile = () => {
                   <button
                     type="button"
                     class="btn btn-success text-white"
-                    onClick={() =>
-                      (window.location.href = 'http://localhost:3000/farmer/profile/update')
+                    onClick={
+                      handleUpdateProfile
                     }
                     // type="submit"
                   >
-                    Edit profile
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-dark text-white"
-                    style={{ marginLeft: '60px' }}
-                  >
-                    Delete Account
+                    Update
                   </button>
                 </div>
               </div>

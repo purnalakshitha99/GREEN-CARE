@@ -125,7 +125,12 @@ const updateUser = async (req, res, next) => {
     );
   }
 
-  res.status(200).json({ updateUser: updatedUser.toObject({ getters: true }) });
+  res
+    .status(200)
+    .json({
+      updateUser: updatedUser.toObject({ getters: true }),
+      message: 'success',
+    });
 };
 
 const deleteUser = async (req, res, next) => {

@@ -22,7 +22,7 @@ router.post(
 router.get('/profile/:email', userController.getUserById);
 
 router.patch(
-  '/:uid',
+  '/profile/:uid',
   [
     check('name').not().isEmpty(),
     check('address').not().isEmpty(),
