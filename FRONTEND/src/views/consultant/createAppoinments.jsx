@@ -78,6 +78,28 @@ export default function CreateAppoinment() {
 
   return (
     <div>
+      <div 
+      style={{ 
+        backgroundImage: `url('https://teara.govt.nz/files/p16937pc.jpg')`, // replace 'your_image_url' with the actual URL of your image
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        height: '200px', // adjust this value as needed
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: 'white', // set the color of the text
+        fontSize: '20px' // set the size of the text
+      }}
+    >
+      
+    </div>
+
+    Consultation for the Creen Care System is a comprehensive and collaborative process aimed at providing expert advice and guidance to individuals or organizations seeking to implement or improve their screen care practices. The consultation process involves working closely with clients to assess their specific needs, analyze their current screen care practices, and develop tailored strategies and solutions to optimize screen health and longevity.
+
+During the consultation, experienced professionals in the field of screen care will engage with clients to understand their goals, challenges, and desired outcomes. They will conduct a thorough evaluation of the existing screen care infrastructure, including hardware, software, policies, and user habits. This assessment helps identify areas of improvement and potential risks to screen health.
+    <div class="row flex-nowrap">
+      ...
+    </div>
       <div class="row flex-nowrap">
         <div class="col py-5">
           <div class="container d-flex justify-content-center text-center">
@@ -210,6 +232,8 @@ export default function CreateAppoinment() {
                       <button
                         type="button"
                         class="btn btn-danger"
+                        style={{color: 'Red'}} 
+
                         data-bs-dismiss="modal"
                         onClick={(e) => {
                           clear(e);
@@ -220,6 +244,7 @@ export default function CreateAppoinment() {
                       <button
                         type="button"
                         class="btn btn-success"
+                        style={{color: '#45a692'}} 
                         onClick={(e) => {
                           handleSubmit(e);
                         }}

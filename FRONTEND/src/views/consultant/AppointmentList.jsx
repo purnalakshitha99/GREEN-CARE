@@ -11,6 +11,8 @@ import "../../assets/styles/styles.css";
 import { AiFillEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import Sidebar from "../../layouts/sideBar";
+import jsPDF from "jspdf";
+import logo from "../NavigationBar/gcl2.png";
 
 export default function () {
   const [loaderStatus, setLoaderStatus] = useState(false);
@@ -139,10 +141,22 @@ export default function () {
       styles: { fontSize: 8 },
       startY: 35,
     });
+
+    // doc.addImage(logo, 'PNG', 10, 10, 50, 50); // Add logo image. Adjust coordinates and size as needed.
+
+    // doc.text("No 242, Kaduwela Road, Malabe", 70, 30); // Add address
     const date = Date().split(" ");
     const dateStr = date[1] + "-" + date[2] + "-" + date[3];
-    doc.text("Appointment", 14, 15).setFontSize(12);
-    doc.text(`Report Generated Date - ${dateStr} `, 14, 23);
+    doc.setFontSize(14); // The largest size for 'Appointment'
+    doc.text("Appointment", 14, 20);
+    
+    doc.setFontSize(12); // The next largest size for 'GreenCare'
+    doc.text("GreenCare", 14, 10);
+    
+    doc.setFontSize(10); // The smaller size for 'No: 242, Kaduwela Road, Malabe' and the date
+    doc.text("No: 242, Kaduwela Road, Malabe", 14, 14);
+    doc.text(`Report Generated Date - ${dateStr} `, 14, 25);
+    
     doc.save(`Appointment-Details-Report_${dateStr}.pdf`);
   }
 
