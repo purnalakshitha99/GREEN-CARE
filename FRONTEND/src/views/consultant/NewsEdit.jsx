@@ -18,7 +18,11 @@ const SingleNews = () => {
       })
   }, [id]);
 
-  if (!article) return <p>Loading...</p>;
+  if (!article) return <div className="d-flex justify-content-center mt-5">
+<div class="spinner-grow text-success" role="status">
+   
+</div>
+</div>;
 
   return (
     <div className="container m-5">
