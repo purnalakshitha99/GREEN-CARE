@@ -8,6 +8,7 @@ import Dashboard from "../views/farmer/FarmerDashboard";
 // import Login from "../views/farmer/Login"
 import Services from "../views/farmer/FarmerServices"
 import ContactForm from '../views/farmer/ContactFieldOfficer'
+import ContactDoc from '../views/farmer/ContactDoctor'
 import ShowForm from '../views/farmer/ShowContactData'
 
 function farmer_routes() {
@@ -23,6 +24,7 @@ function farmer_routes() {
           <Route path="/farmer/dashboard" exact element={<Dashboard />}></Route>
           <Route path="/farmer/services" exact element={<Services />}></Route>
           <Route path="/farmer/services/contactfo" exact element={<ContactForm />}></Route>
+          <Route path="/farmer/services/contactdoctor" exact element={<ContactDoc />}></Route>
           <Route path="/farmer/services/viewdetails" exact element={<ShowForm />}></Route>
 
         </Routes>

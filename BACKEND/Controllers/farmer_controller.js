@@ -126,12 +126,10 @@ const updateUser = async (req, res, next) => {
     );
   }
 
-  res
-    .status(200)
-    .json({
-      updateUser: updatedUser.toObject({ getters: true }),
-      message: 'success',
-    });
+  res.status(200).json({
+    updateUser: updatedUser.toObject({ getters: true }),
+    message: 'success',
+  });
 };
 
 const deleteUser = async (req, res, next) => {
@@ -146,7 +144,6 @@ const deleteUser = async (req, res, next) => {
   res.status(200).json({ message: 'Deleted user.' });
 };
 
-
 const contactFieldOfficer = async (req, res, next) => {
   const { name, email, address, phone, reason } = req.body; // objcet destructuring, shorter way to do = const name = req.body.name
 
@@ -155,13 +152,18 @@ const contactFieldOfficer = async (req, res, next) => {
     email,
     address,
     phone,
-    reason
+    reason,
+    status: 'Pending',
+    type: 'Request Field Officer',
   });
 
   try {
     await contactData.save();
   } catch (err) {
-    const error = new HttpError('Contact Field Officer failed, please try again.', 500);
+    const error = new HttpError(
+      'Contact Field Officer failed, please try again.',
+      500
+    );
     return next(error);
   }
 
@@ -169,7 +171,6 @@ const contactFieldOfficer = async (req, res, next) => {
     message: 'success',
   });
 };
-
 
 // const getContactFOdata = async (req, res, next) => {
 //   const userEmail = req.params.email;
@@ -193,8 +194,6 @@ const contactFieldOfficer = async (req, res, next) => {
 //   res.json({ data: data.toObject({ getters: true }) }); // getters: true => to rid the _id from the response
 // };
 
-
-
 const getContactFOdata = async (req, res, next) => {
   const userEmail = req.params.email;
   let data;
@@ -210,14 +209,15 @@ const getContactFOdata = async (req, res, next) => {
 
   if (!data || data.length === 0) {
     return next(
-      new HttpError('Could not find any contact data for the provided email.', 404)
+      new HttpError(
+        'Could not find any contact data for the provided email.',
+        404
+      )
     );
   }
 
-  res.json({ data: data.map(item => item.toObject({ getters: true })) });
+  res.json({ data: data.map((item) => item.toObject({ getters: true })) });
 };
-
-
 
 const deleteContactFOData = async (req, res, next) => {
   const userId = req.params.id;
@@ -225,7 +225,76 @@ const deleteContactFOData = async (req, res, next) => {
   try {
     await ContactFO.findByIdAndDelete(userId);
   } catch (err) {
-    return next(new HttpError("Something went wrong , can't delete Contact Details", 500));
+    return next(
+      new HttpError("Something went wrong , can't delete Contact Details", 500)
+    );
+  }
+
+  res.status(200).json({ message: 'Deleted.' });
+};
+
+const createContactDoctor = async (req, res, next) => {
+  const { name, email, address, phone, reason } = req.body; // objcet destructuring, shorter way to do = const name = req.body.name
+
+  const contactData = new ContactFO({
+    name,
+    email,
+    address,
+    phone,
+    reason,
+    status: 'Pending',
+    type: 'Request Doctor',
+  });
+
+  try {
+    await contactData.save();
+  } catch (err) {
+    const error = new HttpError(
+      'Contact Doctor failed, please try again.',
+      500
+    );
+    return next(error);
+  }
+
+  res.status(201).json({
+    message: 'success',
+  });
+};
+
+const getContactDoctor = async (req, res, next) => {
+  const userEmail = req.params.email;
+  let data;
+  try {
+    data = await ContactFO.find({ email: userEmail });
+  } catch (err) {
+    const error = new HttpError(
+      'Something went wrong, could not find contact data.',
+      500
+    );
+    return next(error);
+  }
+
+  if (!data || data.length === 0) {
+    return next(
+      new HttpError(
+        'Could not find any contact data for the provided email.',
+        404
+      )
+    );
+  }
+
+  res.json({ data: data.map((item) => item.toObject({ getters: true })) });
+};
+
+const deleteContactDoctor = async (req, res, next) => {
+  const userId = req.params.id;
+
+  try {
+    await ContactFO.findByIdAndDelete(userId);
+  } catch (err) {
+    return next(
+      new HttpError("Something went wrong , can't delete Contact Details", 500)
+    );
   }
 
   res.status(200).json({ message: 'Deleted.' });
@@ -238,3 +307,6 @@ exports.deleteUser = deleteUser;
 exports.contactFieldOfficer = contactFieldOfficer;
 exports.getContactFOdata = getContactFOdata;
 exports.deleteContactFOData = deleteContactFOData;
+exports.contactDoctor = createContactDoctor;
+exports.getContactDoctor = getContactDoctor;
+exports.deleteContactDoctor = deleteContactDoctor;

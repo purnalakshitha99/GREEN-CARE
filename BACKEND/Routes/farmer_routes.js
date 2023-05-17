@@ -39,4 +39,12 @@ router.get('/contactfo/:email', userController.getContactFOdata);
 
 router.delete('/contactfo/:id', userController.deleteContactFOData);
 
+router.post('/contactdoctor', userController.contactDoctor);
+
+router.get('/contactdoctor/:email', userController.getContactDoctor);
+
+router.delete('/contactdoctor/:id', userController.deleteContactDoctor);
+
+
+
 module.exports = router;

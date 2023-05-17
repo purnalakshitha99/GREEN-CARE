@@ -57,6 +57,7 @@ const ContactFieldOff = () => {
       ['Address', request.address],
       ['Contact No', request.phone],
       ['Reason', request.reason],
+
     ];
 
     // Set table styles
@@ -123,7 +124,7 @@ const ContactFieldOff = () => {
         setRequests((prevRequests) =>
           prevRequests.filter((request) => request._id !== requestId)
         );
-        Swal.fire('Deleted!', 'The request has been deleted.', 'success');
+        // Swal.fire('Deleted!', 'The request has been deleted.', 'success');
       } catch (error) {
         console.log(error);
         Swal.fire('Error', 'Failed to delete the request.', 'error');
@@ -154,7 +155,7 @@ const ContactFieldOff = () => {
                   >
                     <div className="card-body p-5">
                       <h2 className="text-uppercase text-center mb-5">
-                        Request Details
+                        {request.type}
                       </h2>
                       <hr />
 
@@ -204,6 +205,17 @@ const ContactFieldOff = () => {
                             className="form-label"
                             htmlFor="form3Example4cg"
                           >
+                            Status
+                          </label>
+                          <p className="text-muted mb-0">{request.status}</p>
+                        </div>
+                        <hr />
+                    
+                        <div className="form-outline mb-4">
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example4cg"
+                          >
                             Reason
                           </label>
                           <p className="text-muted mb-0">{request.reason}</p>
@@ -215,7 +227,7 @@ const ContactFieldOff = () => {
                             className="btn btn-success btn-block btn-lg gradient-custom-4 text-white"
                             onClick={() => generatePDF(request)}
                           >
-                            Download As PDF
+                            Download Invoice
                           </button>
                           <button
                             type="button"
