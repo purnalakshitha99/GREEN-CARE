@@ -218,9 +218,23 @@ const getContactFOdata = async (req, res, next) => {
 };
 
 
+
+const deleteContactFOData = async (req, res, next) => {
+  const userId = req.params.id;
+
+  try {
+    await ContactFO.findByIdAndDelete(userId);
+  } catch (err) {
+    return next(new HttpError("Something went wrong , can't delete Contact Details", 500));
+  }
+
+  res.status(200).json({ message: 'Deleted.' });
+};
+
 exports.signup = signup;
 exports.getUserById = getUserById;
 exports.updateUser = updateUser;
 exports.deleteUser = deleteUser;
 exports.contactFieldOfficer = contactFieldOfficer;
 exports.getContactFOdata = getContactFOdata;
+exports.deleteContactFOData = deleteContactFOData;

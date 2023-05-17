@@ -37,4 +37,6 @@ router.post('/contactfo', userController.contactFieldOfficer);
 
 router.get('/contactfo/:email', userController.getContactFOdata);
 
+router.delete('/contactfo/:id', userController.deleteContactFOData);
+
 module.exports = router;
