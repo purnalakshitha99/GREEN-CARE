@@ -8,11 +8,14 @@ import Navbar from '../farmer/ALNavbar';
 const FarmerProfile = () => {
   const email = localStorage.getItem('userEmail');
   console.log(email);
+  const navigate = useNavigate();
 
   const [name, setName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
+  const [uid,setUid] = useState('');
+  const [category,setCategory] = useState('');
 
   console.log(name);
 
@@ -27,6 +30,8 @@ const FarmerProfile = () => {
         setUserEmail(response.data.user.email);
         setPhone(response.data.user.phone);
         setAddress(response.data.user.address);
+        setUid(response.data.user.id);
+        setCategory(response.data.user.category);
       } catch (error) {
         console.log(error);
       }
@@ -34,6 +39,34 @@ const FarmerProfile = () => {
 
     fetchFarmerProfile();
   }, []); // Empty dependency array to run only once
+
+
+  const handleDeleteAccount = async () => {
+    const confirmed = await Swal.fire({
+      title: 'Confirmation',
+      text: 'Are you sure you want to delete your account?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'Cancel',
+    });
+  
+    if (confirmed.isConfirmed) {
+      try {
+        const response = await axios.delete(
+          `http://localhost:3007/api/v1/farmer/${uid}`
+        );
+        Swal.fire('Success', response.data.message, 'success');
+        // You can redirect the user to a different page after successful deletion
+        navigate('/login');
+      } catch (error) {
+        Swal.fire('Error', error.response.data.message, 'error');
+      }
+    }
+  };
+  
 
   return (
     <>
@@ -123,6 +156,22 @@ const FarmerProfile = () => {
                     <p class="text-muted mb-0">{address}</p>
                   </div>
                 </div>
+                <hr />
+                <div
+                  class="row "
+                  style={{
+                    marginTop: '30px',
+                    marginBottom: '30px',
+                    marginLeft: '20px',
+                  }}
+                >
+                  <div class="col-sm-3">
+                    <p class="mb-0">Bio</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{category}</p>
+                  </div>
+                </div>
               </div>
             </div>
             <div
@@ -150,6 +199,7 @@ const FarmerProfile = () => {
                     type="button"
                     class="btn btn-dark text-white"
                     style={{ marginLeft: '60px' }}
+                    onClick={handleDeleteAccount}
                   >
                     Delete Account
                   </button>

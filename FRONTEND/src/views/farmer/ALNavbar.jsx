@@ -1,6 +1,10 @@
 import React from 'react';
 
 const Navbar = () => {
+  const logout = () => {
+    localStorage.clear();
+    window.location.href = 'http://localhost:3000';
+  };
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container">
@@ -26,12 +30,12 @@ const Navbar = () => {
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href={'/farmer/products'}>
-                Products
+              <a class="nav-link" href={'/farmer/services/viewdetails'}>
+                My Requests
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">
+              <a class="nav-link" href="/farmer/services">
                 Services 
               </a>
             </li>
@@ -57,7 +61,8 @@ const Navbar = () => {
             <li class="nav-item me-3">
               <button
                 class="btn btn-outline-success"
-                onClick={() => (window.location.href = 'http://localhost:3000')}
+            
+                onClick={logout}
                 type="submit"
               >
                 Log Out

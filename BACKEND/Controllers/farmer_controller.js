@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const User = require('../Models/user_register_model');
+const ContactFO = require('../Models/contactFO');
 
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
@@ -40,7 +41,7 @@ const signup = async (req, res, next) => {
     email,
     address,
     phone,
-    category: 'farmer',
+    category: 'Farmer',
     password: hashedPassword,
   });
 
@@ -145,7 +146,81 @@ const deleteUser = async (req, res, next) => {
   res.status(200).json({ message: 'Deleted user.' });
 };
 
+
+const contactFieldOfficer = async (req, res, next) => {
+  const { name, email, address, phone, reason } = req.body; // objcet destructuring, shorter way to do = const name = req.body.name
+
+  const contactData = new ContactFO({
+    name,
+    email,
+    address,
+    phone,
+    reason
+  });
+
+  try {
+    await contactData.save();
+  } catch (err) {
+    const error = new HttpError('Contact Field Officer failed, please try again.', 500);
+    return next(error);
+  }
+
+  res.status(201).json({
+    message: 'success',
+  });
+};
+
+
+// const getContactFOdata = async (req, res, next) => {
+//   const userEmail = req.params.email;
+//   let data;
+//   try {
+//     data = await ContactFO.findOne({ email: userEmail });
+//   } catch (err) {
+//     const error = new HttpError(
+//       'Something went wrong, could not find a contact data.',
+//       500
+//     );
+//     return next(error);
+//   }
+
+//   if (!data) {
+//     return next(
+//       new HttpError('Could not find a contact data for the provided id.', 404)
+//     );
+//   }
+
+//   res.json({ data: data.toObject({ getters: true }) }); // getters: true => to rid the _id from the response
+// };
+
+
+
+const getContactFOdata = async (req, res, next) => {
+  const userEmail = req.params.email;
+  let data;
+  try {
+    data = await ContactFO.find({ email: userEmail });
+  } catch (err) {
+    const error = new HttpError(
+      'Something went wrong, could not find contact data.',
+      500
+    );
+    return next(error);
+  }
+
+  if (!data || data.length === 0) {
+    return next(
+      new HttpError('Could not find any contact data for the provided email.', 404)
+    );
+  }
+
+  res.json({ data: data.map(item => item.toObject({ getters: true })) });
+};
+
+
 exports.signup = signup;
 exports.getUserById = getUserById;
 exports.updateUser = updateUser;
 exports.deleteUser = deleteUser;
+exports.contactFieldOfficer = contactFieldOfficer;
+exports.getContactFOdata = getContactFOdata;

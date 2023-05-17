@@ -33,4 +33,8 @@ router.patch(
 
 router.delete('/:uid', userController.deleteUser);
 
+router.post('/contactfo', userController.contactFieldOfficer);
+
+router.get('/contactfo/:email', userController.getContactFOdata);
+
 module.exports = router;

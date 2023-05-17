@@ -156,7 +156,7 @@ const InsertFarmerInformation = () => {
       .post('http://localhost:3007/api/v1/farmer/signup', farmerdoc)
       .then((res) => {
         if (res.data.message === 'success') {
-          Swal.fire('Good job!', 'You clicked the button!', 'success');
+          navigate('/login');
         } else {
           console.log('error');
         }
@@ -232,10 +232,25 @@ const InsertFarmerInformation = () => {
                       <label class="form-label" for="form3Example4cdg">
                         Phone Number
                       </label>
-                      <input
+                      {/* <input
                         type="number"
                         id="form3Example4cdg"
                         class="form-control form-control-lg"
+                        onChange={(e) => {
+                          setPhone(e.target.value);
+                        }}
+                      /> */}
+                      <input
+                        type="number"
+                        id="form3Example4cdg"
+                        className="form-control form-control-lg"
+                        maxLength={10}
+                        onInput={(e) => {
+                          e.target.value = Math.max(0, parseInt(e.target.value))
+                            .toString()
+                            .slice(0, 10);
+                          setPhone(e.target.value);
+                        }}
                         onChange={(e) => {
                           setPhone(e.target.value);
                         }}
