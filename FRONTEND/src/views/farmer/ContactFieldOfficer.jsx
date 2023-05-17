@@ -45,7 +45,7 @@ const ContactFieldOff = () => {
         if (res.data.message === 'success') {
 
           // Swal.fire('Good job!', 'You clicked the button!', 'success');
-          window.location.href = '/farmer/dashboard';
+          window.location.href = '/farmer/services/viewdetails';
         } else {
           console.log('error');
           Swal.fire('Invalid Credentials', 'You clicked the button!', 'error');
