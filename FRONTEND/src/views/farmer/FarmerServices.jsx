@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './ALNavbar';
+import Footer from './Footer'
 
 const FarmerServices = () => {
   return (
@@ -85,6 +86,7 @@ const FarmerServices = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </>
   );
 };

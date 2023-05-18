@@ -42,10 +42,10 @@ const FarmerHome = () => {
                 alt="..."
               />
               <div class="carousel-caption">
-                <h5>First slide label</h5>
+                <h5>GreenCare</h5>
                 <p>
-                  Neque porro quisquam est qui dolorem ipsum quia dolor sit
-                  amet, consectetur, adipisci velit.
+                  "Transforming Farming Challenges into Solutions: Greencare,
+                  Your Partner in Agricultural Success"
                 </p>
               </div>
             </div>
@@ -56,10 +56,10 @@ const FarmerHome = () => {
                 alt="..."
               />
               <div class="carousel-caption ">
-                <h5>Second slide label</h5>
+                <h5>GreenCare</h5>
                 <p>
-                  Neque porro quisquam est qui dolorem ipsum quia dolor sit
-                  amet, consectetur, adipisci velit.
+                  "Transforming Farming Challenges into Solutions: Greencare,
+                  Your Partner in Agricultural Success"
                 </p>
               </div>
             </div>
@@ -70,10 +70,10 @@ const FarmerHome = () => {
                 alt="..."
               />
               <div class="carousel-caption ">
-                <h5>Third slide label</h5>
+                <h5>GreenCare</h5>
                 <p>
-                  Neque porro quisquam est qui dolorem ipsum quia dolor sit
-                  amet, consectetur, adipisci velit.
+                  "Transforming Farming Challenges into Solutions: Greencare,
+                  Your Partner in Agricultural Success"
                 </p>
               </div>
             </div>
@@ -99,7 +99,7 @@ const FarmerHome = () => {
         </div>
       </div>
 
-      <section class="about section-padding" id="about">
+      {/* <section class="about section-padding" id="about">
         <div class="container">
           <div class="row">
             <div class="col-lg-4 col-md-12 col-12">
@@ -130,7 +130,7 @@ const FarmerHome = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section class="about section-padding" id="about">
         <div class="container">
@@ -139,17 +139,21 @@ const FarmerHome = () => {
               <div class="about-text">
                 <h2>Need Consultation?</h2>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Totam, labore reiciendis. Assumenda eos quod animi! Soluta
-                  nesciunt inventore dolores excepturi provident, culpa beatae
-                  tempora, explicabo corporis quibusdam corrupti. Autem,
-                  quaerat. Assumenda quo aliquam vel, nostrum explicabo ipsum
-                  dolor, ipsa perferendis porro doloribus obcaecati placeat
-                  natus iste odio est non earum?
+                  Welcome to Greencare! Our dedicated team of field officers is
+                  here to support you on your farming journey. Introducing our
+                  "Need Consultation" service, where you can receive
+                  personalized and efficient solutions to address any farming
+                  challenges you may be facing. Whether you're dealing with crop
+                  diseases, irrigation issues, pest control, or any other
+                  concerns, our experienced field officers will visit you right
+                  at your doorstep. They will provide expert advice, guidance,
+                  and recommendations tailored to your specific farming needs.
+                  With their in-depth knowledge and practical solutions, our
+                  field officers are committed to helping you achieve optimal
+                  productivity and sustainable agricultural practices. Trust
+                  Greencare for reliable consultation and let us empower you to
+                  overcome obstacles and succeed in your farming endeavors.
                 </p>
-                <a class="btn btn-warning" href="#">
-                  Learn More
-                </a>
               </div>
             </div>
             <div class="col-lg-4 col-md-12 col-12">
@@ -177,27 +181,29 @@ const FarmerHome = () => {
                 />
               </div>
             </div>
-            <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
+            <div class="col-lg-8 col-md-12 col-12 ps-lg-5" style={{marginTop:'0px'}}> 
               <div class="about-text">
                 <h2>Livestock Health Problem?</h2>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Totam, labore reiciendis. Assumenda eos quod animi! Soluta
-                  nesciunt inventore dolores excepturi provident, culpa beatae
-                  tempora, explicabo corporis quibusdam corrupti. Autem,
-                  quaerat. Assumenda quo aliquam vel, nostrum explicabo ipsum
-                  dolor, ipsa perferendis porro doloribus obcaecati placeat
-                  natus iste odio est non earum?
+                  At Greencare, we understand that the well-being of your
+                  livestock is paramount to the success of your farm. That's why
+                  we have a dedicated team of expert veterinarians ready to
+                  provide specialized care for your animals. Our highly skilled
+                  vet doctor is available to address any health concerns or
+                  medical needs your livestock may have. Whether it's routine
+                  check-ups, preventative care, or treating specific ailments,
+                  our vet doctor is equipped with the knowledge and experience
+                  to ensure the health and welfare of your animals. With
+                  Greencare, you can have peace of mind knowing that your
+                  livestock's health is in capable hands. Contact our vet doctor
+                  today and let us help you keep your animals in optimal health
+                  for a thriving farm.
                 </p>
-                <a class="btn btn-warning" href="#">
-                  Learn More
-                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
-
 
       <Footer />
     </>

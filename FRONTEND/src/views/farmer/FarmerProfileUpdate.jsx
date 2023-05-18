@@ -4,6 +4,7 @@ import NavBar from '../../layouts/navbar';
 import Swal from 'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../farmer/ALNavbar';
+import Footer from './Footer'
 
 const FarmerProfile = () => {
   const email = localStorage.getItem('userEmail');
@@ -195,6 +196,7 @@ const FarmerProfile = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

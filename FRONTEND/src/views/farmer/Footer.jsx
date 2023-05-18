@@ -5,8 +5,7 @@ const Footer = () => {
     <div>
       <footer class="text-center text-lg-start bg-light text-muted">
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-          <div class="me-5 d-none d-lg-block">
-          </div>
+          <div class="me-5 d-none d-lg-block"></div>
         </section>
 
         <section class="">
@@ -14,16 +13,15 @@ const Footer = () => {
             <div class="row mt-3">
               <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                 <h6 class="text-uppercase fw-bold mb-4">
-                  <i class="fas fa-gem me-3"></i>Company name
+                  <i class="fas fa-gem me-3"></i>GreenCare
                 </h6>
                 <p>
-                  Here you can use rows and columns to organize your footer
-                  content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                  elit.
+                  Transforming Farming Challenges into Solutions: Greencare,
+                  Your Partner in Agricultural Success
                 </p>
               </div>
 
-              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              {/* <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                 <h6 class="text-uppercase fw-bold mb-4">Products</h6>
                 <p>
                   <a href="#!" class="text-reset">
@@ -45,23 +43,13 @@ const Footer = () => {
                     Laravel
                   </a>
                 </p>
-              </div>
+              </div> */}
 
               <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                 <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
                 <p>
                   <a href="#!" class="text-reset">
-                    Pricing
-                  </a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">
-                    Settings
-                  </a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">
-                    Orders
+                    services
                   </a>
                 </p>
                 <p>
@@ -74,23 +62,22 @@ const Footer = () => {
               <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                 <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
                 <p>
-                  <i class="fas fa-home me-3"></i> New York, NY 10012, US
+                  <i class="fas fa-home me-3"></i> Navam mawatha, Colombo
                 </p>
                 <p>
                   <i class="fas fa-envelope me-3"></i>
-                  info@example.com
+                  info@greencare.com
                 </p>
                 <p>
-                  <i class="fas fa-phone me-3"></i> + 01 234 567 88
+                  <i class="fas fa-phone me-3"></i> + 94 112 345 342
                 </p>
                 <p>
-                  <i class="fas fa-print me-3"></i> + 01 234 567 89
+                  <i class="fas fa-print me-3"></i> + 94 113 365 753
                 </p>
               </div>
             </div>
           </div>
         </section>
-
       </footer>
     </div>
   );

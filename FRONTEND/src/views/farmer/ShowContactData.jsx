@@ -4,6 +4,7 @@ import axios from 'axios';
 import NavBar from '../farmer/SDNavbar';
 import Swal from 'sweetalert2';
 import 'jspdf-autotable';
+import Footer from './Footer'
 
 const ContactFieldOff = () => {
   const lsEmail = localStorage.getItem('userEmail');
@@ -54,10 +55,10 @@ const ContactFieldOff = () => {
     // Add subheading
     doc.setFontSize(16);
     doc.setTextColor('#a5a8a6');
-    doc.text('Invoice request for the field officer', 10, 55);
+    doc.text('Invoice for Request', 10, 55);
 
     // Define table column headers
-    const tableHeaders = [['Field', 'Value']];
+    const tableHeaders = [['', '']];
 
     // Define table rows with the request data
     const tableRows = [
@@ -294,6 +295,7 @@ const ContactFieldOff = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
