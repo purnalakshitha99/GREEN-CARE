@@ -170,6 +170,15 @@ const InsertFarmerInformation = () => {
       });
   };
 
+
+  // const handleNameChange = (e) => {
+  //   const inputValue = e.target.value;
+  //   const pattern = /^[A-Za-z]+$/;
+  //   if (pattern.test(inputValue) || inputValue === '') {
+  //     setName(inputValue);
+  //   }
+  // };
+
   return (
     <>
       <div
@@ -198,6 +207,13 @@ const InsertFarmerInformation = () => {
                           setName(e.target.value);
                         }}
                       />
+                       {/* <input
+                        type="text"
+                        id="form3Example1cg"
+                        className="form-control form-control-lg"
+                        value={name}
+                        onChange={handleNameChange}
+                      /> */}
                     </div>
 
                     <div class="form-outline mb-4">
@@ -232,15 +248,15 @@ const InsertFarmerInformation = () => {
                       <label class="form-label" for="form3Example4cdg">
                         Phone Number
                       </label>
-                      {/* <input
+                      <input
                         type="number"
                         id="form3Example4cdg"
                         class="form-control form-control-lg"
                         onChange={(e) => {
                           setPhone(e.target.value);
                         }}
-                      /> */}
-                      <input
+                      />
+                      {/* <input
                         type="number"
                         id="form3Example4cdg"
                         className="form-control form-control-lg"
@@ -254,7 +270,7 @@ const InsertFarmerInformation = () => {
                         onChange={(e) => {
                           setPhone(e.target.value);
                         }}
-                      />
+                      /> */}
                     </div>
 
                     <div class="form-outline mb-4">
