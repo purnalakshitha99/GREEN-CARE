@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import jsPDF from 'jspdf';
 import axios from 'axios';
-import NavBar from '../farmer/ALNavbar';
+import NavBar from '../farmer/SDNavbar';
 import Swal from 'sweetalert2';
 import 'jspdf-autotable';
 
 const ContactFieldOff = () => {
   const lsEmail = localStorage.getItem('userEmail');
   const [requests, setRequests] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredRequests, setFilteredRequests] = useState([]);
+
+
 
   useEffect(() => {
     const fetchUserRequests = async () => {
@@ -24,6 +28,11 @@ const ContactFieldOff = () => {
 
     fetchUserRequests();
   }, []);
+
+  useEffect(() => {
+    setFilteredRequests(requests);
+  }, [requests]);
+  
 
   const generatePDF = (request) => {
     const doc = new jsPDF();
@@ -57,7 +66,6 @@ const ContactFieldOff = () => {
       ['Address', request.address],
       ['Contact No', request.phone],
       ['Reason', request.reason],
-
     ];
 
     // Set table styles
@@ -132,18 +140,55 @@ const ContactFieldOff = () => {
     }
   };
 
+  const handleSearch = (event) => {
+    const searchValue = event.target.value.toLowerCase();
+    setSearchQuery(searchValue);
+  
+    const filteredRequests = requests.filter((request) =>
+      request.type.toLowerCase().includes(searchValue) ||
+      request.name.toLowerCase().includes(searchValue) ||
+      request.email.toLowerCase().includes(searchValue)||
+      request.status.toLowerCase().includes(searchValue)
+    );
+  
+    setFilteredRequests(filteredRequests);
+  };
+
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // Prevent form submission
+    }
+  };
+
+  
   return (
     <>
       <NavBar />
+      <form
+        class="d-flex"
+        style={{
+          margin: '100px',
+        }}
+      >
+        <input
+          className="form-control me-2"
+          type="text"
+          placeholder="Search by type, name, email or status"
+          aria-label="Search"
+          value={searchQuery}
+          onChange={handleSearch}
+          onKeyDown={handleKeyDown} // Add the keydown event listener
+        />
+      </form>
       <div className="mask d-flex align-items-center h-100 gradient-custom-3">
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-12 col-md-9 col-lg-7 col-xl-6">
-              {requests.map((request) => (
+              {filteredRequests.map((request) => (
                 <div
                   key={request._id}
                   style={{
-                    marginTop: '100px',
                     marginBottom: '30px',
                   }}
                 >
@@ -210,7 +255,7 @@ const ContactFieldOff = () => {
                           <p className="text-muted mb-0">{request.status}</p>
                         </div>
                         <hr />
-                    
+
                         <div className="form-outline mb-4">
                           <label
                             className="form-label"
