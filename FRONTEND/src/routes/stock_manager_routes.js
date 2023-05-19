@@ -13,6 +13,8 @@ import ShowItems from "../views/stock_manager/stock/showOne";
 export default function stock_manager_routes() {
   return (
     <BrowserRouter>
+
+
       
         <Routes>
           {/* <Route path="/" element={<DashBoard />} /> */}
@@ -23,6 +25,7 @@ export default function stock_manager_routes() {
           <Route path="/item/:id" exact element={<ShowItems />}></Route>
         </Routes>
       
+
     </BrowserRouter>
   );
 }
