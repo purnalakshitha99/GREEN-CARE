@@ -19,7 +19,7 @@ export default function ShowItems() {
         .catch((err) => alert(err.message));
     };
     getItems();
-  }, []);
+  }, [id]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
