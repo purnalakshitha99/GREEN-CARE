@@ -12,7 +12,7 @@ exports.addManager = catchAsync(async (req, res, next) => {
   });
 });
 
-//get all items
+//get all managers
 exports.allManagers = catchAsync(async (req, res, next) => {
   let all_managers = await Manager.find();
   res.json(all_managers);

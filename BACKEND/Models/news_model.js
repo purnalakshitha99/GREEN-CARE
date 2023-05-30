@@ -10,8 +10,8 @@ const newsSchema = new mongoose.Schema({
     required: true,
  },
   image: {
-    type: String,
-    required: true,
+    type: String
+    
   },
   // user: {
   //   type: mongoose.Types.ObjectId, //news have one user

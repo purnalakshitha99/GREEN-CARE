@@ -1,15 +1,23 @@
-const express = require('express');
-const cors = require('cors');
-const multer = require('multer');
-const uploadMiddleware = multer({ dest: 'uploads/' });
-const fs = require('fs');
+
+const express = require("express");
+const cors = require("cors");
+
+const multer = require("multer");
+const uploadMiddleware = multer({ dest: "uploads/" });
+const fs = require("fs");
 const app = express();
-const report = require('./Models/createreport_model');
-const noticeRouter = require('./Routes/notice_routes');
-const studentRouter = require('./Routes/student_routes');
+const report = require("./Models/createreport_model");
+
+const noticeRouter = require("./Routes/notice_routes");
+const studentRouter = require("./Routes/student_routes");
 //stock manager routes
 const itemRouter = require('./Routes/item_routes');
 // farmer routes
+
+//common routes
+
+const employeeRouter = require("./Routes/employee_routes");
+
 const farmerRouter = require('./Routes/farmer_routes');
 //field visitor route
 const fieldvisitor = require('./Routes/fieldvisitor_routes');
@@ -20,7 +28,9 @@ const reportcreate = require('./Routes/createreport_routes');
 //manager routes
 const ManagerRouter = require('./Routes/manager_routes');
 
-const appointmentRouter = require('./Routes/appointment_routes');
+
+const appointmentRouter = require("./Routes/appointment_routes");
+
 
 const { default: newsRouter } = require('./Routes/news_routes'); // news routes (consultants')
 
@@ -35,6 +45,7 @@ app.use(
   })
 );
 
+
 //consultant routes
 
 // routes
@@ -46,8 +57,27 @@ app.use(`${base}/stock-manager`, itemRouter);
 app.use(`${base}/farmer`, farmerRouter);
 //consultant's appoinments
 app.use(`${base}/appointment`, appointmentRouter);
-app.use(`${base}/fieldvisitor`, fieldvisitor);
-app.use(`${base}/reportcreate`, reportcreate);
+
+app.use(`${base}/employee`, employeeRouter);
+
+app.use('/news_images', express.static('news_images'));
+
+
+
+
+
+
+// Unsupported routes handler
+app.use((req, res, next) => {
+  const error = new HttpError("Could not find this route", 404);
+  throw error;
+});
+
+
+
+app.use(`${base}/fieldvisitor`, fieldvisitor );
+app.use(`${base}/reportcreate`, reportcreate );
+
 
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
@@ -97,6 +127,7 @@ app.post('/newpost', uploadMiddleware.single('file'), async (req, res) => {
     .json({ message: 'Resource created successfully', data: postDoc });
 });
 
+
 //consulant's news
 app.use(`${base}/news`, newsRouter);
 
@@ -106,7 +137,8 @@ app.use((req, res, next) => {
   throw error;
 });
 
-app.all('*', (req, res, next) => {
+app.all("*", (req, res, next) => {
+
   next(new AppError(`can't find ${req.originalUrl} on this server!`, 404));
 });
 

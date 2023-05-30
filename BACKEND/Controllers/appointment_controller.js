@@ -24,12 +24,12 @@ exports.AllAppointment = catchAsync(async (req, res, next) => {
 
 //get specific Appointment
 exports.specificAppointment = catchAsync(async (req, res, next) => {
-  let Appointment = await Appointment.findById(req.params.id);
+  let appointment = await Appointment.findById(req.params.id);
 
   res.status(201).json({
     status: "success",
     data: {
-        Appointment,
+        appointment,
     },
   });
 });
