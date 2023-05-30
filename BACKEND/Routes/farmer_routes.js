@@ -17,12 +17,12 @@ router.post(
   userController.signup
 );
 
-router.use(checkAuth); // if the user is not authenticated, the following routes will not be executed
+// router.use(checkAuth); // if the user is not authenticated, the following routes will not be executed
 
-router.get("/profile/:uid", userController.getUserById);
+router.get('/profile/:email', userController.getUserById);
 
 router.patch(
-  '/:uid',
+  '/profile/:uid',
   [
     check('name').not().isEmpty(),
     check('address').not().isEmpty(),
@@ -32,5 +32,19 @@ router.patch(
 );
 
 router.delete('/:uid', userController.deleteUser);
+
+router.post('/contactfo', userController.contactFieldOfficer);
+
+router.get('/contactfo/:email', userController.getContactFOdata);
+
+router.delete('/contactfo/:id', userController.deleteContactFOData);
+
+router.post('/contactdoctor', userController.contactDoctor);
+
+router.get('/contactdoctor/:email', userController.getContactDoctor);
+
+router.delete('/contactdoctor/:id', userController.deleteContactDoctor);
+
+
 
 module.exports = router;

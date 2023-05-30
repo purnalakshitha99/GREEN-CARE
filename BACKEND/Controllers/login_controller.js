@@ -39,21 +39,20 @@ const login = async (req, res, next) => {
     );
   }
 
-  let token;
-  try {
-    token = jwt.sign(
-      { userId: identifiedUser.id, email: identifiedUser.email },
-      "issaraha_dhore_yathura_thiyenne_isuru_laga",
-      { expiresIn: "1h" }
-    );
-  } catch (err) {
-    return next(new HttpError("Login failed, please try again.", 500));
-  }
+  // let token;
+  // try {
+  //   token = jwt.sign(
+  //     { userId: identifiedUser.id, email: identifiedUser.email },
+  //     "issaraha_dhore_yathura_thiyenne_isuru_laga",
+  //     { expiresIn: "1h" }
+  //   );
+  // } catch (err) {
+  //   return next(new HttpError("Login failed, please try again.", 500));
+  // }
 
   res.json({
-    userId: identifiedUser.id,
-    email: identifiedUser.email,
-    token: token,
+    user: identifiedUser,
+    message:"success"
   });
 };
 
