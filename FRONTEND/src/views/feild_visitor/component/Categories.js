@@ -13,19 +13,25 @@ function Categories() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-6 ">
       <div className="bg-gray-200/50 rounded-lg p-4 flex flex-col justify-between items-center hover:cursor-pointer hover:scale-105 shadow-lg">
           
-          <Link to="/fieldinformation"><BsFillPersonVcardFill  size={80} className="" /></Link>
+          <Link to="/fieldinformation"><BsFillPersonVcardFill  size={80} className="" />
           <h2 className="font-bold sm:text-xl ">farmer information</h2>
+          </Link>
+          
         </div>
 
         <div className="bg-gray-200/50 rounded-lg p-4 flex flex-col justify-between items-center hover:cursor-pointer hover:scale-105 shadow-lg">
           <Link to="/fieldreport">
           <HiOutlineClipboardDocumentList size={80} className="" />
-          </Link>
           <h2 className="font-bold sm:text-xl ">Field Report</h2>
+          </Link>
+          
         </div>
         <div className="bg-gray-200/50 rounded-lg p-4 flex flex-col justify-between items-center hover:cursor-pointer hover:scale-105 shadow-lg">
+          <Link to="/damagereport">
           <HiDocumentText size={80} className="" />
           <h2 className="font-bold sm:text-xl ">Damage Report</h2>
+          </Link>
+          
         </div>
         
         <div className="bg-gray-200/50 rounded-lg p-4 flex flex-col justify-between items-center hover:cursor-pointer hover:scale-105 shadow-lg">

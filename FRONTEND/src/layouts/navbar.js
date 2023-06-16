@@ -13,7 +13,7 @@ function NavBar() {
   let [open, setOpen] = useState(false);
   return (
     <div className="shadow-md  top-0 left-0 w-full fixed ">
-      <div className="md:flex bg-green-600 py-4 md:px-10 px-7 items-center justify-between ">
+      <div className="md:flex bg-green-600 py-4 md:px-10 px-5 items-center justify-between ">
         <div className="text-2xl font-bold cursor-pointer flex items-center font-[Poppins] text-gray-800 ">
           <span className="text-3xl text-indigo-600 mr-1 pt-2">
             {/* <ion-icon name="airplane-outline"></ion-icon> */}

@@ -10,13 +10,12 @@ const studentRouter = require("./Routes/student_routes");
 //stock manager routes
 const itemRouter = require("./Routes/item_routes");
 // farmer routes
-const farmerRouter = require('./Routes/farmer_routes');
+const farmerRouter = require("./Routes/farmer_routes");
 //field visitor route
-const fieldvisitor = require('./Routes/fieldvisitor_routes');
+const fieldvisitor = require("./Routes/fieldvisitor_routes");
 // create report route
-const reportcreate = require('./Routes/createreport_routes');
+const reportcreate = require("./Routes/createreport_routes");
 //common routes
-
 //manager routes
 const ManagerRouter = require("./Routes/manager_routes");
 
@@ -46,13 +45,13 @@ app.use(`${base}/stock-manager`, itemRouter);
 app.use(`${base}/farmer`, farmerRouter);
 //consultant's appoinments
 app.use(`${base}/appointment`, appointmentRouter);
-app.use(`${base}/fieldvisitor`, fieldvisitor );
-app.use(`${base}/reportcreate`, reportcreate );
+app.use(`${base}/fieldvisitor`, fieldvisitor);
+app.use(`${base}/reportcreate`, reportcreate);
+app.use(`${base}/damagereportcreate`, damagereportcreate);
 
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
-
-
+//getting photo and upload part for field report part
 app.post("/newpost", uploadMiddleware.single("file"), async (req, res) => {
   const { originalname, path } = req.file;
   const parts = originalname.split(".");
@@ -60,8 +59,16 @@ app.post("/newpost", uploadMiddleware.single("file"), async (req, res) => {
   const newPath = path + "." + ext;
   fs.renameSync(path, newPath);
 
-  const { firstname, lastname, email, arrival, depature, problem, solution,date } =
-    req.body;
+  const {
+    firstname,
+    lastname,
+    email,
+    arrival,
+    depature,
+    problem,
+    solution,
+    date,
+  } = req.body;
 
   if (
     !firstname ||
@@ -70,7 +77,7 @@ app.post("/newpost", uploadMiddleware.single("file"), async (req, res) => {
     !arrival ||
     !depature ||
     !problem ||
-    !solution||
+    !solution ||
     !date
   ) {
     return res.status(400).json({ message: " fields are empty" });
@@ -115,3 +122,5 @@ app.use((error, req, res, next) => {
 });
 
 module.exports = app;
+
+//getting photo and upload part for field report part
